@@ -25,7 +25,7 @@ Download the sample code using a method of your choice. Some examples are provid
 
 In order to successfully execute the sample code, make sure you have a valid subscription, either a full one or [the 30 day trial](https://support.muhimbi.com/hc/en-us/articles/115002816048-Getting-started-with-the-PDF-Converter-Services-Online).
 
-:bangbang: Each subscription comes with a unique `api_key`. Before executing the sample, please insert your key in the code. :bangbang:
+:heavy_exclamation_mark: Each subscription comes with a unique `api_key`. Before executing the sample, please insert your key in the code. :heavy_exclamation_mark:
 
 
 <br>
