@@ -1,6 +1,6 @@
 # Sample - Convert file using PHP
 
-The PHP sample provided in this section uses the *Muhimbi PDF Converter Services Online* to convert uploaded documents to PDF (or other format).
+The PHP sample provided in this section uses the *Muhimbi PDF Converter Services Online* to convert uploaded documents to PDF (or other formats).
 Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
 <br>
@@ -25,7 +25,7 @@ Download the sample code using a method of your choice. Some examples are provid
 
 In order to successfully execute the sample code, make sure you have a valid subscription, either a full one or [the 30 day trial](https://support.muhimbi.com/hc/en-us/articles/115002816048-Getting-started-with-the-PDF-Converter-Services-Online).
 
-Each subscription comes with a unique `api_key`. Before executing the sample, please insert your key in the code.
+:warning: Each subscription comes with a unique `api_key`. Before executing the sample, please insert your key in the code. :warning:
 
 
 <br>
