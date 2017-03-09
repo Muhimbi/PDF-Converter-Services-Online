@@ -36,6 +36,7 @@ if(isset($_FILES['file']) == true)
     $input_data->setOutputFormat($_POST["outputFormat"]);
 
     //** If you are expecting long running operations then consider longer timeouts
+	//** Also keep an eye on the maximum upload size in your php.ini (e.g. post_max_size = 10M, upload_max_filesize = 10M)
     ini_set('default_socket_timeout', 300);
     set_time_limit ( 300 );
 

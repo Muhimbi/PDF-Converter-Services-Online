@@ -1,6 +1,6 @@
-# Sample - Convert HTML to PDF using PHP
+# Sample - Convert & Merge using PHP
 
-The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to convert either a URL or an HTML fragment to PDF.
+The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to convert (if needed) and merge documents into a single PDF.
 Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
 <br>
@@ -39,14 +39,14 @@ There are many ways to execute PHP code, in this example we use PHP's internal w
 Launch PHP and activate the built-in web server as follows:
 
 ```
-php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/convert_html
+php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/merge_to_pdf
 ```
 
 You may want to change the port number and naturally you must specify the full path to the folder containing this sample.
 
-With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/convert_html.php`.
+With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/merge_to_pdf`.
 
-Change or accept the default values and select either of the two Convert buttons to generate the PDF. 
+Select two files (using [any of the supported file formats](https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-)) and optionally change the URL. Click the 'Merge' button and wait a few seconds for the resulting PDF file.
 
 <br>
 
