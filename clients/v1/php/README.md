@@ -99,6 +99,8 @@ Time is precious, so with that in mind, the easiest way to get going is to [down
 
 ### Generating the client from scratch
 
+:exclamation: **This is an advanced topic, most developers do not need to generate the client from scratch** :exclamation: 
+
 If the pre-generated client libraries are not suiting your needs, then you may want to manually generate them. If you need more control over namespaces, or feel very strongly about the variable naming convention used by our default client, then this is the way forward. `snake_case` vs `camelCase`, important stuff!
 
 <br>
@@ -192,6 +194,7 @@ Sample code, and related files, for the various facilities provided by this serv
 
 An example is provided for each individual REST endpoint. A full overview can be found below.
 
+:exclamation: **This documentation is still being worked on, most links don't work at the moment** :exclamation: 
 
 Sample								| Description
 ------------------------------------|---------------------------------------------------------
