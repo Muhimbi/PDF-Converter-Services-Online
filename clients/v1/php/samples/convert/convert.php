@@ -16,17 +16,22 @@ if(isset($_FILES['file']) == true)
 
 	// ** Specify the API key associated with your subscription.
     MuhimbiPDFOnline\Client\Configuration::getDefaultConfiguration()->setApiKey('api_key', $api_key);
+
 	// ** The service's host name is already set, but for debugging purposes you may want to switch between 'http' and 'https'.'
     MuhimbiPDFOnline\Client\Configuration::getDefaultConfiguration()->setHost('https://api.muhimbi.com/api');
 
 	// ** We are dealing with the ConvertApi, so instantiate the relevant class
     $api_instance = new MuhimbiPDFOnline\Client\Api\ConvertApi();
+
 	// ** We need to fill out the data for the conversion operation
     $input_data = new MuhimbiPDFOnline\Client\Model\ConvertData();
+
     // ** Always pass the name of the input file, or if unknown pass any name, but with the correct file extension.
     $input_data->setSourceFileName($_FILES["file"]["name"]);
+
 	// ** Pass the content of the uploaded file, making sure it is base64 encoded.
     $input_data->setSourceFileContent(base64_encode(file_get_contents($_FILES["file"]["tmp_name"])));
+
 	// ** Specify the format of the file type we wish to convert to.
     $input_data->setOutputFormat($_POST["outputFormat"]);
 
