@@ -1,7 +1,6 @@
-# Sample - Apply complex watermark to PDF using PHP
+# Sample - Apply an Ellipse watermark to PDF using PHP
 
-The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a '*composite watermark*' to a PDF file. This is typically done when a single file requires multiple watermarks. Composite watermarks using Muhimbi's [XML based watermarking syntax](http://blog.muhimbi.com/2010/10/watermarking-pdf-documents-using_25.html).
-
+The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply an ellipse (circle) based watermark to a PDF file. 
 
 Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
@@ -41,14 +40,14 @@ There are many ways to execute PHP code, in this example we use PHP's internal w
 Launch PHP and activate the built-in web server as follows:
 
 ```
-php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/watermarking/composite_watermark
+php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/watermarking/ellipse_watermark
 ```
 
 You may want to change the port number and naturally you must specify the full path to the folder containing this sample.
 
-With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/composite_watermark.php`.
+With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/ellipse_watermark.php`.
 
-Choose a PDF file, optionally change the XML based watermark definition, and click the `Watermark` button. 
+Choose a PDF file and click the `Watermark` button. 
 
 <br>
 
