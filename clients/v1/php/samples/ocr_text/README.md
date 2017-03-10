@@ -1,6 +1,6 @@
-# Sample - Carry out OCR using PHP
+# Sample - Extract text using OCR and PHP
 
-The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to recognise text in image based files (scans, faxes, etc) using Optical Character Recognition (OCR). The OCRed content is returned in a PDF file with selectable and fully searchable text.
+The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to recognise text in image based files (scans, faxes, etc) using Optical Character Recognition (OCR). The OCRed content is returned as a text string. 
 
 Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
@@ -40,12 +40,12 @@ There are many ways to execute PHP code, in this example we use PHP's internal w
 Launch PHP and activate the built-in web server as follows:
 
 ```
-php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/ocr_pdf
+php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/ocr_text
 ```
 
 You may want to change the port number and naturally you must specify the full path to the folder containing this sample.
 
-With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/ocr_pdf.php`.
+With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/ocr_text.php`.
 
 Choose an image based file (pdf, tiff, png etc) and click the `Submit` button to start the OCR process.
 

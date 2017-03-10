@@ -24,7 +24,7 @@ if($_FILES["file"]['size'] > 0)
     $api_instance = new MuhimbiPDFOnline\Client\Api\OCRApi();
 
     // ** We need to fill out the data for the OCR operation
-    $input_data = new MuhimbiPDFOnline\Client\Model\OcrPdfData();
+    $input_data = new MuhimbiPDFOnline\Client\Model\OcrTextData();
 
     // ** Always pass the name of the input file, or if unknown pass any name, but with the correct file extension.
     $input_data->setSourceFileName($_FILES["file"]["name"]);
@@ -45,8 +45,11 @@ if($_FILES["file"]['size'] > 0)
     // ** Only 'paginate' when your documents have images that span multiple pages.
     $input_data->setPaginate(false);
 
-    // ** We want to OCR the entire document, not just specific areas.
-    $input_data->setRegions('');
+    // ** By default the entire page is OCRed, optionally specify an area (in pt., 1/72nd of an inch)
+    //$input_data->setX(50);
+    //$input_data->setY(50);
+    //$input_data->setWidth(53);
+    //$input_data->setHeight(20);
 
     //** If you are expecting long running operations then consider longer timeouts
     //** Also keep an eye on the maximum upload size in your php.ini (e.g. post_max_size = 10M, upload_max_filesize = 10M)
@@ -54,15 +57,12 @@ if($_FILES["file"]['size'] > 0)
     set_time_limit ( 300 );
 
     try { 
-        // ** Carry out OCR
-        $result = $api_instance->ocrPdf($input_data);
+        // ** Carry out OCR Text extraction
+        $result = $api_instance->ocrText($input_data);
 
-        // ** Send the OCRed file back to the user
-        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-        header("Content-type: application/octet-stream");
-        header("Content-Disposition: attachment; filename=\"ocr.pdf\"");
-        echo base64_decode($result->getProcessedFileContent());
-        exit;
+        // ** The result is not a file, but text. Save it for display purposes. 
+        $ocrResult = $result->getOutText();
+
     } catch (Exception $e) {
         echo 'Exception when calling API: ', $e->getMessage(), PHP_EOL;
     }
@@ -71,13 +71,20 @@ if($_FILES["file"]['size'] > 0)
 
 <html>
   <body>
-    <form action="ocr_pdf.php" method="post" enctype="multipart/form-data">
+    <form action="ocr_text.php" method="post" enctype="multipart/form-data">
 
-      <p>Select a scan, fax or image to OCR<p>
+      <p>Select a scan, fax or image to extract text from using OCR<p>
       <input type="file" name="file" />
 
-      <br/><br>
+      <br/><br/>
       <input type="submit" value="Submit" />
+
+      <?php if($ocrResult != ""): ?>
+          <br/><br/>
+          <p>Extracted text:</p>
+          <textarea rows=10 cols=55><?php echo $ocrResult ?></textarea>
+      <?php endif; ?>
+
     </form>
   </body>
 </html>
