@@ -1,6 +1,8 @@
-# Sample - Convert file using PHP
+# Sample - Apply complex watermark to PDF using PHP
 
-The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to convert uploaded documents to PDF (or other formats).
+The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a '*composite watermark*' to a PDF file. This is typically done when a single file requires multiple watermarks. Composite watermarks using Muhimbi's [XML based watermarking syntax](http://blog.muhimbi.com/2010/10/watermarking-pdf-documents-using_25.html).
+
+
 Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
 <br>
@@ -39,14 +41,14 @@ There are many ways to execute PHP code, in this example we use PHP's internal w
 Launch PHP and activate the built-in web server as follows:
 
 ```
-php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/convert
+php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/watermarking/composite_watermark
 ```
 
 You may want to change the port number and naturally you must specify the full path to the folder containing this sample.
 
-With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/convert.php`.
+With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/composite_watermark.php`.
 
-Choose a file, select an output format that the input file [can be converted to](https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-) (start with the `PDF` option) and click the `Convert` button. 
+Choose a file, optionally change the XML based watermark definition, and click the `Watermark` button. 
 
 <br>
 
