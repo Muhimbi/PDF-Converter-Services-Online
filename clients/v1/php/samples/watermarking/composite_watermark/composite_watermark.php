@@ -72,16 +72,18 @@ if($_FILES["file"]['size'] > 0)
   <watermark 
     hPosition="right" 
     vPosition="top" 
-    width="50"
-    height="39"
+    width="90"
+    height="90"
     zOrder="1"
     opacity="100"
     pageOrientation="both">
     <image
-      width="50"
-      height="39"
-      scaleMode="maintainaspectratio"
-      imageFilePath="http://p6.zdassets.com/hc/settings_assets/151641/200306747/zqddxxwHivjxBISR26GNpQ-MuhimbiLogo.png"/>
+      width="72"
+      height="72"
+      scaleMode="absolute"
+      hPosition="left"
+      vPosition="bottom"
+      imageFilePath="http://api.muhimbi.com/apple-touch-icon.png"/>
   </watermark>
 
   <!-- ** Second watermark places text in the background -->
@@ -128,7 +130,7 @@ if($_FILES["file"]['size'] > 0)
   </watermark>
 
 </watermarks>
-      </textarea>
+            </textarea>
 
 
       <br/><br/>
