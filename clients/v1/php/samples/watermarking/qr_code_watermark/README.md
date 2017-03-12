@@ -1,4 +1,4 @@
-# Sample - Apply an QR Code watermark to PDF using PHP
+# Sample - Apply a QR Code watermark to PDF using PHP
 
 The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a QR Code, as a watermark, to a PDF file. 
 
@@ -40,12 +40,12 @@ There are many ways to execute PHP code, in this example we use PHP's internal w
 Launch PHP and activate the built-in web server as follows:
 
 ```
-php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/watermarking/qr_watermark
+php -S localhost:8080 -t some_path_to/PDF-Converter-Services-Online/clients/v1/php/samples/watermarking/qr_code_watermark
 ```
 
 You may want to change the port number and naturally you must specify the full path to the folder containing this sample.
 
-With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/qr_watermark.php`.
+With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/qr_code_watermark.php`.
 
 Choose a PDF file and click the `Watermark` button. 
 
