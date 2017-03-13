@@ -68,7 +68,7 @@ class LineWatermarkData implements ArrayAccess
         'rotation' => 'string',
         'opacity' => 'string',
         'line_color' => 'string',
-        'line_wdth' => 'string',
+        'line_width' => 'string',
         'start_page' => 'int',
         'end_page' => 'int',
         'page_interval' => 'int',
@@ -99,7 +99,7 @@ class LineWatermarkData implements ArrayAccess
         'rotation' => 'rotation',
         'opacity' => 'opacity',
         'line_color' => 'line_color',
-        'line_wdth' => 'line_wdth',
+        'line_width' => 'line_width',
         'start_page' => 'start_page',
         'end_page' => 'end_page',
         'page_interval' => 'page_interval',
@@ -126,7 +126,7 @@ class LineWatermarkData implements ArrayAccess
         'rotation' => 'setRotation',
         'opacity' => 'setOpacity',
         'line_color' => 'setLineColor',
-        'line_wdth' => 'setLineWdth',
+        'line_width' => 'setLineWidth',
         'start_page' => 'setStartPage',
         'end_page' => 'setEndPage',
         'page_interval' => 'setPageInterval',
@@ -153,7 +153,7 @@ class LineWatermarkData implements ArrayAccess
         'rotation' => 'getRotation',
         'opacity' => 'getOpacity',
         'line_color' => 'getLineColor',
-        'line_wdth' => 'getLineWdth',
+        'line_width' => 'getLineWidth',
         'start_page' => 'getStartPage',
         'end_page' => 'getEndPage',
         'page_interval' => 'getPageInterval',
@@ -267,7 +267,7 @@ class LineWatermarkData implements ArrayAccess
         $this->container['rotation'] = isset($data['rotation']) ? $data['rotation'] : null;
         $this->container['opacity'] = isset($data['opacity']) ? $data['opacity'] : '100';
         $this->container['line_color'] = isset($data['line_color']) ? $data['line_color'] : null;
-        $this->container['line_wdth'] = isset($data['line_wdth']) ? $data['line_wdth'] : null;
+        $this->container['line_width'] = isset($data['line_width']) ? $data['line_width'] : null;
         $this->container['start_page'] = isset($data['start_page']) ? $data['start_page'] : null;
         $this->container['end_page'] = isset($data['end_page']) ? $data['end_page'] : null;
         $this->container['page_interval'] = isset($data['page_interval']) ? $data['page_interval'] : null;
@@ -645,22 +645,22 @@ class LineWatermarkData implements ArrayAccess
     }
 
     /**
-     * Gets line_wdth
+     * Gets line_width
      * @return string
      */
-    public function getLineWdth()
+    public function getLineWidth()
     {
-        return $this->container['line_wdth'];
+        return $this->container['line_width'];
     }
 
     /**
-     * Sets line_wdth
-     * @param string $line_wdth Width of the line (in Pts, 1/72 of an inch)
+     * Sets line_width
+     * @param string $line_width Width of the line (in Pts, 1/72 of an inch)
      * @return $this
      */
-    public function setLineWdth($line_wdth)
+    public function setLineWidth($line_width)
     {
-        $this->container['line_wdth'] = $line_wdth;
+        $this->container['line_width'] = $line_width;
 
         return $this;
     }

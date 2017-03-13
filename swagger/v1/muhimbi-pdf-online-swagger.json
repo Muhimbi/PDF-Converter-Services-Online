@@ -1196,7 +1196,7 @@
           "type": "string",
           "uniqueItems": false
         },
-        "line_wdth": {
+        "line_width": {
           "description": "Width of the line (in Pts, 1/72 of an inch)",
           "x-ms-summary": "Line width",
           "type": "string",
