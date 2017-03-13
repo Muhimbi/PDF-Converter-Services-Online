@@ -77,7 +77,7 @@ if($_FILES["file"]['size'] > 0)
   <body>
     <form action="image_watermark.php" method="post" enctype="multipart/form-data">
 
-      <p>Please specify the PDF file to add a watermarks to.</p>
+      <p>Please specify the PDF file to add a watermark to.</p>
       <input type="file" name="file" />
 
       <br/><br/>
