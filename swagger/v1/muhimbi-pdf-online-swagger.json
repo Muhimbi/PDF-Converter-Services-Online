@@ -2441,12 +2441,6 @@
           "uniqueItems": false
         },
         "sharepoint_file": { "$ref": "#/definitions/sharepoint_file" },
-        "file_name_template": {
-          "description": "File name template for splited files (For SharePoint only)",
-          "x-ms-summary": "File name template",
-          "type": "string",
-          "uniqueItems": false
-        },
         "file_split_type": {
           "description": "Split by option",
           "x-ms-summary": "File split type",

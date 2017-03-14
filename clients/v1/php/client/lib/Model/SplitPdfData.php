@@ -59,7 +59,6 @@ class SplitPdfData implements ArrayAccess
         'source_file_name' => 'string',
         'source_file_content' => 'string',
         'sharepoint_file' => '\MuhimbiPDFOnline\Client\Model\SharepointFile',
-        'file_name_template' => 'string',
         'file_split_type' => 'string',
         'split_parameter' => 'int',
         'fail_on_error' => 'bool'
@@ -79,7 +78,6 @@ class SplitPdfData implements ArrayAccess
         'source_file_name' => 'source_file_name',
         'source_file_content' => 'source_file_content',
         'sharepoint_file' => 'sharepoint_file',
-        'file_name_template' => 'file_name_template',
         'file_split_type' => 'file_split_type',
         'split_parameter' => 'split_parameter',
         'fail_on_error' => 'fail_on_error'
@@ -95,7 +93,6 @@ class SplitPdfData implements ArrayAccess
         'source_file_name' => 'setSourceFileName',
         'source_file_content' => 'setSourceFileContent',
         'sharepoint_file' => 'setSharepointFile',
-        'file_name_template' => 'setFileNameTemplate',
         'file_split_type' => 'setFileSplitType',
         'split_parameter' => 'setSplitParameter',
         'fail_on_error' => 'setFailOnError'
@@ -111,7 +108,6 @@ class SplitPdfData implements ArrayAccess
         'source_file_name' => 'getSourceFileName',
         'source_file_content' => 'getSourceFileContent',
         'sharepoint_file' => 'getSharepointFile',
-        'file_name_template' => 'getFileNameTemplate',
         'file_split_type' => 'getFileSplitType',
         'split_parameter' => 'getSplitParameter',
         'fail_on_error' => 'getFailOnError'
@@ -166,7 +162,6 @@ class SplitPdfData implements ArrayAccess
         $this->container['source_file_name'] = isset($data['source_file_name']) ? $data['source_file_name'] : null;
         $this->container['source_file_content'] = isset($data['source_file_content']) ? $data['source_file_content'] : null;
         $this->container['sharepoint_file'] = isset($data['sharepoint_file']) ? $data['sharepoint_file'] : null;
-        $this->container['file_name_template'] = isset($data['file_name_template']) ? $data['file_name_template'] : null;
         $this->container['file_split_type'] = isset($data['file_split_type']) ? $data['file_split_type'] : 'ByNumberOfPages';
         $this->container['split_parameter'] = isset($data['split_parameter']) ? $data['split_parameter'] : 1;
         $this->container['fail_on_error'] = isset($data['fail_on_error']) ? $data['fail_on_error'] : true;
@@ -310,27 +305,6 @@ class SplitPdfData implements ArrayAccess
     public function setSharepointFile($sharepoint_file)
     {
         $this->container['sharepoint_file'] = $sharepoint_file;
-
-        return $this;
-    }
-
-    /**
-     * Gets file_name_template
-     * @return string
-     */
-    public function getFileNameTemplate()
-    {
-        return $this->container['file_name_template'];
-    }
-
-    /**
-     * Sets file_name_template
-     * @param string $file_name_template File name template for splited files (For SharePoint only)
-     * @return $this
-     */
-    public function setFileNameTemplate($file_name_template)
-    {
-        $this->container['file_name_template'] = $file_name_template;
 
         return $this;
     }
