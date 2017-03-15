@@ -4,3 +4,9 @@
 
 /.vs/*
 *.suo
+/clients/v1/csharp/client/nuget.exe
+/clients/v1/csharp/client/zip.exe
+/clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/obj
+/clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/obj/Release/CoreCompileInputs.cache
+/clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/obj/Debug/CoreCompileInputs.cache
+/clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/Muhimbi.PDF.Online.Client.nuspec
