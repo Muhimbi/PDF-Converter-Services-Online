@@ -2,8 +2,10 @@
 
 The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a '*composite watermark*' to a PDF file. This is typically done when a single file requires multiple watermarks. Composite watermarks using Muhimbi's [XML based watermarking syntax](http://blog.muhimbi.com/2010/10/watermarking-pdf-documents-using_25.html).
 
-
 Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
+
+Full details about the `composite_watermark` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-composite_watermark).
+
 
 <br>
 

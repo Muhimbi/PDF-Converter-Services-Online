@@ -3,6 +3,8 @@
 The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to convert either a URL or an HTML fragment to PDF.
 Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
+Full details about the `convert_html` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-convert_html).
+
 <br>
 
 ## Downloading the sample
