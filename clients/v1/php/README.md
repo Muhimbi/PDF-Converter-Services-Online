@@ -18,7 +18,7 @@ In this section you will find details about how to use the PHP client libraries 
     - [Using the command line](#using-the-command-line)
     - [Using editor.swagger.io](#using-editorswaggerio)
 - [Sample code](#sample-code)
-- [API / Documentation](#api)
+- [API / Documentation](#api--documentation)
 
 <br/>
 
