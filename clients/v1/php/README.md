@@ -4,7 +4,7 @@ In this section you will find details about how to use the PHP client libraries 
 
 *If a cloud-based service is not suitable to your needs (e.g. for security or regulatory reasons), and you have the ability to deploy software to your own (Windows) server, then check out the [Muhimbi PDF Converter Services](http://www.muhimbi.com/Products/PDF-Converter-Services/summary.aspx) and [this PHP sample code](http://blog.muhimbi.com/2013/02/converting-files-to-pdf-and-other.html).*
 
-<br>
+<br/>
 
 ## Table of contents
 
@@ -18,8 +18,9 @@ In this section you will find details about how to use the PHP client libraries 
     - [Using the command line](#using-the-command-line)
     - [Using editor.swagger.io](#using-editorswaggerio)
 - [Sample code](#sample-code)
+- [API / Documentation](#api)
 
-<br>
+<br/>
 
 ## Prerequisites
 
@@ -31,7 +32,7 @@ The prerequisites to access the PDF Converter from PHP are as follows:
 
 Exact deployment and configuration steps for the various platforms vary slightly. The ones for Linux, tested with Ubuntu, and Windows are provided below. 
 
-<br>
+<br/>
 
 ### Linux
 
@@ -50,7 +51,7 @@ The OpenSSL libraries are typically pre-compiled into PHP and don't need to be i
 
 Access this page via a browser and check '*OpenSSL support*' shows as *enabled*.
 
-<br>
+<br/>
 
 ### Windows
 
@@ -68,7 +69,7 @@ Deploy the prerequisites for Windows as follows:
    openssl.cafile="C:/php/ca-bundle.crt"
    ```
 
-<br>
+<br/>
 
 ### Configure PHP (same for all platforms)
 
@@ -81,7 +82,7 @@ upload_max_filesize = 10M
 post_max_size = 10M
 ```
 
-<br>
+<br/>
 
 
 
@@ -89,13 +90,13 @@ post_max_size = 10M
 
 With the prerequisites in place, install the PDF Converter's client libraries using one of the methods described below. 
 
-<br>
+<br/>
 
 ### Installing the pre-generated client
 
 Time is precious, so with that in mind, the easiest way to get going is to [download the pre-generated client libraries](https://github.com/Muhimbi/PDF-Converter-Services-Online/raw/master/clients/v1/php/muhimbi-pdf-online-client-php.zip) and unzip them to a location in your PHP project.
 
-<br>
+<br/>
 
 ### Generating the client from scratch
 
@@ -103,7 +104,7 @@ Time is precious, so with that in mind, the easiest way to get going is to [down
 
 If the pre-generated client libraries are not suiting your needs, then you may want to manually generate them. If you need more control over namespaces, or feel very strongly about the variable naming convention used by our default client, then this is the way forward. `snake_case` vs `camelCase`, important stuff!
 
-<br>
+<br/>
 
 #### Using the command line
 
@@ -121,7 +122,7 @@ java -jar swagger-codegen-cli.jar help
 
 This downloads version 2.2.2 and, assuming all is well, shows a brief help section. As newer versions are released from time to time, you may want to [check what the latest version number is](https://github.com/swagger-api/swagger-codegen#prerequisites).
 
-<br>
+<br/>
 
 If, rather than taking a 'fixed-in-time' precompiled version of `swagger-codegen`, you prefer the very latest version then you can compile it as described below.
 
@@ -145,7 +146,7 @@ This installs the Java Development Kit, the Maven build system, downloads the la
 Instructions are correct at the time of writing, but for the latest details about building codegen, compiling on different platforms, or downloading a pre-compiled version of `swagger-codegen-cli.jar`, see [codegen's Readme file](https://github.com/swagger-api/swagger-codegen/blob/master/README.md).
 
 
-<br>
+<br/>
 
 Regardless of `swagger-codegen-cli.jar` being downloaded or compiled, the PHP libraries can now be generated as follows:
 
@@ -161,7 +162,7 @@ You may need to adjust the path to the jar file.
 
 The command provided above generates the PHP client using the default settings, including a unit-test framework and incomplete documentation. As this is of no use to us, and we need to tweak some other settings, you can find the exact command we used in [`generate-client.sh`](generate-client.sh)
 
-<br>
+<br/>
 
 
 #### Using editor.swagger.io
@@ -173,7 +174,7 @@ For a quick-and-dirty way to generate client libraries for the language of your 
 3. Enter `https://raw.githubusercontent.com/Muhimbi/PDF-Converter-Services-Online/master/swagger/v1/muhimbi-pdf-online-swagger.json`
 4. From the `Generate Client` menu select the language of your choice.
 
-<br>
+<br/>
 
 
 ## Sample code
@@ -190,11 +191,9 @@ Sample code, and related files, for the various facilities provided by this serv
 
 - **ZIP:** [Download](https://github.com/Muhimbi/PDF-Converter-Services-Online/zipball/master/) a ZIP archive of the entire repository. Once downloaded, you can find the examples under the `clients/v1/php/samples` folder.
 
-<br>
+<br/>
 
 An example is provided for each individual REST endpoint. A full overview can be found below.
-
-:exclamation: **This documentation is still being worked on, most links don't work at the moment** :exclamation: 
 
 Sample								| Description
 ------------------------------------|---------------------------------------------------------
@@ -216,6 +215,14 @@ Sample								| Description
 &nbsp;&nbsp;&nbsp;[rectangle_watermark](samples/watermarking/rectangle_watermark/)	| Add a rectangle based watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[composite_watermark](samples/watermarking/composite_watermark/)	| Add a number of different watermarks to a PDF file in a single operation.
 
-<br>
+<br/>
+
+
+## API / Documentation
+
+Although the API is largely self-describing, especially when used in code editors with *intellisense* and *code-complete*, from time to time it may be easier to consult the full API documentation. An overview of the entire object model can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API).
+
+
+<br/>
 
 If you have any questions or comments then please contact [our friendly support desk](http://www.muhimbi-online.com/contact).
