@@ -16,3 +16,5 @@
 /clients/v1/csharp/samples/convert/bin/Debug
 /clients/v1/csharp/samples/convert/obj
 /clients/v1/csharp/samples/convert/obj/Release
+/clients/v1/csharp/samples/convert_html/obj
+/clients/v1/csharp/samples/convert_html/bin/Debug
