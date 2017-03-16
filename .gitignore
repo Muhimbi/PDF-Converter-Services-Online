@@ -10,3 +10,9 @@
 /clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/obj/Release/CoreCompileInputs.cache
 /clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/obj/Debug/CoreCompileInputs.cache
 /clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/Muhimbi.PDF.Online.Client.nuspec
+*/bin/*
+*/obj/*
+*.user
+/clients/v1/csharp/samples/convert/bin/Debug
+/clients/v1/csharp/samples/convert/obj
+/clients/v1/csharp/samples/convert/obj/Release
