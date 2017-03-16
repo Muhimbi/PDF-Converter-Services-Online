@@ -32,9 +32,9 @@ The PDF Converter client has the following dependencies:
 - [RestSharp](https://www.nuget.org/packages/RestSharp) - 105.1.0 or later
 - [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 7.0.0 or later
 
-These dependencies are included with our libraries, but if you integrate our software in an existing product / solution that utilise the same dependencies, then make sure the version numbers are correct.
+These dependencies are shipped alongside our libraries. However, if you integrate our software in an existing product / solution that utilise the same dependencies, then make sure the version numbers are correct.
 
-Exact deployment and configuration steps for the various platforms vary slightly. The ones for Linux, tested with Ubuntu and Windows are provided below. 
+Exact deployment and configuration steps for the various platforms vary slightly. The ones for Linux, tested with Ubuntu, and Windows are provided below. 
 
 <br/>
 
