@@ -2,7 +2,7 @@
 
 The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a text watermark to a PDF file. 
 
-Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
+Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
 Full details about the `text_watermark` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-text_watermark).
 

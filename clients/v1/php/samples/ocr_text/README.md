@@ -1,7 +1,7 @@
 # Sample - Extract text using OCR and PHP
 
 The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to recognise text in image based files (scans, faxes, etc) using Optical Character Recognition (OCR). The OCRed content is returned as a text string. 
-Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
+Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
 Full details about the `ocr_text` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-ocr_text).
 

@@ -1,7 +1,7 @@
 # Sample - Apply PDF Security using PHP
 
 The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply security settings to a PDF.
-Additonal sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
+Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
 Full details about the `secure_pdf` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-secure_pdf).
 
