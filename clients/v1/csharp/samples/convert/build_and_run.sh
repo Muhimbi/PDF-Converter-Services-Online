@@ -17,5 +17,5 @@ fi
 
 echo "[INFO] Running "
 cd bin/Debug
-mono convert.exe
+mono sample.exe
 cd ../..

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F9A6D32B-EC92-4676-86D4-0F5635F060EC}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>convert</RootNamespace>
-    <AssemblyName>convert</AssemblyName>
+    <RootNamespace>sample</RootNamespace>
+    <AssemblyName>sample</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,9 +51,6 @@
     <None Include="ms-word.doc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

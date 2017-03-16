@@ -17,7 +17,7 @@ echo [INFO] Executable created successfully
 
 echo [INFO] Running 
 cd bin\Debug
-convert.exe
+sample.exe
 cd ..\..
 
 pause
