@@ -1,6 +1,6 @@
 # C# Client & Sample code
 
-In this section you will find details about how to use the .NET client libraries for the *Muhimbi PDF Converter Services Online*. If you prefer to bypass these wrapper libraries, and rather send JSON code to the REST based service directly, then please see the section containing [raw JSON examples](../json)
+Details about using the *Muhimbi PDF Converter Services Online* from .NET, specifically C#, can be found below. If you prefer to bypass these wrapper libraries, and rather send JSON code to the REST based service directly, then please see the section containing [raw JSON examples](../json)
 
 *If a cloud-based service is not suitable to your needs (e.g. for security or regulatory reasons), and you have the ability to deploy software to your own (Windows) server, then check out the [Muhimbi PDF Converter Services](http://www.muhimbi.com/Products/PDF-Converter-Services/summary.aspx) and [this sample code](https://support.muhimbi.com/hc/en-us/articles/228089807-Where-can-I-find-sample-code-).*
 
@@ -23,7 +23,7 @@ In this section you will find details about how to use the .NET client libraries
 
 ## Prerequisites
 
-The prerequisites to access the PDF Converter from c# are as follows:
+Prerequisites for using the PDF Converter in combination with C# are as follows:
 
 - .NET framework v4.0 and later (or mono 3.0 and later)
 
@@ -32,23 +32,24 @@ The PDF Converter client has the following dependencies:
 - [RestSharp](https://www.nuget.org/packages/RestSharp) - 105.1.0 or later
 - [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 7.0.0 or later
 
-These dependencies are included with our software, but if you integrate our software in an existing product / solution that already use these dependencies, then amke sure they are at least using the versions mentioned above.
+These dependencies are included with our libraries, but if you integrate our software in an existing product / solution that utilise the same dependencies, then make sure the version numbers are correct.
 
-Exact deployment and configuration steps for the various platforms vary slightly. The ones for Linux, tested with Ubuntu, and Windows are provided below. 
+Exact deployment and configuration steps for the various platforms vary slightly. The ones for Linux, tested with Ubuntu and Windows are provided below. 
 
 <br/>
 
 ### Linux
 
-In order to execute C# code on Linux you have multiple options. The easiest one is to install `mono`.
+There are multiple options for executing C# code on Linux, the examples provided in this section use [`mono`](http://www.mono-project.com/).
 
 ```
 sudo apt-get install mono-devel
 ```
 
-That is enough to execute code that use our pre-built libraries.
+This single install is sufficient for executing code that use our pre-built libraries.
 
-If, for whatever reason, you need to renegerate and / or recompile the client then you may need to run the following commands to make sure `nuget` works without error (you can try without first).
+
+If, for whatever reason, you need to renegerate and / or recompile the client then you may need to run the following commands to make sure `nuget` works without error..
 
 ```
 sudo mozroots --import --machine --sync
@@ -61,7 +62,7 @@ sudo certmgr -ssl -m https://nuget.org
 
 ### Windows
 
-If you are a developer, the appropriate .NET framework version is most likely already installed on your system. In case it is not, install it [as described here](https://msdn.microsoft.com/en-us/library/5a4x27ek(v=vs.110).aspx).
+If you are a Windows developer, the appropriate .NET framework version is most likely already installed on your system. In case it is not, install it [as described here](https://msdn.microsoft.com/en-us/library/5a4x27ek(v=vs.110).aspx).
 
 <br/>
 
@@ -74,7 +75,7 @@ With the prerequisites in place, install the PDF Converter's client libraries us
 
 ### Installing the pre-generated client
 
-Time is precious, so with that in mind, the easiest way to get going is to [download the pre-generated client libraries](https://github.com/Muhimbi/PDF-Converter-Services-Online/raw/master/clients/v1/csharp/muhimbi-pdf-online-client-client.zip) and unzip them to a location in your project. Add the extracted DLLs as a reference in your project.
+Time is precious, so with that in mind, the easiest way to get going is to [download the pre-generated client libraries](https://github.com/Muhimbi/PDF-Converter-Services-Online/raw/master/clients/v1/csharp/muhimbi-pdf-online-client-dotnet.zip) and unzip them to a location in your project. Add the extracted DLLs as a reference in your project.
 
 <br/>
 
@@ -140,7 +141,9 @@ java -jar swagger-codegen-cli.jar \
 
 You may need to adjust the path to the jar file.
 
-The command provided above generates the C# client using the default settings, including a unit-test framework and incomplete documentation. As this is of no use to us, and we need to tweak some other settings, you can find the exact command we used in [`generate-client.sh`](generate-client.sh)
+The command provided above generates the C# client using the default settings, including a unit-test framework and incomplete documentation. As this is of no use to us, and we need to tweak some other settings as well, you can find the exact command we used in [`generate-client.sh`](generate-client.sh)
+
+Once the client code has been generated it must be build using the C# compiler. The commands for carrying out the build can be found in `client\build.bat` (Windows) and `client\build.sh` (Linux). You may need to make some changes to suit your requirements. 
 
 <br/>
 
