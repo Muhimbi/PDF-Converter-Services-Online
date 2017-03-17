@@ -18,3 +18,5 @@
 /clients/v1/csharp/samples/convert/obj/Release
 /clients/v1/csharp/samples/convert_html/obj
 /clients/v1/csharp/samples/convert_html/bin/Debug
+/clients/v1/csharp/samples/merge_to_pdf/obj
+/clients/v1/csharp/samples/merge_to_pdf/bin/Debug
