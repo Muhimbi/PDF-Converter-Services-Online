@@ -31,7 +31,7 @@ if($_FILES["file"]['size'] > 0)
 
     // ** Pass the content of the uploaded file, making sure it is base64 encoded.
     $input_data->setSourceFileContent(base64_encode(file_get_contents($_FILES["file"]["tmp_name"])));
-
+     
     // ** Specify the language used in the document.
     $input_data->setLanguage($input_data::LANGUAGE_ENGLISH);
 
@@ -39,17 +39,20 @@ if($_FILES["file"]['size'] > 0)
     $input_data->setPerformance($input_data::PERFORMANCE_SLOW_BUT_ACCURATE);
 
     // ** Whitelist or blacklist any characters?
-    $input_data->setCharactersOption($input_data::CHARACTERS_OPTION_NONE);
-    $input_data->setCharacters('');
+    $input_data->setCharactersOption($input_data::CHARACTERS_OPTION_BLACKLIST);
+    // ** In this example we blacklist the '|' (pipe) as it looks similar to l (L) 1 (one) and I (capital I)
+    $input_data->setCharacters('|');
 
     // ** Only 'paginate' when your documents have images that span multiple pages.
     $input_data->setPaginate(false);
 
     // ** By default the entire page is OCRed, optionally specify an area (in pt., 1/72nd of an inch)
-    //$input_data->setX(50);
-    //$input_data->setY(50);
-    //$input_data->setWidth(53);
-    //$input_data->setHeight(20);
+    // ** e.g. OCR the scan in https://github.com/Muhimbi/PDF-Converter-Services-Online/blob/master/sample_documents/scan.tif
+    // ** With the following values to extract the page header.
+    //$input_data->setX(36);
+    //$input_data->setY(72);
+    //$input_data->setWidth(400);
+    //$input_data->setHeight(30);
 
     //** If you are expecting long running operations then consider longer timeouts
     //** Also keep an eye on the maximum upload size in your php.ini (e.g. post_max_size = 10M, upload_max_filesize = 10M)
@@ -70,6 +73,7 @@ if($_FILES["file"]['size'] > 0)
 ?>
 
 <html>
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /></head>
   <body>
     <form action="ocr_text.php" method="post" enctype="multipart/form-data">
 
