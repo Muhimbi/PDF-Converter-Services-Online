@@ -25,3 +25,5 @@
 /clients/v1/csharp/samples/ocr_text/obj
 /clients/v1/csharp/samples/ocr_text/bin/Debug
 /clients/v1/csharp/samples/ocr_pdf/obj/Release
+/clients/v1/csharp/samples/secure_pdf/obj/Debug
+/clients/v1/csharp/samples/secure_pdf/bin/Debug
