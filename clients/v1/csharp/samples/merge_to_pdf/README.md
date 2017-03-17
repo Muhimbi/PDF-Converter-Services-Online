@@ -3,7 +3,7 @@
 The C# sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to convert (if needed) and merge multiple files and HTML into a single PDF.
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
-Full details about the `convert_html` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-convert_html).
+Full details about the `merge_to_pdf` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-merge_to_pdf).
 
 <br>
 

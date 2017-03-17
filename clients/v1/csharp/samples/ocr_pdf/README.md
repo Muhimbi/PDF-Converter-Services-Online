@@ -4,7 +4,7 @@ The C# sample provided in this section uses the [*Muhimbi PDF Converter Services
 
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
-Full details about the `ocr_pdf` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-convert_html).
+Full details about the `ocr_pdf` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-ocr_pdf).
 
 <br>
 
