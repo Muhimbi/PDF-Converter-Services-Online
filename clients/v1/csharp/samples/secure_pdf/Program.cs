@@ -50,7 +50,7 @@ namespace sample
                 // ** Read the file we wish to secure
                 byte[] sourceFile = File.ReadAllBytes(testFile);
 
-                // ** Fill out the data for the conversion operation.
+                // ** Fill out the data for the security operation.
                 SecurePdfData inputData = new SecurePdfData(
                     SourceFileName: testFile,               // ** Always specify a file name with the correct extension (file must be a PDF file)
                     SourceFileContent: sourceFile,          // ** The file content to secure
