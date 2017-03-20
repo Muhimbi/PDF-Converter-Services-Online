@@ -38,3 +38,5 @@
 /clients/v1/csharp/samples/watermarking/image_watermark/obj
 /clients/v1/csharp/samples/watermarking/line_watermark/bin/Debug
 /clients/v1/csharp/samples/watermarking/line_watermark/obj
+/clients/v1/csharp/samples/watermarking/pdf_watermark/bin/Debug
+/clients/v1/csharp/samples/watermarking/pdf_watermark/obj
