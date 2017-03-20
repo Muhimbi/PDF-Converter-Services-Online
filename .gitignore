@@ -42,3 +42,5 @@
 /clients/v1/csharp/samples/watermarking/pdf_watermark/obj
 /clients/v1/csharp/samples/watermarking/qr_code_watermark/bin/Debug
 /clients/v1/csharp/samples/watermarking/qr_code_watermark/obj/Debug
+/clients/v1/csharp/samples/watermarking/rectangle_watermark/bin/Debug
+/clients/v1/csharp/samples/watermarking/rectangle_watermark/obj/Debug
