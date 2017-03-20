@@ -32,7 +32,7 @@ if($_FILES["file"]['size'] > 0)
     // ** Pass the content of the uploaded file, making sure it is base64 encoded.
     $input_data->setSourceFileContent(base64_encode(file_get_contents($_FILES["file"]["tmp_name"])));
 
-    // ** Specify the RTF text, see http://search.cpan.org/~sburke/RTF-Writer-1.11/lib/RTF/Cookbook.pod for examples
+    // ** Specify the text
     $input_data->setContent('Hello World');
     $input_data->setFontFamilyName('Times New Roman');                      // ** Name of the font, e.g. Arial, Times New Roman, Calibri
     $input_data->setFontSize(24);                                           // ** Size of the font in Pt
