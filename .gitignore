@@ -46,3 +46,6 @@
 /clients/v1/csharp/samples/watermarking/rectangle_watermark/obj/Debug
 /clients/v1/csharp/samples/watermarking/rtf_watermark/bin/Debug
 /clients/v1/csharp/samples/watermarking/rtf_watermark/obj/Debug
+/clients/v1/csharp/samples/watermarking/text_watermark/bin/Debug
+/clients/v1/csharp/samples/watermarking/text_watermark/obj/Debug
+/clients/v1/csharp/samples/watermarking/text_watermark/obj/Release
