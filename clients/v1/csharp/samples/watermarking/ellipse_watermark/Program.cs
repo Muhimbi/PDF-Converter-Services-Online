@@ -50,7 +50,7 @@ namespace sample
                 // ** Read the file we wish to watermark
                 byte[] sourceFile = File.ReadAllBytes(testFile);
 
-                // ** Fill out the data for the security operation.
+                // ** Fill out the data for the watermark operation.
                 EllipseWatermarkData inputData = new EllipseWatermarkData(
                     SourceFileName: testFile,                                       // ** Always specify a file name with the correct extension (file must be a PDF file when watermarking)
                     SourceFileContent: sourceFile,                                  // ** The file content to watermark
