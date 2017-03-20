@@ -32,3 +32,5 @@
 /clients/v1/csharp/samples/watermarking/composite_watermark/bin/Debug
 /clients/v1/csharp/samples/watermarking/composite_watermark/obj/Debug
 /clients/v1/csharp/samples/watermarking/composite_watermark/obj/Release
+/clients/v1/csharp/samples/watermarking/ellipse_watermark/bin/Debug
+/clients/v1/csharp/samples/watermarking/ellipse_watermark/obj/Debug
