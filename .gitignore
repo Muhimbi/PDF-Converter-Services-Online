@@ -49,3 +49,7 @@
 /clients/v1/csharp/samples/watermarking/text_watermark/bin/Debug
 /clients/v1/csharp/samples/watermarking/text_watermark/obj/Debug
 /clients/v1/csharp/samples/watermarking/text_watermark/obj/Release
+/clients/v1/csharp/samples/watermarking/ellipse_watermark/obj/Release
+/clients/v1/csharp/samples/watermarking/qr_code_watermark/obj/Release
+/clients/v1/csharp/samples/watermarking/rectangle_watermark/obj/Release
+/clients/v1/csharp/samples/watermarking/rtf_watermark/obj/Release

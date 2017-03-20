@@ -2,7 +2,7 @@
 
 The C# sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply an existing PDF file as a watermark to another PDF file. 
 
-Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
+Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../../).
 
 Full details about the `pdf_watermark` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-pdf_watermark).
 
