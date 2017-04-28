@@ -55,3 +55,8 @@
 /clients/v1/csharp/samples/watermarking/rtf_watermark/obj/Release
 *.class
 /clients/v1/java/samples/convert/result.pdf
+/clients/v1/csharp/samples/secure_pdf/obj/Release
+/clients/v1/java/client/lib/swagger-annotations-1.5.12.jar
+/clients/v1/java/client/lib/logging-interceptor-2.7.5.jar
+/clients/v1/java/client/lib/junit-4.12.jar
+/clients/v1/java/client/lib/hamcrest-core-1.3.jar
