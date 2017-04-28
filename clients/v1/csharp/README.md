@@ -187,7 +187,7 @@ Sample								| Description
 [ocr_text](samples/ocr_text/)				| Use OCR to extract text from a scan, fax or other image.
 [secure_pdf](samples/secure_pdf/)			| Apply security settings, passwords and restrictions to a PDF.
 [split_pdf](samples/split_pdf/)				| Split a large PDF into smaller PDFs.
-**[watermarking](watermarking/)**	| 
+**[watermarking](samples/watermarking/)**	| 
 &nbsp;&nbsp;&nbsp;[text_watermark](samples/watermarking/text_watermark/)			| Add a simple text watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[rtf_watermark](samples/watermarking/rtf_watermark/)				| Add a rich text (RTF) based watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[image_watermark](samples/watermarking/image_watermark/)			| Add an image based watermark to a PDF file.
