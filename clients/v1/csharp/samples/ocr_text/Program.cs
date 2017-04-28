@@ -72,7 +72,7 @@ namespace sample
 
                 // ** Writing the recognised text to the console
                 Console.OutputEncoding = System.Text.Encoding.UTF8;
-                Console.Write("[INFO] Extraced text: ");
+                Console.Write("[INFO] Extracted text: ");
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine(response.OutText);
                 Console.ResetColor();
