@@ -4,10 +4,12 @@ import com.muhimbi.online.client.Configuration;
 import com.muhimbi.online.client.auth.*;
 import com.muhimbi.online.client.api.*;
 import com.muhimbi.online.client.model.*;
+import com.squareup.okhttp.OkHttpClient;
 import javax.xml.bind.DatatypeConverter;
 import java.util.Arrays;
 import java.io.*;
 import java.nio.file.Files;
+import java.util.concurrent.TimeUnit;
 
 public class sample {
 
@@ -31,6 +33,10 @@ public class sample {
         // ** The service's host name is already set, but for debugging purposes you may want to switch between 'http' and 'https'.'
         defaultClient.setBasePath("https://api.muhimbi.com/api");
 
+        // ** Some operations take a while, so set the timeout to an appriopriate amount
+        defaultClient.getHttpClient().setConnectTimeout(60, TimeUnit.SECONDS); // connect timeout
+        defaultClient.getHttpClient().setReadTimeout(60, TimeUnit.SECONDS);    // socket timeout
+        
         try {
             // ** Instantiate the relevant class for the API we are invoking
             ConvertApi apiInstance = new ConvertApi();
