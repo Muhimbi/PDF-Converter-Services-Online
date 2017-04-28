@@ -11,6 +11,7 @@ import java.nio.file.Files;
 
 public class sample {
 
+    // !!!! ENTER YOUR API KEY HERE !!!!
     static final String API_KEY = "";
 
     public static void main(String[] args) {
