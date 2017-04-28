@@ -1,0 +1,66 @@
+<watermarks>
+
+  <!-- ** First watermark contains a single image element with the logo -->
+  <watermark
+    hPosition="right"
+    vPosition="top"
+    width="90"
+    height="90"
+    zOrder="1"
+    opacity="100"
+    pageOrientation="both">
+    <image
+      width="72"
+      height="72"
+      scaleMode="absolute"
+      hPosition="left"
+      vPosition="bottom"
+      imageFilePath="http://api.muhimbi.com/apple-touch-icon.png"/>
+  </watermark>
+
+  <!-- ** Second watermark places text in the background -->
+  <watermark
+    hPosition="center"
+    vPosition="middle"
+    width="300"
+    height="200"
+    zOrder="-1"
+    rotation="-45"
+    opacity="15"
+    pageOrientation="both">
+    <text
+      width="300"
+      height="200"
+      fillColor="#FF0000"
+      content="CONFIDENTIAL"
+      fontFamilyName="Times New Roman"
+      fontSize="24"
+      fontStyle="bold|italic"
+      wordWrap="word"
+      hAlign="center"
+      vAlign="middle"
+      />
+  </watermark>
+
+  <!-- ** Third watermark adds page numbering -->
+  <watermark
+    hPosition="right"
+    vPosition="bottom"
+    width="100"
+    height="40"
+    zOrder="1"
+    pageOrientation="both">
+    <text
+      hPosition="left"
+      vPosition="top"
+      width="100"
+      height="40"
+      content="Page {PAGE} of {NUMPAGES}"
+      fontFamilyName="Arial"
+      fontSize="11"
+      hAlign="left"
+      vAlign="top"
+      />
+  </watermark>
+
+</watermarks>
