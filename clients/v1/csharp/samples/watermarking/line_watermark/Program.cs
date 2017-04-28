@@ -57,8 +57,8 @@ namespace sample
                     Position: LineWatermarkData.PositionEnum.MiddleCenter,          // ** The location where the watermark will be positioned on the page.
                     X: "72",                                                        // ** The x-coordinate of the watermark. Only used when Position is set to Absolute.
                     Y: "72",                                                        // ** The y-coordinate of the watermark. Only used when Position is set to Absolute.
-                    EndX: "523",                                                    // ** The width of the watermark in pts (1/72nd of an inch). For example 144 is 2 inches wide.
-                    EndY: "770",                                                    // ** The height of the watermark.
+                    EndX: "523",                                                    // ** The end x-coordinate of the line in pts (1/72nd of an inch). 
+                    EndY: "770",                                                    // ** The end y-coordinate of the line in pts (1/72nd of an inch). 
                     Layer: LineWatermarkData.LayerEnum.Foreground,                  // ** Position the watermark in front of the page's content, or behind it
                     Rotation: "0",                                                  // ** Rotate the watermark, specify a value in degrees. Negative values are accepted.
                     Opacity: "50",                                                  // ** A value between 0 (completely transparent) and 100 (fully visible)
