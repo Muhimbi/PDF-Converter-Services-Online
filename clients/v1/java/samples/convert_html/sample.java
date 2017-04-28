@@ -41,7 +41,7 @@ public class sample {
             // ** Instantiate the relevant class for the API we are invoking
             ConvertApi apiInstance = new ConvertApi();
 
-            // ** Fill out all date for this operation
+            // ** Fill out all data for this operation
             ConvertHtmlData inputData = new ConvertHtmlData();
             inputData.setSourceUrlOrHtml("http://blog.muhimbi.com/2017/01/the-how-and-why-of-ocr-providing.html");  // ** Either specify the URL to convert
             //inputData.setSourceUrlOrHtml("Hello <i>world</i>");                                                   // ** or raw HTML

@@ -44,7 +44,7 @@ public class sample {
             // ** Read the file we wish to process
             byte[] sourceFile = Files.readAllBytes(new File("ms-word.doc").toPath());
 
-            // ** Fill out all date for this operation
+            // ** Fill out all data for this operation
             ConvertData inputData = new ConvertData();
             inputData.setSourceFileName("ms-word.doc");                     // ** Always specify a file name with the correct extension
             inputData.setOutputFormat(ConvertData.OutputFormatEnum.PDF);    // ** The format to convert the file to (not all combinations are supported, see https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-)

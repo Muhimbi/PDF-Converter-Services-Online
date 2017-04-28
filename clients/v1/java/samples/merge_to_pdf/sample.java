@@ -44,7 +44,7 @@ public class sample {
             // ** Read the file we wish to process
             byte[] sourceFile = Files.readAllBytes(new File("ms-word.doc").toPath());
 
-            // ** Fill out all date for this operation
+            // ** Fill out all data for this operation
             MergeToPdfData inputData = new MergeToPdfData();
             inputData.setSourceFileName1("ms-word.doc;true;ms-word");                       // ** The name of the file to merge, always include the correct extension. 
                                                                                             //    Optionally add ';true' to auto generate PDF bookmarks based on document structure, 
