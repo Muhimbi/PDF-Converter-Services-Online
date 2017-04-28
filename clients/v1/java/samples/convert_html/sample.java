@@ -33,7 +33,7 @@ public class sample {
         // ** The service's host name is already set, but for debugging purposes you may want to switch between 'http' and 'https'.'
         defaultClient.setBasePath("https://api.muhimbi.com/api");
 
-        // ** Some operations take a while, so set the timeout to an appriopriate amount
+        // ** Some operations take a while, so set the timeout to an appropriate amount
         defaultClient.getHttpClient().setConnectTimeout(60, TimeUnit.SECONDS); // connect timeout
         defaultClient.getHttpClient().setReadTimeout(60, TimeUnit.SECONDS);    // socket timeout
         
