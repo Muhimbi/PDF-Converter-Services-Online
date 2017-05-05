@@ -55,7 +55,7 @@ namespace sample
                 SplitPdfData inputData = new SplitPdfData(
                     SourceFileName: testFile,                                       // ** Always specify a file name with the correct extension (file must be a PDF file)
                     SourceFileContent: sourceFile,                                  // ** The file content to split
-                    FileSplitBy: SplitPdfData.FileSplitByEnum.NumberofPages,      // ** Based on what criteria do we want to split
+                    FileSplitBy: SplitPdfData.FileSplitByEnum.NumberofPages,        // ** Based on what criteria do we want to split
                     SplitParameter: 2,                                              // ** How many pages per split file?
                     FileNameTemplate: "split-{0:D3}.pdf"                            // ** Optionally generate output file names using .NET's formatting syntax
                     );                                                              //    When splitting by bookmark then an optional {1} parameter represents the bookmark name
