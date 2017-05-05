@@ -34,28 +34,28 @@ namespace Muhimbi.PDF.Online.Client.Model
         /// </summary>
         /// <value>Split by option</value>
         [JsonConverter(typeof(StringEnumConverter))]
-        public enum FileSplitTypeEnum
+        public enum FileSplitByEnum
         {
             
             /// <summary>
-            /// Enum ByNumberOfPages for "ByNumberOfPages"
+            /// Enum NumberofPages for "Number of Pages"
             /// </summary>
-            [EnumMember(Value = "ByNumberOfPages")]
-            ByNumberOfPages,
+            [EnumMember(Value = "Number of Pages")]
+            NumberofPages,
             
             /// <summary>
-            /// Enum ByBookmarkLevel for "ByBookmarkLevel"
+            /// Enum BookmarkLevel for "Bookmark Level"
             /// </summary>
-            [EnumMember(Value = "ByBookmarkLevel")]
-            ByBookmarkLevel
+            [EnumMember(Value = "Bookmark Level")]
+            BookmarkLevel
         }
 
         /// <summary>
         /// Split by option
         /// </summary>
         /// <value>Split by option</value>
-        [DataMember(Name="file_split_type", EmitDefaultValue=false)]
-        public FileSplitTypeEnum? FileSplitType { get; set; }
+        [DataMember(Name="file_split_by", EmitDefaultValue=false)]
+        public FileSplitByEnum? FileSplitBy { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SplitPdfData" /> class.
         /// </summary>
@@ -66,12 +66,13 @@ namespace Muhimbi.PDF.Online.Client.Model
         /// </summary>
         /// <param name="UseAsyncPattern">Use async behaviour for API request (default to false).</param>
         /// <param name="SourceFileName">Name of the source file including extension (required).</param>
-        /// <param name="SourceFileContent">Content of the file to convert (required).</param>
+        /// <param name="SourceFileContent">Content of the file to split (required).</param>
         /// <param name="SharepointFile">SharepointFile.</param>
-        /// <param name="FileSplitType">Split by option (required) (default to FileSplitTypeEnum.ByNumberOfPages).</param>
-        /// <param name="SplitParameter">Split parameters (required) (default to 1).</param>
+        /// <param name="FileNameTemplate">File name template for returned files.</param>
+        /// <param name="FileSplitBy">Split by option (required) (default to FileSplitByEnum.NumberofPages).</param>
+        /// <param name="SplitParameter">Split parameter (number of pages or level) (required) (default to 1).</param>
         /// <param name="FailOnError">Fail on error (default to true).</param>
-        public SplitPdfData(bool? UseAsyncPattern = false, string SourceFileName = default(string), byte[] SourceFileContent = default(byte[]), SharepointFile SharepointFile = default(SharepointFile), FileSplitTypeEnum? FileSplitType = FileSplitTypeEnum.ByNumberOfPages, int? SplitParameter = 1, bool? FailOnError = true)
+        public SplitPdfData(bool? UseAsyncPattern = false, string SourceFileName = default(string), byte[] SourceFileContent = default(byte[]), SharepointFile SharepointFile = default(SharepointFile), string FileNameTemplate = default(string), FileSplitByEnum? FileSplitBy = FileSplitByEnum.NumberofPages, int? SplitParameter = 1, bool? FailOnError = true)
         {
             // to ensure "SourceFileName" is required (not null)
             if (SourceFileName == null)
@@ -91,14 +92,14 @@ namespace Muhimbi.PDF.Online.Client.Model
             {
                 this.SourceFileContent = SourceFileContent;
             }
-            // to ensure "FileSplitType" is required (not null)
-            if (FileSplitType == null)
+            // to ensure "FileSplitBy" is required (not null)
+            if (FileSplitBy == null)
             {
-                throw new InvalidDataException("FileSplitType is a required property for SplitPdfData and cannot be null");
+                throw new InvalidDataException("FileSplitBy is a required property for SplitPdfData and cannot be null");
             }
             else
             {
-                this.FileSplitType = FileSplitType;
+                this.FileSplitBy = FileSplitBy;
             }
             // to ensure "SplitParameter" is required (not null)
             if (SplitParameter == null)
@@ -119,6 +120,7 @@ namespace Muhimbi.PDF.Online.Client.Model
                 this.UseAsyncPattern = UseAsyncPattern;
             }
             this.SharepointFile = SharepointFile;
+            this.FileNameTemplate = FileNameTemplate;
             // use default value if no "FailOnError" provided
             if (FailOnError == null)
             {
@@ -143,9 +145,9 @@ namespace Muhimbi.PDF.Online.Client.Model
         [DataMember(Name="source_file_name", EmitDefaultValue=false)]
         public string SourceFileName { get; set; }
         /// <summary>
-        /// Content of the file to convert
+        /// Content of the file to split
         /// </summary>
-        /// <value>Content of the file to convert</value>
+        /// <value>Content of the file to split</value>
         [DataMember(Name="source_file_content", EmitDefaultValue=false)]
         public byte[] SourceFileContent { get; set; }
         /// <summary>
@@ -154,9 +156,15 @@ namespace Muhimbi.PDF.Online.Client.Model
         [DataMember(Name="sharepoint_file", EmitDefaultValue=false)]
         public SharepointFile SharepointFile { get; set; }
         /// <summary>
-        /// Split parameters
+        /// File name template for returned files
         /// </summary>
-        /// <value>Split parameters</value>
+        /// <value>File name template for returned files</value>
+        [DataMember(Name="file_name_template", EmitDefaultValue=false)]
+        public string FileNameTemplate { get; set; }
+        /// <summary>
+        /// Split parameter (number of pages or level)
+        /// </summary>
+        /// <value>Split parameter (number of pages or level)</value>
         [DataMember(Name="split_parameter", EmitDefaultValue=false)]
         public int? SplitParameter { get; set; }
         /// <summary>
@@ -177,7 +185,8 @@ namespace Muhimbi.PDF.Online.Client.Model
             sb.Append("  SourceFileName: ").Append(SourceFileName).Append("\n");
             sb.Append("  SourceFileContent: ").Append(SourceFileContent).Append("\n");
             sb.Append("  SharepointFile: ").Append(SharepointFile).Append("\n");
-            sb.Append("  FileSplitType: ").Append(FileSplitType).Append("\n");
+            sb.Append("  FileNameTemplate: ").Append(FileNameTemplate).Append("\n");
+            sb.Append("  FileSplitBy: ").Append(FileSplitBy).Append("\n");
             sb.Append("  SplitParameter: ").Append(SplitParameter).Append("\n");
             sb.Append("  FailOnError: ").Append(FailOnError).Append("\n");
             sb.Append("}\n");
@@ -237,9 +246,14 @@ namespace Muhimbi.PDF.Online.Client.Model
                     this.SharepointFile.Equals(other.SharepointFile)
                 ) && 
                 (
-                    this.FileSplitType == other.FileSplitType ||
-                    this.FileSplitType != null &&
-                    this.FileSplitType.Equals(other.FileSplitType)
+                    this.FileNameTemplate == other.FileNameTemplate ||
+                    this.FileNameTemplate != null &&
+                    this.FileNameTemplate.Equals(other.FileNameTemplate)
+                ) && 
+                (
+                    this.FileSplitBy == other.FileSplitBy ||
+                    this.FileSplitBy != null &&
+                    this.FileSplitBy.Equals(other.FileSplitBy)
                 ) && 
                 (
                     this.SplitParameter == other.SplitParameter ||
@@ -272,8 +286,10 @@ namespace Muhimbi.PDF.Online.Client.Model
                     hash = hash * 59 + this.SourceFileContent.GetHashCode();
                 if (this.SharepointFile != null)
                     hash = hash * 59 + this.SharepointFile.GetHashCode();
-                if (this.FileSplitType != null)
-                    hash = hash * 59 + this.FileSplitType.GetHashCode();
+                if (this.FileNameTemplate != null)
+                    hash = hash * 59 + this.FileNameTemplate.GetHashCode();
+                if (this.FileSplitBy != null)
+                    hash = hash * 59 + this.FileSplitBy.GetHashCode();
                 if (this.SplitParameter != null)
                     hash = hash * 59 + this.SplitParameter.GetHashCode();
                 if (this.FailOnError != null)

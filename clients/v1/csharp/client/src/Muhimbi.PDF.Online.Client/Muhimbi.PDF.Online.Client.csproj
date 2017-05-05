@@ -11,7 +11,7 @@ OpenAPI spec version: 9.9
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{203DED82-5CF8-4182-AC87-687DD4D5480E}</ProjectGuid>
+    <ProjectGuid>{79246376-75BA-480B-85A2-14D1F0BFB3C0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Muhimbi.PDF.Online.Client</RootNamespace>

@@ -11,6 +11,7 @@ namespace sample
 {
     class Program
     {
+        // !!!! ENTER YOUR API KEY HERE !!!!
         static string API_KEY = "";
         
         static void Main(string[] args)

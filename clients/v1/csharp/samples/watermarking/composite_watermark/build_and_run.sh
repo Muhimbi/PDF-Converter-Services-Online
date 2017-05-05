@@ -5,11 +5,11 @@ rm -rf bin
 rm -rf obj
 
 echo "[INFO] Starting Build"
-xbuild sample.csproj
+xbuild sample.csproj /p:TargetFrameworkVersion="v4.5"
 
 if [ $? -ne 0 ]
 then
-  echo "[ERROR] Compilation failed with exit code $?"
+  echo "[ERROR] Compilation failed with exit code $?. Please check if the 'TargetFrameworkVersion' specified in this script matches your version."
   exit 1
 else
   echo "[INFO] Executable created successfully"

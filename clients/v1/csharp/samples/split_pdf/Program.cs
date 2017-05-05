@@ -11,6 +11,7 @@ namespace sample
 {
     class Program
     {
+        // !!!! ENTER YOUR API KEY HERE !!!!
         static string API_KEY = "";
         
         static void Main(string[] args)
@@ -54,24 +55,27 @@ namespace sample
                 SplitPdfData inputData = new SplitPdfData(
                     SourceFileName: testFile,                                       // ** Always specify a file name with the correct extension (file must be a PDF file)
                     SourceFileContent: sourceFile,                                  // ** The file content to split
-                    FileSplitType: SplitPdfData.FileSplitTypeEnum.ByNumberOfPages,  // ** Based on what criteria do we want to split
-                    SplitParameter: 2                                               // ** How many pages per split file?
-                    );
+                    FileSplitBy: SplitPdfData.FileSplitByEnum.NumberofPages,      // ** Based on what criteria do we want to split
+                    SplitParameter: 2,                                              // ** How many pages per split file?
+                    FileNameTemplate: "split-{0:D3}.pdf"                            // ** Optionally generate output file names using .NET's formatting syntax
+                    );                                                              //    When splitting by bookmark then an optional {1} parameter represents the bookmark name
 
                 // ** Split the file
                 Console.WriteLine("[INFO] Splitting...");
                 var response = splitAPI.SplitPdf(inputData);
 
-                // ** If more than 2 files were returned, write the 2nd file, otherwise the first (Hey, it is just an example!)
-                if(response.ProcessedFileContents.Count > 1)
-                   File.WriteAllBytes(@"result.pdf", response.ProcessedFileContents[1]);
-                else
-                   File.WriteAllBytes(@"result.pdf", response.ProcessedFileContents[0]);
+                string latest = string.Empty;
 
-                Console.WriteLine("[INFO] 'result.pdf' written to output folder.");
+                // ** Iterate over al returned files and write them to disk.
+                foreach(var f in response.ProcessedFiles)
+                {
+                    latest=f.ProcessedFileName;
+                    File.WriteAllBytes(latest, f.ProcessedFileContent);
+                    Console.WriteLine("[INFO] '" + latest + "' written to output folder.");
+                }
 
-                // ** On Windows open the generated file in the system PDF viewer
-                Process.Start(@"result.pdf");
+                // ** On Windows open the latest generated file in the system PDF viewer
+                Process.Start(latest);
             }
             catch (Exception ex)
             {
