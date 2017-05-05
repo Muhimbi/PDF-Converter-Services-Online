@@ -3,6 +3,7 @@
 // ** Make sure all objects associated with the Muhimbi client can be resolved
 require_once(__DIR__ . '/../../client/autoload.php');
 
+// !!!! ENTER YOUR API KEY HERE !!!!
 $api_key = '';
 
 //** Was a file uploaded?
@@ -33,10 +34,14 @@ if($_FILES["file"]['size'] > 0)
     $input_data->setSourceFileContent(base64_encode(file_get_contents($_FILES["file"]["tmp_name"])));
 
     // ** We want to split based on the number of pages.
-    $input_data->setFileSplitType($input_data::FILE_SPLIT_TYPE_BY_NUMBER_OF_PAGES);
+    $input_data->setFileSplitBy($input_data::FILE_SPLIT_BY_NUMBER_OF_PAGES);
 
     // ** In this example in batches of 2 pages per PDF file.
     $input_data->setSplitParameter(2);
+
+    // ** Optionally generate output file names using .NET's formatting syntax
+    // ** When splitting by bookmark then an optional {1} parameter represents the bookmark name
+    $input_data->setFileNameTemplate('split-{0:D3}.pdf');
 
     //** If you are expecting long running operations then consider longer timeouts
     //** Also keep an eye on the maximum upload size in your php.ini (e.g. post_max_size = 10M, upload_max_filesize = 10M)
@@ -50,13 +55,18 @@ if($_FILES["file"]['size'] > 0)
         // ** Send one of the split files back to the user
         header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
         header("Content-type: application/octet-stream");
-        header("Content-Disposition: attachment; filename=\"split.pdf\"");
 
         // ** If we got 2 or more files back then, in this demo, send the 2nd generated file, otherwise send the first
-        if(count($result->getProcessedFileContents()) >= 2)
-            echo base64_decode($result->getProcessedFileContents()[1]);
+        if(count($result->getProcessedFiles()) >= 2)
+        {
+            header("Content-Disposition: attachment; filename=\"" . $result->getProcessedFiles()[1]->getProcessedFileName() . "\"");
+            echo base64_decode($result->getProcessedFiles()[1]->getProcessedFileContent());
+        }
         else
-            echo base64_decode($result->getProcessedFileContents()[0]);
+        {
+            header("Content-Disposition: attachment; filename=\"" . $result->getProcessedFiles()[0]->getProcessedFileName() . "\"");
+            echo base64_decode($result->getProcessedFiles()[0]->getProcessedFileContent());
+        }
 
         exit;
     } catch (Exception $e) {

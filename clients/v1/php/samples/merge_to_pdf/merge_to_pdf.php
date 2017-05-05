@@ -3,6 +3,7 @@
 // ** Make sure all objects associated with the Muhimbi client can be resolved
 require_once(__DIR__ . '/../../client/autoload.php');
 
+// !!!! ENTER YOUR API KEY HERE !!!!
 $api_key = '';
 
 //** Were both files uploaded?

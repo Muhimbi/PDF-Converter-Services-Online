@@ -38,9 +38,18 @@ Exact deployment and configuration steps for the various platforms vary slightly
 
 Deployment of the prerequisites is straight-forward. Feel free to adjust the steps if you need to deploy a different PHP version, providing it is version 5.4.0 or later.
 
+On Ubuntu 14.04
+
 ```
 sudo apt-get install php5
 sudo apt-get install php5-curl
+```
+
+
+On Ubuntu 16.04
+```
+sudo apt-get install php7.0-cli
+sudo apt-get install php7.0-curl
 ```
 
 The OpenSSL libraries are typically pre-compiled into PHP and don't need to be installed separately. To verify that OpenSSL is available in your PHP version, create and execute a PHP file with the following content:
