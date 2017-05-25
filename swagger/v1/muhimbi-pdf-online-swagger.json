@@ -73,9 +73,9 @@
             "description": "Success",
             "schema": { "$ref": "#/definitions/operation_response" }
           },
-          "401": { "description": "Unauthorized" },
           "400": { "description": "Bad request" },
-          "500": { "description": "Internal server error" }
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -96,13 +96,13 @@
           }
         ],
         "responses": {
-          "401": { "description": "Unauthorized" },
           "200": {
             "description": "Success",
             "schema": { "$ref": "#/definitions/operation_response" }
           },
           "400": { "description": "Bad request" },
-          "500": { "description": "Internal server error" }
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -123,13 +123,13 @@
           }
         ],
         "responses": {
-          "400": { "description": "Bad request" },
-          "401": { "description": "Unauthorized" },
           "200": {
             "description": "Success",
             "schema": { "$ref": "#/definitions/operation_response" }
           },
-          "500": { "description": "Internal server error" }
+          "400": { "description": "Bad request" },
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -150,13 +150,13 @@
           }
         ],
         "responses": {
-          "401": { "description": "Unauthorized" },
           "200": {
             "description": "Success",
             "schema": { "$ref": "#/definitions/operation_response_common" }
           },
           "400": { "description": "Bad request" },
-          "500": { "description": "Internal server error" }
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -177,13 +177,13 @@
           }
         ],
         "responses": {
-          "401": { "description": "Unauthorized" },
           "200": {
             "description": "Success",
             "schema": { "$ref": "#/definitions/operation_response" }
           },
           "400": { "description": "Bad request" },
-          "500": { "description": "Internal server error" }
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -262,9 +262,9 @@
             "description": "Success",
             "schema": { "$ref": "#/definitions/operation_response" }
           },
-          "401": { "description": "Unauthorized" },
           "400": { "description": "Bad request" },
-          "500": { "description": "Internal server error" }
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -285,13 +285,13 @@
           }
         ],
         "responses": {
-          "401": { "description": "Unauthorized" },
           "200": {
             "description": "Success",
             "schema": { "$ref": "#/definitions/operation_response" }
           },
           "400": { "description": "Bad request" },
-          "500": { "description": "Internal server error" }
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -316,9 +316,9 @@
             "description": "Success",
             "schema": { "$ref": "#/definitions/ocr_operation_response" }
           },
-          "401": { "description": "Unauthorized" },
           "400": { "description": "Bad request" },
-          "500": { "description": "Internal server error" }
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -338,13 +338,13 @@
           }
         ],
         "responses": {
-          "500": { "description": "Internal server error" },
-          "401": { "description": "Unauthorized" },
           "200": {
             "description": "Success",
             "schema": { "$ref": "#/definitions/ocr_operation_response" }
           },
-          "400": { "description": "Bad request" }
+          "400": { "description": "Bad request" },
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -489,7 +489,6 @@
         "summary": "Split PDF",
         "description": "Split a PDF file into multiple PDFs.",
         "operationId": "split_pdf",
-        "x-ms-visibility": "internal",
         "consumes": [ "application/json" ],
         "produces": [ "application/json" ],
         "parameters": [
@@ -501,13 +500,13 @@
           }
         ],
         "responses": {
-          "401": { "description": "Unauthorized" },
           "200": {
             "description": "Success",
             "schema": { "$ref": "#/definitions/split_operation_response" }
           },
           "400": { "description": "Bad request" },
-          "500": { "description": "Internal server error" }
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -527,13 +526,13 @@
           }
         ],
         "responses": {
-          "401": { "description": "Unauthorized" },
-          "500": { "description": "Internal server error" },
           "200": {
             "description": "Success",
             "schema": { "$ref": "#/definitions/split_operation_response" }
           },
-          "400": { "description": "Bad request" }
+          "400": { "description": "Bad request" },
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
@@ -1800,6 +1799,26 @@
       "type": "object",
       "format": "pdf_watermark_data"
     },
+    "processed_files": {
+      "description": "Individual files",
+      "properties": {
+        "processed_file_name": {
+          "description": "Name of the file with the extension.",
+          "x-ms-summary": "Processed file name",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "processed_file_content": {
+          "description": "File generated by the Muhimbi converter.",
+          "x-ms-summary": "Processed file content",
+          "type": "string",
+          "format": "byte",
+          "uniqueItems": false
+        }
+      },
+      "type": "object",
+      "format": "processed_files"
+    },
     "qr_code_watermark_data": {
       "description": "Parameters for QRCodeWatermark operation",
       "required": [ "content", "version", "input_mode", "error_correction_level", "position", "width", "height", "source_file_content" ],
@@ -2367,7 +2386,7 @@
           "uniqueItems": false
         },
         "password": {
-          "description": "Password to log in to the SharePoint site’",
+          "description": "Password to log in to the SharePoint siteâ€™",
           "x-ms-visibility": "internal",
           "x-ms-summary": "Password",
           "type": "string",
@@ -2381,20 +2400,11 @@
     "split_operation_response": {
       "description": "Response data for split operation",
       "properties": {
-        "processed_file_contents": {
+        "processed_files": {
           "description": "Files generated by the Muhimbi converter.",
-          "x-ms-summary": "Processed file content",
+          "x-ms-summary": "Processed files",
           "type": "array",
-          "items": {
-            "type": "string",
-            "format": "byte"
-          },
-          "uniqueItems": false
-        },
-        "base_file_name": {
-          "description": "Name of the input file without the extension.",
-          "x-ms-summary": "Base file name",
-          "type": "string",
+          "items": { "$ref": "#/definitions/processed_files" },
           "uniqueItems": false
         },
         "result_code": {
@@ -2417,7 +2427,7 @@
     },
     "split_pdf_data": {
       "description": "Parameters for SplitPdf operation",
-      "required": [ "source_file_name", "source_file_content", "file_split_type", "split_parameter" ],
+      "required": [ "source_file_name", "source_file_content", "file_split_by", "split_parameter" ],
       "properties": {
         "use_async_pattern": {
           "description": "Use async behaviour for API request",
@@ -2434,24 +2444,30 @@
           "uniqueItems": false
         },
         "source_file_content": {
-          "description": "Content of the file to convert",
+          "description": "Content of the file to split",
           "x-ms-summary": "Source file content",
           "type": "string",
           "format": "byte",
           "uniqueItems": false
         },
         "sharepoint_file": { "$ref": "#/definitions/sharepoint_file" },
-        "file_split_type": {
+        "file_name_template": {
+          "description": "File name template for returned files",
+          "x-ms-summary": "File name template",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "file_split_by": {
           "description": "Split by option",
-          "x-ms-summary": "File split type",
+          "x-ms-summary": "Split by",
           "type": "string",
           "format": "enum",
-          "default": "ByNumberOfPages",
+          "default": "Number of Pages",
           "uniqueItems": false,
-          "enum": [ "ByNumberOfPages", "ByBookmarkLevel" ]
+          "enum": [ "Number of Pages", "Bookmark Level" ]
         },
         "split_parameter": {
-          "description": "Split parameters",
+          "description": "Split parameter (number of pages or level)",
           "x-ms-summary": "Split parameter",
           "type": "integer",
           "format": "int32",
