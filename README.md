@@ -38,7 +38,7 @@ Once activated, follow the instructions for the language of your choice or gener
 - [PHP Libraries and sample code](clients/v1/php/)
 - [Python Libraries and sample code](clients/v1/python/)
 - [Ruby Libraries and sample code](clients/v1/ruby/)
-- [SharePoint Libraries and sample code](clients/v1/php/)
+- [SharePoint Libraries and sample code](clients/v1/sharepoint/)
 - [Use Swagger to generate clients](swagger/)
 
 
