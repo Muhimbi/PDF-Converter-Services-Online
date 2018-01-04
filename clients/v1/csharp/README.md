@@ -183,6 +183,7 @@ Sample								| Description
 [convert](samples/convert/)					| Convert a single file to PDF or other [supported output format](https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-).
 [convert_html](samples/convert_html/)		| Convert an HTML fragment, or URL, to PDF.
 [merge_to_pdf](samples/merge_to_pdf/)		| Combine multiple files, and URLs, into a single PDF.
+[merge_to_pdf (SharePoint)](samples/merge_to_pdf%20%28SharePoint%29/)		| Combine multiple SharePoint files (by path), and URLs, into a single PDF.
 [ocr_pdf](samples/ocr_pdf/)					| Convert a scan, fax or other image into a searchable PDF.
 [ocr_text](samples/ocr_text/)				| Use OCR to extract text from a scan, fax or other image.
 [secure_pdf](samples/secure_pdf/)			| Apply security settings, passwords and restrictions to a PDF.

@@ -20,6 +20,8 @@
 /clients/v1/csharp/samples/convert_html/bin/Debug
 /clients/v1/csharp/samples/merge_to_pdf/obj
 /clients/v1/csharp/samples/merge_to_pdf/bin/Debug
+/clients/v1/csharp/samples/merge_to_pdf (SharePoint)/bin/Debug
+/clients/v1/csharp/samples/merge_to_pdf (SharePoint)/obj/Debug
 /clients/v1/csharp/samples/ocr_pdf/bin/Debug
 /clients/v1/csharp/samples/ocr_pdf/obj/Debug
 /clients/v1/csharp/samples/ocr_text/obj
@@ -61,3 +63,4 @@
 /clients/v1/java/client/lib/junit-4.12.jar
 /clients/v1/java/client/lib/hamcrest-core-1.3.jar
 /clients/v1/java/samples/merge_to_pdf/result.pdf
+/clients/v1/csharp/samples/merge_to_pdf (SharePoint)/obj/Release
