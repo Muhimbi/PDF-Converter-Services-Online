@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 
 namespace sample
 {
@@ -58,7 +59,7 @@ namespace sample
                                                                                                                 //    optionally followed by a ';' and the PDF bookmark name of the document.
                     SourceFileContent1: sourceFile,                                                             // ** Content of the file to merge.
                     SourceFileName2: "test.html;true;Some HTML content",                                        // ** The same again, but as we are merging in HTML content, use a name with '.html' extension.
-                    SourceFileContent2: System.Text.Encoding.Unicode.GetBytes("<h1>Merged HTML Content</h1>"),  // ** HTML or URL to convert and merge. 
+                    SourceFileContent2: GetUnicodeBytesWithBom("<h1>Merged <i>HTML</i> Content</h1>"),          // ** HTML or URL to convert and merge. 
                     SourceFileName3: testFile + ";true;" + testFile + " (again).",                              // ** The same again for the 3rd file.
                     SourceFileContent3: sourceFile,                                                             // ** Content of the 3rd file to merge.
                     DocumentStartPage: MergeToPdfData.DocumentStartPageEnum.Nextpage                            // ** On what page should each merged document start (important for double sided docs and printing).
@@ -81,5 +82,25 @@ namespace sample
                 Console.WriteLine(ex.ToString());
             }
         }
+
+        /// <summary>
+        /// Helper function to get the text as a byte array and add the 'Unicode Byte Order Mark'
+        /// See https://www.w3.org/International/questions/qa-byte-order-mark. 
+        /// </summary>
+        protected static byte[] GetUnicodeBytesWithBom(string text)
+        {
+            // Use BOM when encoding
+            Encoding encodingWithBom = new UnicodeEncoding(false, true);
+
+            // Concatenate BOM bytes with content bytes
+            byte[] bom = encodingWithBom.GetPreamble();
+            byte[] content = encodingWithBom.GetBytes(text);
+            byte[] bytes = new byte[bom.Length + content.Length];
+            Buffer.BlockCopy(bom, 0, bytes, 0, bom.Length);
+            Buffer.BlockCopy(content, 0, bytes, bom.Length, content.Length);
+
+            return bytes;
+        }
+
     }
 }
