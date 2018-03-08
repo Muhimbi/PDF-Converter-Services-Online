@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Muhimbi API - Convert using AngularJS</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+
+    <script type="text/javascript">
+
+        // ** Specify the API key associated with your subscription.
+        var api_key = '';
+
+        //** Make sure an api key has been entered.
+        if (api_key == '') {
+            alert('Please update the sample code and enter the API Key that came with your subscription.');
+        }
+
+        //** Create Angular App
+        var app = angular.module('muhimbi-api-app', [])
+
+        // ** Adds 'File' param to scope
+        app.directive('file', function () {
+            return {
+                scope: {
+                    file: '='
+                },
+                link: function (scope, el, attrs) {
+                    el.bind('change', function (event) {
+                        var files = event.target.files;
+                        var file = files[0];
+                        scope.file = file ? file : undefined;
+                        scope.$apply();
+                    });
+                }
+            };
+        });
+
+        //** Create controller
+        app.controller('muhimbi-api-ctrl', function ($scope, $http) {
+            try {
+                // ** declare variables
+                $scope.result_code = "";
+                $scope.result_details = "";
+                $scope.output_format = 'PDF';
+
+                $scope.makeCall = function () {
+
+                    // ** Proceed only when API Key is provided.
+                    if (api_key == '')
+                        return;
+
+                    //** Was a file uploaded?
+                    if ($scope.source_file_param) {
+                        // ** Get the file object from the File control.
+                        var source_file = $scope.source_file_param.file;
+
+                        // ** Get output format value
+                        var output_format = $scope.output_format;
+
+                        // ** Get the file name from the uploaded file.
+                        var source_file_name = source_file.name;
+
+                        var reader = new FileReader();
+
+                        //** Read the file into base64 encoded string using FileReader object.
+                        reader.onload = function (reader_event) {
+                            var binary_string;
+
+                            if (!reader_event) {
+                                // ** For IE.
+                                binary_string = reader.content;
+                            }
+                            else {
+                                // ** For other browsers.
+                                binary_string = reader_event.target.result;
+                            }
+
+                            // ** Convert binary to base64 encoded string.
+                            var source_file_content = btoa(binary_string);
+
+                            // ** Specify additional settings for the PDF Converter. This can be omitted for most cases.
+                            // ** In this example we disable refreshing of the document. For more details see
+                            // ** http://blog.muhimbi.com/2012/09/overriding-default-conversion-settings.html
+                            var xmlOverride =
+                                "<Override>" +
+                                "   <OpenOptions>" +
+                                "       <RefreshContent>false</RefreshContent>" +
+                                "   </OpenOptions>" +
+                                "</Override>";
+
+                            // ** We need to fill out the data for the conversion operation
+                            var input_data = JSON.stringify({
+                                "fail_on_error": false,
+                                "output_format": output_format, 		    // ** Specify the format of the file type we wish to convert to.
+                                "source_file_name": source_file_name, 		// ** Always pass the name of the input file with the correct file extension.
+                                "source_file_content": source_file_content,	// ** Pass the content of the uploaded file, making sure it is base64 encoded.
+                                "override_settings": xmlOverride            // ** Optional XML Override data
+                            });
+
+                            $scope.result_code = 'Please wait, processing...';
+
+                            // ** Make API Call.
+                            $http({
+                                method: 'POST',
+                                url: "https://api.muhimbi.com/api/v1/operations/convert",
+                                data: input_data,
+                                headers: {
+                                    "accept": "application/json",
+                                    "content-type": "application/json",
+                                    "api_key": api_key
+                                }
+                            }).success(function (response, status, headers, config) {
+                                // ** Show result code and details.
+                                $scope.result_code = response.result_code;
+                                $scope.result_details = response.result_details;
+
+                                if (response.result_code == "Success") {
+                                    // ** Convert to Blob.
+                                    var file_blob = CreateBlob(response.processed_file_content)
+
+                                    // ** Prompt user to save or open the converted file
+                                    if (window.navigator.msSaveBlob) {
+                                        // ** For IE.
+                                        window.navigator.msSaveOrOpenBlob(file_blob, response.base_file_name + "." + output_format);
+                                    }
+                                    else {
+                                        // ** For other browsers.
+                                        // ** Create temporary hyperlink to download content.
+                                        var download_link = window.document.createElement("a");
+                                        download_link.href = window.URL.createObjectURL(file_blob, { type: "application/octet-stream" });
+                                        download_link.download = response.base_file_name + "." + output_format;
+                                        document.body.appendChild(download_link);
+                                        download_link.click();
+                                        document.body.removeChild(download_link);
+                                    }
+                                }
+                            }).error(function (data, status, headers, config) {
+                                // ** Show the error
+                                $scope.result_code = "API call error.";
+                                $scope.result_details = data;
+                            });
+
+                        };
+
+                        reader.readAsBinaryString(source_file);
+                    }
+                    else {
+                        alert('Select file to process.');
+                    }
+                }
+            }
+            catch (err) {
+                console.error(err.message);
+            }
+        });
+
+        // ** Create a Blob object from the base64 encoded string.
+        function CreateBlob(base64string) {
+            var file_bytes = atob(base64string);
+
+            var byte_numbers = new Array(file_bytes.length);
+            for (var i = 0; i < file_bytes.length; i++) {
+                byte_numbers[i] = file_bytes.charCodeAt(i);
+            }
+
+            var byte_array = new Uint8Array(byte_numbers);
+
+            var file_blob = new Blob([byte_array], { type: "application/pdf" });
+
+            return file_blob;
+        }
+
+        // ** The following is for IE browsers only.
+
+        // ** IE does not support 'readAsBinaryString' function for the FileReader object. Create a substitute function using 'readAsArrayBuffer' function.
+        if (FileReader.prototype.readAsBinaryString === undefined) {
+            FileReader.prototype.readAsBinaryString = function (file_content) {
+                var binary_string = "";
+                var thiswindow = this;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var bytes = new Uint8Array(reader.result);
+                    var length = bytes.byteLength;
+                    for (var i = 0; i < length; i++) {
+                        binary_string += String.fromCharCode(bytes[i]);
+                    }
+                    thiswindow.content = binary_string;
+                    thiswindow.onload();
+                }
+                reader.readAsArrayBuffer(file_content);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div ng-app="muhimbi-api-app" ng-controller="muhimbi-api-ctrl">
+        Output format: <select ng-model="output_format">
+            <option value="PDF" selected>PDF</option>
+            <option value="XPS">XPS</option>
+            <option value="DOCX">DOCX</option>
+            <option value="DOC">DOC</option>
+            <option value="ODT">ODT</option>
+            <option value="RTF">RTF</option>
+            <option value="TXT">TXT</option>
+            <option value="MHT">MHT</option>
+            <option value="HTML">HTML</option>
+            <option value="XML">XML</option>
+            <option value="XLS">XLS</option>
+            <option value="XLSX">XLSX</option>
+            <option value="CSV">CSV</option>
+            <option value="ODS">ODS</option>
+            <option value="PPT">PPT</option>
+            <option value="PPTX">PPTX</option>
+            <option value="ODP">ODP</option>
+            <option value="PPS">PPS</option>
+            <option value="PPSX">PPSX</option>
+        </select>
+
+        Select file: <input type="file" data-file="source_file_param.file" />
+
+        <br /><br />
+        <button id="btnConvert" ng-click="makeCall();">Convert to PDF</button>
+        <br /><br />
+
+        Note that some combinations (e.g. MS-Word to AutoCAD) are not possible. See <a href="https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-">this matrix</a>.
+
+        <br /><br />
+
+        Result_Code: <span>{{result_code}}</span>
+        <br />
+        Result_Details: <span>{{result_details}}</span>
+    </div>
+</body>
+
+</html>

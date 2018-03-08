@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Muhimbi API - Merge to PDF</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		// ** Specify the API key associated with your subscription.
+        var api_key = '';
+	
+		// ** Execute code when DOM is loaded in the browser.
+	    $(document).ready(function () 
+		{
+			//** Make sure an api key has been entered.
+			if(api_key=='')
+			{
+				alert('Please update the sample code and enter the API Key that came with your subscription.');
+			}
+		
+			// ** Attach a click event to the Convert button.
+			$('#btnConvert').click(function () 
+			{
+				// ** Proceed only when API Key is provided above
+				if(api_key=='')
+					return;
+					
+				try
+		        {
+					// ** Get the file object from the File control.
+                    var file_to_merge_1 = document.getElementById('file_to_merge_1').files[0];
+                    var file_to_merge_2 = document.getElementById('file_to_merge_2').files[0];
+                    // ** Get the URL, or HTML content to merge
+                    var source_HTML = $("#url").val();
+                    if (!source_HTML)
+                        source_HTML = $("#html_content").val();
+                    if (!source_HTML) {
+                        alert('Please specify a URL or HTML content');
+                        return;
+                    }
+
+					//** Are both files specified?
+                    if (file_to_merge_1 && file_to_merge_2) 
+                    {
+                        // ** Read files asynchronously
+                        getFile(file_to_merge_1, 'file_to_merge_1');
+                        getFile(file_to_merge_2, 'file_to_merge_2');
+
+                        // ** A bit hacky, (this is just an example) but we need to wait a very short amount of time for the files to finish loading
+                        setTimeout(function ()
+                        {
+                            // ** We need to fill out the data for the conversion operation
+                            var input_data = JSON.stringify(
+                                {
+                                    "fail_on_error": false,
+                                    "source_file_name_1": file_to_merge_1.name + ';true;My Bookmark',   // ** The name of the file to merge, always include the correct extension. 
+                                                                                                        //    Optionally add ';true' to auto generate PDF bookmarks based on document structure, 
+                                                                                                        //    optionally followed by a ';' and the PDF bookmark name of the document.
+                                    "source_file_content_1": encodedFiles["file_to_merge_1"],           // ** Content of the first file to merge.
+                                    "source_file_name_2": file_to_merge_2.name,                         // ** Same again for up to 4 more files
+                                    "source_file_content_2": encodedFiles["file_to_merge_2"],           // ** Content of the second to merge.
+                                    "source_file_name_3": "Test.html",                                  // ** When converting HTML content make sure a filename with '.html' extension is used
+                                    "source_file_content_3": btoa(source_HTML),                         // ** Pass in a URL or RAW HTML, make sure it is BASE64 encoded
+                                    "document_start_page": "Starts on the next page"                    // ** On what page should each merged document start (important for double sided docs and printing).
+                                                                                                        //    Use 'Starts on the default page', 'Starts on the next page', 'Starts on the next odd page', 'Starts on the next even page'
+                                });
+
+                            $("#spnResultDetails").text('Please wait, processing...');
+
+                            // ** Allow cross domain request
+                            jQuery.support.cors = true;
+
+                            // ** Make API Call.
+                            $.ajax(
+                                {
+                                    type: 'POST',
+
+                                    // ** Set the request header with API key and content type
+                                    beforeSend: function (request) {
+                                        request.setRequestHeader("Content-Type", 'application/json');
+                                        request.setRequestHeader("api_key", api_key);
+                                    },
+
+                                    url: 'https://api.muhimbi.com/api/v1/operations/merge_to_pdf',
+
+                                    data: input_data,
+
+                                    dataType: 'json',
+
+                                    // ** Carry out the operation
+                                    success: function (data) {
+                                        // ** Show result code and details.
+                                        $("#spnResultCode").text(data['result_code']);
+                                        $("#spnResultDetails").text(data['result_details']);
+
+                                        if (data['result_code'] == "Success") {
+                                            // ** Convert to Blob.
+                                            var file_blob = CreateBlob(data['processed_file_content'])
+
+                                            // ** Prompt user to save or open the converted file																											
+                                            if (window.navigator.msSaveBlob) {
+                                                // ** For IE.
+                                                window.navigator.msSaveOrOpenBlob(file_blob, data['base_file_name'] + ".pdf");
+                                            }
+                                            else {
+                                                // ** For other browsers.
+                                                // ** Create temporary hyperlink to download content.
+                                                var download_link = window.document.createElement("a");
+                                                download_link.href = window.URL.createObjectURL(file_blob, { type: "application/octet-stream" });
+                                                download_link.download = data['base_file_name'] + ".pdf";
+                                                document.body.appendChild(download_link);
+                                                download_link.click();
+                                                document.body.removeChild(download_link);
+                                            }
+                                        }
+                                    },
+
+                                    error: function (msg, url, line) {
+                                        console.log('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
+
+                                        // ** Show the error
+                                        $("#spnResultCode").text("API call error.");
+                                        $("#spnResultDetails").text('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
+                                    }
+                                });
+                        }, 100);
+				    }
+					else
+					{
+						alert('Specify files to process.');
+					}
+		        }
+		        catch(err) 
+		        {
+				    console.log(err.message);
+					
+					// ** Show exception
+					$("#spnResultCode").text("Exception occurred.");
+					$("#spnResultDetails").text(err.message);
+				}
+	       });
+        });
+
+
+        // ** Create a Blob object from the base64 encoded string. 
+        function CreateBlob(base64string) {
+            var file_bytes = atob(base64string);
+
+            var byte_numbers = new Array(file_bytes.length);
+            for (var i = 0; i < file_bytes.length; i++) {
+                byte_numbers[i] = file_bytes.charCodeAt(i);
+            }
+
+            var byte_array = new Uint8Array(byte_numbers);
+
+            var file_blob = new Blob([byte_array], { type: "application/pdf" });
+
+            return file_blob;
+        }
+
+        //** Helper function to read the content of a form file, and base64 encode it
+        var encodedFiles = {};
+        function getFile(source_file, name) {
+            var reader = new FileReader();
+
+            encodedFiles[source_file.name] = null;
+
+            //** Read the file into base64 encoded string using FileReader object.
+            reader.onload = function (reader_event) {
+                var binary_string;
+
+                if (!reader_event) {
+                    // ** For IE.
+                    binary_string = reader.content;
+                }
+                else {
+                    // ** For other browsers.
+                    binary_string = reader_event.target.result;
+                }
+
+                // ** Convert binary to base64 encoded string and store it in a global value that we can later reference.
+                encodedFiles[name] = btoa(binary_string);
+            };
+
+            reader.readAsBinaryString(source_file);
+        }
+
+        // ** IE does not support 'readAsBinaryString' function for the FileReader object. Create a substitute function using 'readAsArrayBuffer' function.
+        if (FileReader.prototype.readAsBinaryString === undefined) {
+            FileReader.prototype.readAsBinaryString = function (file_content) {
+                var binary_string = "";
+                var thiswindow = this;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var bytes = new Uint8Array(reader.result);
+                    var length = bytes.byteLength;
+                    for (var i = 0; i < length; i++) {
+                        binary_string += String.fromCharCode(bytes[i]);
+                    }
+                    thiswindow.content = binary_string;
+                    $(thiswindow).trigger('onload');
+                }
+                reader.readAsArrayBuffer(file_content);
+            }
+        }
+	</script>
+
+</head>
+
+<body>
+	<div>
+        <form id="convert_form">
+
+            <p>Select file 1: <input type="file" id="file_to_merge_1" /></p>
+            <p>Select file 2: <input type="file" id="file_to_merge_2" /></p>
+
+            Specify a URL or HTML to merge into the results:
+            <br /><br />
+            URL:<br />
+            <input type="text" id="url" style="width:500px;" />
+
+            <br /><br />
+
+            HTML:<br />
+            <textarea id="html_content" style="width:500px; height:300px">
+<html>
+<body>
+    Hello <b>world</b><div style='page-break-after: always;'></div>Page 2
+</body>
+</html>
+        </textarea>
+
+            <br /><br />
+
+            <button id="btnConvert" type="button">Merge Content</button>
+
+
+            <br /><br />
+
+            Result_Code: <span id="spnResultCode"></span>
+            <br />
+            Result_Details: <span id="spnResultDetails"></span>
+
+        </form>
+	</div>
+</body>
+
+</html>
