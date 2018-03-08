@@ -24,7 +24,7 @@ There are very few prerequisites to run these samples. A modern browser and an i
 
 ## Client libraries
 
-Unlike our [sample code for other languages](../../clients), the JavaScript samples do not depend on pre-generated client libraries. JavaScript can deal with REST / JSON natively. Adding pre-generated client libraries will just complicated matters.
+Unlike our [sample code for other languages](../../), the JavaScript samples do not depend on pre-generated client libraries. JavaScript can deal with REST / JSON natively. Adding pre-generated client libraries will just complicated matters.
 
 You are naturally free to take our Swagger API definition file, load it into [editor.swagger.io](http://editor.swagger.io/), and generate JavaScript clients.
 
