@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Muhimbi API - Watermark PDF</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        // ** Specify the API key associated with your subscription.
+        var api_key = '';
+
+        // ** Execute code when DOM is loaded in the browser.
+        $(document).ready(function () {
+            //** Make sure an api key has been entered.
+            if (api_key == '') {
+                alert('Please update the sample code and enter the API Key that came with your subscription.');
+            }
+
+            // ** Attach a click event to the Convert button.
+            $('#btnConvert').click(function () {
+                // ** Proceed only when API Key is provided above
+                if (api_key == '')
+                    return;
+
+                try {
+                    // ** Get the file object from the File control.
+                    var source_file = document.getElementById('file_to_convert').files[0];
+
+                    //** Was a PDF file uploaded?
+                    if (source_file && source_file.name.toLowerCase().endsWith('.pdf')) {
+
+                        // ** Get the file name from the uploaded file.
+                        var source_file_name = source_file.name;
+
+                        var reader = new FileReader();
+
+                        //** Read the file into base64 encoded string using FileReader object.
+                        reader.onload = function (reader_event) {
+                            var binary_string;
+
+                            if (!reader_event) {
+                                // ** For IE.
+                                binary_string = reader.content;
+                            }
+                            else {
+                                // ** For other browsers.
+                                binary_string = reader_event.target.result;
+                            }
+
+                            // ** Convert binary to base64 encoded string.
+                            var source_file_content = btoa(binary_string);
+
+                            // ** We need to fill out the data for the conversion operation
+                            var input_data = JSON.stringify(
+                                {
+                                    "fail_on_error": false,
+                                    "source_file_name": source_file_name,		// ** Always specify a file name with the correct extension (file must be a PDF file)
+                                    "source_file_content": source_file_content,	// ** Pass the content of the uploaded file, making sure it is base64 encoded.
+                                    "rtf_data": "{\\rtf1\\ansi\\deff0" +        // ** Specify the RTF text, see http://search.cpan.org/~sburke/RTF-Writer-1.11/lib/RTF/Cookbook.pod for examples
+                                                "{\\colortbl;\\red0\\green0\\blue0;\\red255\\green0\\blue0;}" +
+                                                "{\\b Bold watermark text}\\line" +
+                                                "\\cf2" +
+                                                "{\\i Red and italics watermark text}\\line" +
+                                                "}",
+                                    "position": "Middle Center",                // ** Position of the bounding box on the page:  Absolute, Random, Top Left, Top Center, Top Right. Same for 'Middle' and 'Bottom'. 
+                                    "width": "300",                             // ** Width & Height of the Bounding box in Points (1/72 of an inch)
+                                    "height": "300",
+                                    "x": "0",                                   // ** Position of the Bounding Box, only used when position = Absolute
+                                    "y": "0",
+                                    "layer": "Foreground",                      // ** Display watermark in front (Foreground) or behind content (Background).
+                                    "rotation": "-45",                          // ** Rotation (in degrees) of the watermark
+                                    "opacity": "75",                            // ** Opacity (in percent)
+                                    "fill_color": "",                           // ** Fill color of the bounding box in #RRGGBB format
+                                    "line_color": "",                           // ** Line color of the bounding box in #RRGGBB format
+                                    "line_width": "-1",                         // ** Width of the outline of the bounding box, with -1 being no outline.
+                                    "start_page": 0,                            // ** First page to apply the watermark to
+                                    "end_page": 0,                              // ** Last page to apply the watermark to
+                                    "page_interval": 0,                         // ** Number of pages to skip between watermarks
+                                    "page_orientation": "Both"                  // ** Watermark 'Portrait', 'Landscape' or 'Both' page orientations
+                                });
+
+                            $("#spnResultDetails").text('Please wait, processing...');
+
+                            // ** Allow cross domain request
+                            jQuery.support.cors = true;
+
+                            // ** Make API Call.
+                            $.ajax(
+                                {
+                                    type: 'POST',
+
+                                    // ** Set the request header with API key and content type
+                                    beforeSend: function (request) {
+                                        request.setRequestHeader("Content-Type", 'application/json');
+                                        request.setRequestHeader("api_key", api_key);
+                                    },
+
+                                    url: 'https://api.muhimbi.com/api/v1/operations/rtf_watermark',
+
+                                    data: input_data,
+
+                                    dataType: 'json',
+
+                                    // ** Carry out the operation
+                                    success: function (data) {
+                                        // ** Show result code and details.
+                                        $("#spnResultCode").text(data['result_code']);
+                                        $("#spnResultDetails").text(data['result_details']);
+
+                                        if (data['result_code'] == "Success") {
+                                            // ** Convert to Blob.
+                                            var file_blob = CreateBlob(data['processed_file_content'])
+
+                                            // ** Prompt user to save or open the converted file
+                                            if (window.navigator.msSaveBlob) {
+                                                // ** For IE.
+                                                window.navigator.msSaveOrOpenBlob(file_blob, data['base_file_name'] + ".pdf");
+                                            }
+                                            else {
+                                                // ** For other browsers.
+                                                // ** Create temporary hyperlink to download content.
+                                                var download_link = window.document.createElement("a");
+                                                download_link.href = window.URL.createObjectURL(file_blob, { type: "application/octet-stream" });
+                                                download_link.download = data['base_file_name'] + ".pdf";
+                                                document.body.appendChild(download_link);
+                                                download_link.click();
+                                                document.body.removeChild(download_link);
+                                            }
+                                        }
+                                    },
+
+                                    error: function (msg, url, line) {
+                                        console.log('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
+
+                                        // ** Show the error
+                                        $("#spnResultCode").text("API call error.");
+                                        $("#spnResultDetails").text('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
+                                    }
+                                });
+
+                        };
+
+                        reader.readAsBinaryString(source_file);
+                    }
+                    else {
+                        alert('Select an existing PDF file to process.');
+                    }
+                }
+                catch (err) {
+                    console.log(err.message);
+
+                    // ** Show exception
+                    $("#spnResultCode").text("Exception occurred.");
+                    $("#spnResultDetails").text(err.message);
+                }
+
+            });
+
+        });
+
+
+        // ** Create a Blob object from the base64 encoded string.
+        function CreateBlob(base64string) {
+            var file_bytes = atob(base64string);
+
+            var byte_numbers = new Array(file_bytes.length);
+            for (var i = 0; i < file_bytes.length; i++) {
+                byte_numbers[i] = file_bytes.charCodeAt(i);
+            }
+
+            var byte_array = new Uint8Array(byte_numbers);
+
+            var file_blob = new Blob([byte_array], { type: "application/pdf" });
+
+            return file_blob;
+        }
+
+        // ** The following is for IE browsers only.
+
+        // ** IE doesn't support checking the end of a string (Needed for check of file extension)
+        String.prototype.endsWith = function (suffix) {
+            return this.indexOf(suffix, this.length - suffix.length) !== -1;
+        };
+
+        // ** IE does not support 'readAsBinaryString' function for the FileReader object. Create a substitute function using 'readAsArrayBuffer' function.
+        if (FileReader.prototype.readAsBinaryString === undefined) {
+            FileReader.prototype.readAsBinaryString = function (file_content) {
+                var binary_string = "";
+                var thiswindow = this;
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var bytes = new Uint8Array(reader.result);
+                    var length = bytes.byteLength;
+                    for (var i = 0; i < length; i++) {
+                        binary_string += String.fromCharCode(bytes[i]);
+                    }
+                    thiswindow.content = binary_string;
+                    $(thiswindow).trigger('onload');
+                }
+                reader.readAsArrayBuffer(file_content);
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div>
+        <form id="convert_form">
+
+            Select PDF file to watermark: <input type="file" id="file_to_convert" />
+
+            <br /><br />
+
+            <button id="btnConvert" type="button">Watermark PDF</button>
+
+            <br /><br />
+
+            Result_Code: <span id="spnResultCode"></span>
+            <br />
+            Result_Details: <span id="spnResultDetails"></span>
+
+        </form>
+    </div>
+</body>
+
+</html>
