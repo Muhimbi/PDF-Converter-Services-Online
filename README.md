@@ -31,15 +31,18 @@ It couldn't be easier to get going. Please [follow these instructions](https://s
 Once activated, follow the instructions for the language of your choice or generate the client code using [editor.swagger.io](http://editor.swagger.io).
 
 - [C# Libraries and sample code](clients/v1/csharp/)
-- [Curl sample code](clients/v1/curl/)
+
 - [Java Libraries and sample code](clients/v1/java/)
 - [JavaScript Libraries and sample code](clients/v1/javascript/)
-- [Generic JSON sample code](clients/v1/json/)
 - [PHP Libraries and sample code](clients/v1/php/)
+- [Use Swagger to generate clients](swagger/)
+<!--
+- [Curl sample code](clients/v1/curl/)
+- [Generic JSON sample code](clients/v1/json/)
 - [Python Libraries and sample code](clients/v1/python/)
 - [Ruby Libraries and sample code](clients/v1/ruby/)
 - [SharePoint Libraries and sample code](clients/v1/sharepoint/)
-- [Use Swagger to generate clients](swagger/)
+-->
 
 
 <br>
