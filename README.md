@@ -19,7 +19,7 @@ Key features:
 - High fidelity output.
 - [Swagger](http://www.swagger.io) based API definition.
 - Sample files and pre-generated client code for *PHP, Ruby, Python, Java, C#, Curl, JavaScript* and *SharePoint*.
-- Support for [Microsoft Flow](http://flow.microsoft.com) and [Azure Logic Apps](https://azure.microsoft.com/en-gb/services/logic-apps/).
+- Support for [Microsoft Flow, Azure Logic Apps, and PowerApps](https://support.muhimbi.com/hc/en-us/articles/115005900168-Microsoft-Flow-Logic-Apps-PowerApps-Tutorials-and-Blog-posts).
 - Authenticate using API Key or oAuth.
 - Backed by a professional and high quality [support desk](http://www.muhimbi-online.com/Contact). 
 
