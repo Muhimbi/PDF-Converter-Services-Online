@@ -1,9 +1,11 @@
-# PDF Converter Services Online
+# Muhimbi PDF Converter Services Online
 <br>
 
 ## About
 
-The *Muhimbi PDF Converter Service Online* is a REST based service that makes it easy to add *document conversion, merging, watermarking, securing* and *optical character recognition (OCR)* to most programming languages, operating systems and development platforms.
+The [*Muhimbi PDF Converter Service Online*](https://support.muhimbi.com/hc/en-us/articles/115002813708-About-the-PDF-Converter-Services-Online) is a REST based service that makes it easy to add *document conversion, merging, watermarking, securing* and *optical character recognition (OCR)* to most programming languages, operating systems and development platforms.
+
+This service is also available as a traditional 'on-premise' solution, for more details see [this separate GitHub repository](https://github.com/Muhimbi/PDF-Converter-Services). A separate [SharePoint Online version](http://www.muhimbi-online.com/) is available as well.
 
 Key features:
 - Hosted platform, nothing to install.
@@ -31,7 +33,6 @@ It couldn't be easier to get going. Please [follow these instructions](https://s
 Once activated, follow the instructions for the language of your choice or generate the client code using [editor.swagger.io](http://editor.swagger.io).
 
 - [C# Libraries and sample code](clients/v1/csharp/)
-
 - [Java Libraries and sample code](clients/v1/java/)
 - [JavaScript Libraries and sample code](clients/v1/javascript/)
 - [PHP Libraries and sample code](clients/v1/php/)
@@ -43,6 +44,8 @@ Once activated, follow the instructions for the language of your choice or gener
 - [Ruby Libraries and sample code](clients/v1/ruby/)
 - [SharePoint Libraries and sample code](clients/v1/sharepoint/)
 -->
+
+Any questions? [Drop us a line](http://www.muhimbi.com/contact.aspx), we love to help.
 
 
 <br>
