@@ -45,7 +45,7 @@ Once activated, follow the instructions for the language of your choice or gener
 - [SharePoint Libraries and sample code](clients/v1/sharepoint/)
 -->
 
-Any questions? [Drop us a line](http://www.muhimbi.com/contact.aspx), we love to help.
+Any questions? [Drop us a line](http://www.muhimbi-online.com/Contact), we love to help.
 
 
 <br>
