@@ -1,6 +1,6 @@
 # PHP Client & Sample code
 
-In this section you will find details about how to use the PHP client libraries for the *Muhimbi PDF Converter Services Online*. If you prefer to bypass these wrapper libraries, and rather send JSON code to the REST based service directly, then please see the section containing [raw JSON examples](../json)
+In this section you will find details about how to use the PHP client libraries for the *[Muhimbi PDF Converter Services Online](https://support.muhimbi.com/hc/en-us/articles/115002813708-About-the-PDF-Converter-Services-Online)*. If you prefer to bypass these wrapper libraries, and rather send JSON code to the REST based service directly, then please see the section containing [raw JSON examples](../json)
 
 *If a cloud-based service is not suitable to your needs (e.g. for security or regulatory reasons), and you have the ability to deploy software to your own (Windows) server, then check out the [Muhimbi PDF Converter Services](http://www.muhimbi.com/Products/PDF-Converter-Services/summary.aspx) and [this PHP sample code](http://blog.muhimbi.com/2013/02/converting-files-to-pdf-and-other.html).*
 

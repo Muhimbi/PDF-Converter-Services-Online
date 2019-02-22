@@ -1,6 +1,6 @@
 # C# Client & Sample code
 
-Details about using the *Muhimbi PDF Converter Services Online* from .NET, specifically C#, can be found below. If you prefer to bypass these wrapper libraries, and rather send JSON code to the REST based service directly, then please see the section containing [raw JSON examples](../json)
+Details about using the *[Muhimbi PDF Converter Services Online](https://support.muhimbi.com/hc/en-us/articles/115002813708-About-the-PDF-Converter-Services-Online)* from .NET, specifically C#, can be found below. If you prefer to bypass these wrapper libraries, and rather send JSON code to the REST based service directly, then please see the section containing [raw JSON examples](../json)
 
 *If a cloud-based service is not suitable to your needs (e.g. for security or regulatory reasons), and you have the ability to deploy software to your own (Windows) server, then check out the [Muhimbi PDF Converter Services](http://www.muhimbi.com/Products/PDF-Converter-Services/summary.aspx) and [this sample code](https://support.muhimbi.com/hc/en-us/articles/228089807-Where-can-I-find-sample-code-).*
 
