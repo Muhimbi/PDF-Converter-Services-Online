@@ -30,7 +30,7 @@ Key features:
 
 It couldn't be easier to get going. Please [follow these instructions](https://support.muhimbi.com/hc/en-us/articles/115002816048) and activate the subscription by clicking the link in the confirmation email.
 
-Once activated, follow the instructions for the language of your choice or generate the client code using [editor.swagger.io](http://editor.swagger.io).
+Once activated, follow the instructions below for the language of your choice. For each listed language, detailed instructions are included for generating libraries from scratch. For languages that are not explicitly listed below, use [editor.swagger.io](http://editor.swagger.io).
 
 - [C# Libraries and sample code](clients/v1/csharp/)
 - [Java Libraries and sample code](clients/v1/java/)
