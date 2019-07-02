@@ -1,1 +1,1 @@
-Content will eb published soon.
+Content will be published soon.
