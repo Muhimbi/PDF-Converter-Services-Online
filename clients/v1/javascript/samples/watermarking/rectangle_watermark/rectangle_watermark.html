@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Muhimbi API - Watermark PDF</title>
+    <title>Muhimbi API - Watermark Document</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
 
@@ -25,8 +25,12 @@
                     // ** Get the file object from the File control.
                     var source_file = document.getElementById('file_to_convert').files[0];
 
-                    //** Was a PDF file uploaded?
-                    if (source_file && source_file.name.toLowerCase().endsWith('.pdf')) {
+                    //** Was a supported file uploaded?
+                    if (source_file &&
+                        (source_file.name.toLowerCase().endsWith('.pdf') ||
+                            source_file.name.toLowerCase().endsWith('.docx') ||
+                            source_file.name.toLowerCase().endsWith('.xlsx') ||
+                            source_file.name.toLowerCase().endsWith('.pptx'))) {
 
                         // ** Get the file name from the uploaded file.
                         var source_file_name = source_file.name;
@@ -53,9 +57,9 @@
                             var input_data = JSON.stringify(
                                 {
                                     "fail_on_error": false,
-                                    "source_file_name": source_file_name,		// ** Always specify a file name with the correct extension (file must be a PDF file)
-                                    "source_file_content": source_file_content,	// ** Pass the content of the uploaded file, making sure it is base64 encoded.
-                                    "position": "Middle Center",                // ** Position of the bounding box on the page:  Absolute, Random, Top Left, Top Center, Top Right. Same for 'Middle' and 'Bottom'. 
+                                    "source_file_name": source_file_name,       // ** Always specify a file name with the correct extension (file must be a PDF file)
+                                    "source_file_content": source_file_content, // ** Pass the content of the uploaded file, making sure it is base64 encoded.
+                                    "position": "Middle Center",                // ** Position of the bounding box on the page:  Absolute, Random, Top Left, Top Center, Top Right. Same for 'Middle' and 'Bottom'.
                                     "width": "300",                             // ** Width & Height of the Bounding box in Points (1/72 of an inch)
                                     "height": "400",
                                     "x": "0",                                   // ** Position of the Bounding Box, only used when position = Absolute
@@ -104,17 +108,17 @@
                                             // ** Convert to Blob.
                                             var file_blob = CreateBlob(data['processed_file_content'])
 
-                                            // ** Prompt user to save or open the converted file
+                                            // ** Prompt user to save or open the converted file with the same name as the original
                                             if (window.navigator.msSaveBlob) {
                                                 // ** For IE.
-                                                window.navigator.msSaveOrOpenBlob(file_blob, data['base_file_name'] + ".pdf");
+                                                window.navigator.msSaveOrOpenBlob(file_blob, source_file_name);
                                             }
                                             else {
                                                 // ** For other browsers.
                                                 // ** Create temporary hyperlink to download content.
                                                 var download_link = window.document.createElement("a");
                                                 download_link.href = window.URL.createObjectURL(file_blob, { type: "application/octet-stream" });
-                                                download_link.download = data['base_file_name'] + ".pdf";
+                                                download_link.download = source_file_name;
                                                 document.body.appendChild(download_link);
                                                 download_link.click();
                                                 document.body.removeChild(download_link);
@@ -136,7 +140,7 @@
                         reader.readAsBinaryString(source_file);
                     }
                     else {
-                        alert('Select an existing PDF file to process.');
+                        alert('Select an existing PDF, DOCX, XLSX or PPTX file to process.');
                     }
                 }
                 catch (err) {
@@ -201,11 +205,11 @@
     <div>
         <form id="convert_form">
 
-            Select PDF file to watermark: <input type="file" id="file_to_convert" />
+            Select a document to watermark: <input type="file" id="file_to_convert" />
 
             <br /><br />
 
-            <button id="btnConvert" type="button">Watermark PDF</button>
+            <button id="btnConvert" type="button">Watermark document</button>
 
             <br /><br />
 

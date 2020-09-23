@@ -53,12 +53,12 @@
                             var input_data = JSON.stringify(
                                 {
                                     "fail_on_error": false,
-                                    "source_file_name": source_file_name,		// ** Always specify a file name with the correct extension (file must be a PDF file)
-                                    "source_file_content": source_file_content,	// ** Pass the content of the uploaded file, making sure it is base64 encoded.
+                                    "source_file_name": source_file_name,       // ** Always specify a file name with the correct extension (file must be a PDF file)
+                                    "source_file_content": source_file_content, // ** Pass the content of the uploaded file, making sure it is base64 encoded.
                                     "split_parameter": 2,                       // ** How many pages per split file?
                                     "file_split_type": "Number of Pages",       // ** Based on what criteria do we want to split 'Number of Pages' or 'Bookmark Level'
                                     "file_name_template": "split-{0:D3}.pdf"    // ** Optionally generate output file names using .NET's formatting syntax
-                                                                                //    When splitting by bookmark then an optional {1} parameter represents the bookmark name
+                                    //    When splitting by bookmark then an optional {1} parameter represents the bookmark name
                                 });
 
                             $("#spnResultDetails").text('Please wait, processing...');

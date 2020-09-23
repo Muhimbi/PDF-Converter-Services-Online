@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Muhimbi API - Watermark PDF</title>
+    <title>Muhimbi API - Watermark Document</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript">
 
@@ -25,8 +25,12 @@
                     // ** Get the file object from the File control.
                     var source_file = document.getElementById('file_to_convert').files[0];
 
-                    //** Was a PDF file uploaded?
-                    if (source_file && source_file.name.toLowerCase().endsWith('.pdf')) {
+                    //** Was a supported file uploaded?
+                    if (source_file &&
+                        (source_file.name.toLowerCase().endsWith('.pdf') ||
+                            source_file.name.toLowerCase().endsWith('.docx') ||
+                            source_file.name.toLowerCase().endsWith('.xlsx') ||
+                            source_file.name.toLowerCase().endsWith('.pptx'))) {
 
                         // ** Get the file name from the uploaded file.
                         var source_file_name = source_file.name;
@@ -53,8 +57,8 @@
                             var input_data = JSON.stringify(
                                 {
                                     "fail_on_error": false,
-                                    "source_file_name": source_file_name,		// ** Always specify a file name with the correct extension (file must be a PDF file)
-                                    "source_file_content": source_file_content,	// ** Pass the content of the uploaded file, making sure it is base64 encoded.
+                                    "source_file_name": source_file_name,       // ** Always specify a file name with the correct extension (file must be a PDF file)
+                                    "source_file_content": source_file_content, // ** Pass the content of the uploaded file, making sure it is base64 encoded.
                                     "watermark_data": $("#watermark_xml").val() // ** The XML that describes the composite watermark, see https://goo.gl/q6kEFJ
                                 });
 
@@ -90,17 +94,17 @@
                                             // ** Convert to Blob.
                                             var file_blob = CreateBlob(data['processed_file_content'])
 
-                                            // ** Prompt user to save or open the converted file
+                                            // ** Prompt user to save or open the converted file with the same name as the original
                                             if (window.navigator.msSaveBlob) {
                                                 // ** For IE.
-                                                window.navigator.msSaveOrOpenBlob(file_blob, data['base_file_name'] + ".pdf");
+                                                window.navigator.msSaveOrOpenBlob(file_blob, source_file_name);
                                             }
                                             else {
                                                 // ** For other browsers.
                                                 // ** Create temporary hyperlink to download content.
                                                 var download_link = window.document.createElement("a");
                                                 download_link.href = window.URL.createObjectURL(file_blob, { type: "application/octet-stream" });
-                                                download_link.download = data['base_file_name'] + ".pdf";
+                                                download_link.download = source_file_name;
                                                 document.body.appendChild(download_link);
                                                 download_link.click();
                                                 document.body.removeChild(download_link);
@@ -122,7 +126,7 @@
                         reader.readAsBinaryString(source_file);
                     }
                     else {
-                        alert('Select an existing PDF file to process.');
+                        alert('Select an existing PDF, DOCX, XLSX or PPTX file to process.');
                     }
                 }
                 catch (err) {
@@ -187,11 +191,11 @@
     <div>
         <form id="convert_form">
 
-            Select PDF file to watermark: <input type="file" id="file_to_convert" />
+            Select a document to watermark: <input type="file" id="file_to_convert" />
 
             <br /><br />
 
-            <button id="btnConvert" type="button">Watermark PDF</button>
+            <button id="btnConvert" type="button">Watermark document</button>
 
             <br /><br />
 
@@ -202,57 +206,57 @@
 
     <!-- ** First watermark contains a single image element with the logo -->
     <watermark hPosition="right"
-            vPosition="top"
-            width="90"
-            height="90"
-            zOrder="1"
-            opacity="100"
-            pageOrientation="both">
-            <image width="72"
-                height="72"
-                scaleMode="absolute"
-                hPosition="left"
-                vPosition="bottom"
-                imageFilePath="http://api.muhimbi.com/apple-touch-icon.png" />
+               vPosition="top"
+               width="90"
+               height="90"
+               zOrder="1"
+               opacity="100"
+               pageOrientation="both">
+        <image width="72"
+               height="72"
+               scaleMode="absolute"
+               hPosition="left"
+               vPosition="bottom"
+               imageFilePath="http://api.muhimbi.com/apple-touch-icon.png" />
     </watermark>
 
     <!-- ** Second watermark places text in the background -->
     <watermark hPosition="center"
-            vPosition="middle"
-            width="300"
-            height="200"
-            zOrder="-1"
-            rotation="-45"
-            opacity="15"
-            pageOrientation="both">
-            <text width="300"
+                vPosition="middle"
+                width="300"
                 height="200"
-                fillColor="#FF0000"
-                content="CONFIDENTIAL"
-                fontFamilyName="Times New Roman"
-                fontSize="24"
-                fontStyle="bold|italic"
-                wordWrap="word"
-                hAlign="center"
-                vAlign="middle" />
+                zOrder="-1"
+                rotation="-45"
+                opacity="15"
+                pageOrientation="both">
+            <text width="300"
+                  height="200"
+                  fillColor="#FF0000"
+                  content="CONFIDENTIAL"
+                  fontFamilyName="Times New Roman"
+                  fontSize="24"
+                  fontStyle="bold|italic"
+                  wordWrap="word"
+                  hAlign="center"
+                  vAlign="middle" />
     </watermark>
 
     <!-- ** Third watermark adds page numbering -->
     <watermark hPosition="right"
-            vPosition="bottom"
-            width="100"
-            height="40"
-            zOrder="1"
-            pageOrientation="both">
-            <text hPosition="left"
-                vPosition="top"
-                width="100"
-                height="40"
-                content="Page {PAGE} of {NUMPAGES}"
-                fontFamilyName="Arial"
-                fontSize="11"
-                hAlign="left"
-                vAlign="top" />
+               vPosition="bottom"
+               width="100"
+               height="40"
+               zOrder="1"
+               pageOrientation="both">
+        <text hPosition="left"
+              vPosition="top"
+              width="100"
+              height="40"
+              content="Page {PAGE} of {NUMPAGES}"
+              fontFamilyName="Arial"
+              fontSize="11"
+              hAlign="left"
+              vAlign="top" />
     </watermark>
 
 </watermarks>

@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Muhimbi API - Merge to PDF</title>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		
-		// ** Specify the API key associated with your subscription.
+    <title>Muhimbi API - Merge to PDF</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        // ** Specify the API key associated with your subscription.
         var api_key = '';
-	
-		// ** Execute code when DOM is loaded in the browser.
-	    $(document).ready(function () 
-		{
-			//** Make sure an api key has been entered.
-			if(api_key=='')
-			{
-				alert('Please update the sample code and enter the API Key that came with your subscription.');
-			}
-		
-			// ** Attach a click event to the Convert button.
-			$('#btnConvert').click(function () 
-			{
-				// ** Proceed only when API Key is provided above
-				if(api_key=='')
-					return;
-					
-				try
-		        {
-					// ** Get the file object from the File control.
+
+        // ** Execute code when DOM is loaded in the browser.
+        $(document).ready(function () {
+            //** Make sure an api key has been entered.
+            if (api_key == '') {
+                alert('Please update the sample code and enter the API Key that came with your subscription.');
+            }
+
+            // ** Attach a click event to the Convert button.
+            $('#btnConvert').click(function () {
+                // ** Proceed only when API Key is provided above
+                if (api_key == '')
+                    return;
+
+                try {
+                    // ** Get the file object from the File control.
                     var file_to_merge_1 = document.getElementById('file_to_merge_1').files[0];
                     var file_to_merge_2 = document.getElementById('file_to_merge_2').files[0];
                     // ** Get the URL, or HTML content to merge
@@ -38,30 +34,28 @@
                         return;
                     }
 
-					//** Are both files specified?
-                    if (file_to_merge_1 && file_to_merge_2) 
-                    {
+                    //** Are both files specified?
+                    if (file_to_merge_1 && file_to_merge_2) {
                         // ** Read files asynchronously
                         getFile(file_to_merge_1, 'file_to_merge_1');
                         getFile(file_to_merge_2, 'file_to_merge_2');
 
                         // ** A bit hacky, (this is just an example) but we need to wait a very short amount of time for the files to finish loading
-                        setTimeout(function ()
-                        {
+                        setTimeout(function () {
                             // ** We need to fill out the data for the conversion operation
                             var input_data = JSON.stringify(
                                 {
                                     "fail_on_error": false,
-                                    "source_file_name_1": file_to_merge_1.name + ';true;My Bookmark',   // ** The name of the file to merge, always include the correct extension. 
-                                                                                                        //    Optionally add ';true' to auto generate PDF bookmarks based on document structure, 
-                                                                                                        //    optionally followed by a ';' and the PDF bookmark name of the document.
+                                    "source_file_name_1": file_to_merge_1.name + ';true;My Bookmark',   // ** The name of the file to merge, always include the correct extension.
+                                    //    Optionally add ';true' to auto generate PDF bookmarks based on document structure,
+                                    //    optionally followed by a ';' and the PDF bookmark name of the document.
                                     "source_file_content_1": encodedFiles["file_to_merge_1"],           // ** Content of the first file to merge.
                                     "source_file_name_2": file_to_merge_2.name,                         // ** Same again for up to 4 more files
                                     "source_file_content_2": encodedFiles["file_to_merge_2"],           // ** Content of the second to merge.
                                     "source_file_name_3": "Test.html",                                  // ** When converting HTML content make sure a filename with '.html' extension is used
                                     "source_file_content_3": btoa(source_HTML),                         // ** Pass in a URL or RAW HTML, make sure it is BASE64 encoded
                                     "document_start_page": "Starts on the next page"                    // ** On what page should each merged document start (important for double sided docs and printing).
-                                                                                                        //    Use 'Starts on the default page', 'Starts on the next page', 'Starts on the next odd page', 'Starts on the next even page'
+                                    //    Use 'Starts on the default page', 'Starts on the next page', 'Starts on the next odd page', 'Starts on the next even page'
                                 });
 
                             $("#spnResultDetails").text('Please wait, processing...');
@@ -96,7 +90,7 @@
                                             // ** Convert to Blob.
                                             var file_blob = CreateBlob(data['processed_file_content'])
 
-                                            // ** Prompt user to save or open the converted file																											
+                                            // ** Prompt user to save or open the converted file
                                             if (window.navigator.msSaveBlob) {
                                                 // ** For IE.
                                                 window.navigator.msSaveOrOpenBlob(file_blob, data['base_file_name'] + ".pdf");
@@ -123,25 +117,23 @@
                                     }
                                 });
                         }, 100);
-				    }
-					else
-					{
-						alert('Specify files to process.');
-					}
-		        }
-		        catch(err) 
-		        {
-				    console.log(err.message);
-					
-					// ** Show exception
-					$("#spnResultCode").text("Exception occurred.");
-					$("#spnResultDetails").text(err.message);
-				}
-	       });
+                    }
+                    else {
+                        alert('Specify files to process.');
+                    }
+                }
+                catch (err) {
+                    console.log(err.message);
+
+                    // ** Show exception
+                    $("#spnResultCode").text("Exception occurred.");
+                    $("#spnResultDetails").text(err.message);
+                }
+            });
         });
 
 
-        // ** Create a Blob object from the base64 encoded string. 
+        // ** Create a Blob object from the base64 encoded string.
         function CreateBlob(base64string) {
             var file_bytes = atob(base64string);
 
@@ -202,12 +194,12 @@
                 reader.readAsArrayBuffer(file_content);
             }
         }
-	</script>
+    </script>
 
 </head>
 
 <body>
-	<div>
+    <div>
         <form id="convert_form">
 
             <p>Select file 1: <input type="file" id="file_to_merge_1" /></p>
@@ -241,7 +233,7 @@
             Result_Details: <span id="spnResultDetails"></span>
 
         </form>
-	</div>
+    </div>
 </body>
 
 </html>

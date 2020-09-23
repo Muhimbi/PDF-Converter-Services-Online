@@ -1,6 +1,6 @@
-# Sample - Apply an RTF based text watermark to PDF using JavaScript
+# Sample - Apply an RTF based text watermark to a PDF or MS Office documents using JavaScript
 
-The sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply text - containing rich formatting ([RTF](http://search.cpan.org/~sburke/RTF-Writer-1.11/lib/RTF/Cookbook.pod)) - as a watermark to a PDF file. 
+The sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply text - containing rich formatting ([RTF](http://search.cpan.org/~sburke/RTF-Writer-1.11/lib/RTF/Cookbook.pod)) - as a watermark to a PDF or MS Office documents. 
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../../).
 
 Full details about the `rtf_watermark` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-rtf_watermark).

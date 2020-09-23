@@ -1,6 +1,6 @@
-# Sample - Apply an RTF based text watermark to PDF using PHP
+# Sample - Apply an RTF based text watermark to PDF or MS Office documents using PHP
 
-The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply text - containing rich formatting ([RTF](http://search.cpan.org/~sburke/RTF-Writer-1.11/lib/RTF/Cookbook.pod)) - as a watermark to a PDF file. 
+The PHP sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply text - containing rich formatting ([RTF](http://search.cpan.org/~sburke/RTF-Writer-1.11/lib/RTF/Cookbook.pod)) - as a watermark to a PDF or MS Office documents. 
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../../).
 
 Full details about the `rtf_watermark` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-rtf_watermark).
@@ -48,7 +48,7 @@ You may want to change the port number and naturally you must specify the full p
 
 With PHP running - and in this example - listening on port 8080, open a browser and navigate to `http://localhost:8080/rtf_watermark.php`.
 
-Choose a PDF file and click the `Watermark` button. 
+Choose a PDF or an MS Office document file and click the `Watermark` button. 
 
 <br>
 

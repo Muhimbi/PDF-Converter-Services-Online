@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "9.9",
+    "version": "9.14",
     "title": "Muhimbi PDF",
     "description": "Convert, Merge, Watermark, Secure and OCR files."
   },
@@ -241,6 +241,33 @@
         }
       }
     },
+    "/v1/operations/linear_barcode_watermark": {
+      "post": {
+        "tags": [ "Watermark" ],
+        "summary": "Add Linear Barcode watermark",
+        "description": "Add a Linear Barcode watermark to a PDF file.",
+        "operationId": "linear_barcode_watermark",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "input_data",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/linear_barcode_watermark_data" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/operation_response" }
+          },
+          "400": { "description": "Bad request" },
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    },
     "/v1/operations/merge_to_pdf": {
       "post": {
         "tags": [ "Merge" ],
@@ -456,10 +483,37 @@
         }
       }
     },
+    "/v1/operations/secure_document": {
+      "post": {
+        "tags": [ "Secure" ],
+        "description": "Secure document. Apply security and encryption settings to PDF and Office documents.",
+        "operationId": "secure_document",
+        "x-ms-visibility": "internal",
+        "consumes": [ "application/json" ],
+        "produces": [ "application/json" ],
+        "parameters": [
+          {
+            "name": "input_data",
+            "in": "body",
+            "required": true,
+            "schema": { "$ref": "#/definitions/secure_document_data" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": { "$ref": "#/definitions/operation_response" }
+          },
+          "400": { "description": "Bad request" },
+          "500": { "description": "Internal server error" },
+          "401": { "description": "Unauthorized" }
+        }
+      }
+    },
     "/v1/operations/secure_pdf": {
       "post": {
         "tags": [ "Secure" ],
-        "summary": "Secure PDF",
+        "summary": "Secure document",
         "description": "Apply security and encryption settings.",
         "operationId": "secure_pdf",
         "consumes": [ "application/json" ],
@@ -567,11 +621,10 @@
   "definitions": {
     "composite_watermark_data": {
       "description": "Parameters for CompositeWatermark operation",
-      "required": [ "watermark_data", "source_file_content" ],
+      "required": [ "watermark_data", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -612,7 +665,7 @@
     },
     "convert_data": {
       "description": "Parameters for Convert operation",
-      "required": [ "source_file_name", "source_file_content", "output_format" ],
+      "required": [ "source_file_name", "source_file_content", "output_format", "copy_metadata", "use_async_pattern" ],
       "properties": {
         "use_async_pattern": {
           "description": "Use async behaviour for API request",
@@ -682,7 +735,7 @@
     },
     "convert_html_data": {
       "description": "Parameters for ConvertHtml operation",
-      "required": [ "source_url_or_html" ],
+      "required": [ "use_async_pattern", "source_url_or_html" ],
       "properties": {
         "use_async_pattern": {
           "description": "Use async behaviour for API request",
@@ -708,6 +761,26 @@
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape" ]
         },
+        "media_type": {
+          "description": "Media type",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Media type",
+          "type": "string",
+          "format": "enum",
+          "default": "Screen",
+          "uniqueItems": false,
+          "enum": [ "Screen", "Print" ]
+        },
+        "authentication_type": {
+          "description": "Authentication type",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Authentication type",
+          "type": "string",
+          "format": "enum",
+          "default": "Anonymous",
+          "uniqueItems": false,
+          "enum": [ "Anonymous", "SharePoint Online", "Web" ]
+        },
         "username": {
           "description": "User name",
           "x-ms-visibility": "advanced",
@@ -723,15 +796,20 @@
           "format": "password",
           "uniqueItems": false
         },
-        "authentication_type": {
-          "description": "Authentication type",
+        "viewport_size": {
+          "description": "Optional width and height of the simulated browser (e.g. 1024x768)",
           "x-ms-visibility": "advanced",
-          "x-ms-summary": "Authentication type",
+          "x-ms-summary": "Viewport size",
           "type": "string",
-          "format": "enum",
-          "default": "Basic",
-          "uniqueItems": false,
-          "enum": [ "Basic" ]
+          "uniqueItems": false
+        },
+        "conversion_delay": {
+          "description": "Conversion delay (in milliseconds)",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Conversion delay",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
         },
         "fail_on_error": {
           "description": "Fail on error",
@@ -807,11 +885,10 @@
     },
     "ellipse_watermark_data": {
       "description": "Parameters for EllipseWatermark operation",
-      "required": [ "position", "width", "height", "source_file_content" ],
+      "required": [ "position", "width", "height", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -939,6 +1016,39 @@
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape", "Both" ]
         },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
+        },
         "fail_on_error": {
           "description": "Fail on error",
           "x-ms-visibility": "advanced",
@@ -953,11 +1063,10 @@
     },
     "image_watermark_data": {
       "description": "Parameters for ImageWatermark operation",
-      "required": [ "image_file", "position", "width", "height", "source_file_content" ],
+      "required": [ "image_file", "position", "width", "height", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -1095,6 +1204,39 @@
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape", "Both" ]
         },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
+        },
         "fail_on_error": {
           "description": "Fail on error",
           "x-ms-visibility": "advanced",
@@ -1109,11 +1251,10 @@
     },
     "line_watermark_data": {
       "description": "Parameters for LineWatermark operation",
-      "required": [ "position", "x", "y", "end_x", "end_y", "source_file_content" ],
+      "required": [ "position", "x", "y", "end_x", "end_y", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -1235,6 +1376,39 @@
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape", "Both" ]
         },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
+        },
         "fail_on_error": {
           "description": "Fail on error",
           "x-ms-visibility": "advanced",
@@ -1247,9 +1421,284 @@
       "type": "object",
       "format": "line_watermark_data"
     },
+    "linear_barcode_watermark_data": {
+      "description": "Parameters for LinearBarcodeWatermark operation",
+      "required": [ "content", "barcode_type", "disable_checkdigit", "show_checkdigit", "position", "width", "height", "source_file_content", "use_async_pattern" ],
+      "properties": {
+        "source_file_name": {
+          "description": "Name of the source file including extension",
+          "x-ms-summary": "Source file name",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "use_async_pattern": {
+          "description": "Use async behaviour for API request",
+          "x-ms-visibility": "internal",
+          "x-ms-summary": "Use async pattern",
+          "type": "boolean",
+          "default": false,
+          "uniqueItems": false
+        },
+        "source_file_content": {
+          "description": "Content of the file to watermark",
+          "x-ms-summary": "Source file content",
+          "type": "string",
+          "format": "byte",
+          "uniqueItems": false
+        },
+        "content": {
+          "description": "Data to embed in the Linear Barcode",
+          "x-ms-summary": "Barcode content",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "sharepoint_file": { "$ref": "#/definitions/sharepoint_file" },
+        "barcode_type": {
+          "description": "The type of the barcode",
+          "x-ms-summary": "Barcode type",
+          "type": "string",
+          "format": "enum",
+          "default": "Codabar",
+          "uniqueItems": false,
+          "enum": [ "Codabar", "Code11", "Code32", "Code39", "Code39Extended", "Code93", "Code93Extended", "Code128", "Code128A", "Code128B", "Code128C", "GS1Code128", "UPC_A" ]
+        },
+        "omit_start_stop_symbols": {
+          "description": "Flag indicating if start and stop symbols have to be encoded into the barcode or not",
+          "x-ms-summary": "Omit encoding of start/stop symbols",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "true", "false" ]
+        },
+        "disable_checkdigit": {
+          "description": "Flag indicating if the check digit has to be calculated or not",
+          "x-ms-summary": "Disable check digit",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "true", "false" ]
+        },
+        "show_checkdigit": {
+          "description": "Flag indicating if the check digit should be displayed in the barcode label or not",
+          "x-ms-summary": "Show check digit",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "true", "false" ]
+        },
+        "margin": {
+          "description": "Margin around the barcode",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Margin",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "font_family_name": {
+          "description": "Name of the font, e.g. Arial, Times New Roman, Calibri",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Font family",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "font_size": {
+          "description": "Size of the font in Pt",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Font size",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "font_style": {
+          "description": "One or more styles, e.g. bold|italic|underline|strikeout",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Font style",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "label_placement": {
+          "description": "Placement of the barcode label",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Label placement",
+          "type": "string",
+          "format": "enum",
+          "default": "Bottom Center",
+          "uniqueItems": false,
+          "enum": [ "Top Left", "Top Center", "Top Right", "None", "Bottom Left", "Bottom Center", "Bottom Right" ]
+        },
+        "position": {
+          "description": "Watermark position on the page",
+          "x-ms-summary": "Position",
+          "type": "string",
+          "format": "enum",
+          "default": "Middle Center",
+          "uniqueItems": false,
+          "enum": [ "Top Left", "Top Center", "Top Right", "Middle Left", "Middle Center", "Middle Right", "Bottom Left", "Bottom Center", "Bottom Right", "Absolute", "Random" ]
+        },
+        "width": {
+          "description": "Width of the watermark (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Width",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "height": {
+          "description": "Height of the watermark (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Height",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "x": {
+          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "y": {
+          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "layer": {
+          "description": "Watermark layer",
+          "x-ms-summary": "Layer",
+          "type": "string",
+          "format": "enum",
+          "default": "Foreground",
+          "uniqueItems": false,
+          "enum": [ "Background", "Foreground" ]
+        },
+        "rotation": {
+          "description": "Angle of rotation",
+          "x-ms-summary": "Rotation",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "opacity": {
+          "description": "Opacity in % (100 is fully visible and 1 is barely visible)",
+          "x-ms-summary": "Opacity",
+          "type": "string",
+          "default": "100",
+          "uniqueItems": false
+        },
+        "fill_color": {
+          "description": "Color in #RRGGBB notation",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Barcode background color",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "line_color": {
+          "description": "Color in #RRGGBB notation",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Barcode bar color",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "start_page": {
+          "description": "Number of the first page the watermark applies to",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start page",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_page": {
+          "description": "Number of the last page the watermark applies to",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end page",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_interval": {
+          "description": "Which pages to display the watermark on (1=every page, 2=every other, etc)",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page interval",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_orientation": {
+          "description": "Orientation of pages the watermark applies to.",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page orientation",
+          "type": "string",
+          "format": "enum",
+          "default": "Both",
+          "uniqueItems": false,
+          "enum": [ "Portrait", "Landscape", "Both" ]
+        },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "fail_on_error": {
+          "description": "Fail on error",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Fail on error",
+          "type": "boolean",
+          "default": true,
+          "uniqueItems": false
+        }
+      },
+      "type": "object",
+      "format": "linear_barcode_watermark_data"
+    },
+    "merge_source_file": {
+      "description": "Source file information for merge operation",
+      "required": [ "source_file_name", "source_file_content" ],
+      "properties": {
+        "source_file_name": {
+          "description": "Name of the source file including extension",
+          "x-ms-summary": "name",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "source_file_content": {
+          "description": "Content of the file to merge",
+          "x-ms-summary": "content",
+          "type": "string",
+          "format": "byte",
+          "uniqueItems": false
+        }
+      },
+      "type": "object",
+      "format": "merge_source_file"
+    },
     "merge_to_pdf_data": {
       "description": "Parameters for MergeToPdf operation",
-      "required": [ "source_file_name_1", "source_file_content_1", "source_file_name_2", "source_file_content_2" ],
+      "required": [ "use_async_pattern" ],
       "properties": {
         "use_async_pattern": {
           "description": "Use async behaviour for API request",
@@ -1261,12 +1710,14 @@
         },
         "source_file_name_1": {
           "description": "Name of the source file including extension",
+          "x-ms-visibility": "advanced",
           "x-ms-summary": "Source file name - 1",
           "type": "string",
           "uniqueItems": false
         },
         "source_file_content_1": {
           "description": "Content of the file to merge",
+          "x-ms-visibility": "advanced",
           "x-ms-summary": "Source file content - 1",
           "type": "string",
           "format": "byte",
@@ -1274,12 +1725,14 @@
         },
         "source_file_name_2": {
           "description": "Name of the source file including extension",
+          "x-ms-visibility": "advanced",
           "x-ms-summary": "Source file name - 2",
           "type": "string",
           "uniqueItems": false
         },
         "source_file_content_2": {
           "description": "Content of the file to merge",
+          "x-ms-visibility": "advanced",
           "x-ms-summary": "Source file content - 2",
           "type": "string",
           "format": "byte",
@@ -1348,6 +1801,20 @@
           "uniqueItems": false,
           "enum": [ "Starts on the default page", "Starts on the next page", "Starts on the next odd page", "Starts on the next even page" ]
         },
+        "source_files": {
+          "description": "List of files to merge",
+          "x-ms-summary": "Source files",
+          "type": "array",
+          "items": { "$ref": "#/definitions/merge_source_file" },
+          "uniqueItems": false
+        },
+        "override_settings": {
+          "description": "Optional settings using Muhimbi's XML syntax",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Override settings",
+          "type": "string",
+          "uniqueItems": false
+        },
         "fail_on_error": {
           "description": "Fail on error",
           "x-ms-visibility": "advanced",
@@ -1381,7 +1848,7 @@
           "type": "string",
           "format": "enum",
           "uniqueItems": false,
-          "enum": [ "Success", "ProcessingError", "SubscriptionNotFound", "SubscriptionExpired", "ActivationPending", "TrialExpired", "OperationSizeExceeded", "OperationsExceeded", "InputFileTypeNotSupported", "OutputFileTypeNotSupported", "OperationNotSupported", "Accepted", "AccessDenied" ]
+          "enum": [ "Success", "ProcessingError", "SubscriptionNotFound", "SubscriptionExpired", "ActivationPending", "TrialExpired", "OperationSizeExceeded", "OperationsExceeded", "InputFileTypeNotSupported", "OutputFileTypeNotSupported", "OperationNotSupported", "Accepted", "AccessDenied", "InvalidExtension" ]
         },
         "result_details": {
           "description": "Operation result details.",
@@ -1395,7 +1862,7 @@
     },
     "ocr_pdf_data": {
       "description": "Parameters for OCRText operation",
-      "required": [ "source_file_name", "source_file_content" ],
+      "required": [ "source_file_name", "source_file_content", "copy_metadata", "use_async_pattern" ],
       "properties": {
         "use_async_pattern": {
           "description": "Use async behaviour for API request",
@@ -1434,7 +1901,7 @@
           "format": "enum",
           "default": "English",
           "uniqueItems": false,
-          "enum": [ "English", "Arabic", "Danish", "German", "Dutch", "Finnish", "French", "Hebrew", "Hungarian", "Italian", "Norwegian", "Portuguese", "Spanish", "Swedish" ]
+          "enum": [ "English", "Arabic", "Danish", "German", "Dutch", "Finnish", "French", "Hebrew", "Hungarian", "Italian", "Norwegian", "Portuguese", "Spanish", "Swedish", "Russian" ]
         },
         "performance": {
           "description": "Performance",
@@ -1492,7 +1959,7 @@
     },
     "ocr_text_data": {
       "description": "Parameters for OCRText operation",
-      "required": [ "source_file_name", "source_file_content" ],
+      "required": [ "source_file_name", "source_file_content", "use_async_pattern" ],
       "properties": {
         "use_async_pattern": {
           "description": "Use async behaviour for API request",
@@ -1517,13 +1984,13 @@
         },
         "sharepoint_file": { "$ref": "#/definitions/sharepoint_file" },
         "language": {
-          "description": "Languate",
+          "description": "Language",
           "x-ms-summary": "Language",
           "type": "string",
           "format": "enum",
           "default": "English",
           "uniqueItems": false,
-          "enum": [ "English", "Arabic", "Danish", "German", "Dutch", "Finnish", "French", "Hebrew", "Hungarian", "Italian", "Norwegian", "Portuguese", "Spanish", "Swedish" ]
+          "enum": [ "English", "Arabic", "Danish", "German", "Dutch", "Finnish", "French", "Hebrew", "Hungarian", "Italian", "Norwegian", "Portuguese", "Spanish", "Swedish", "Russian" ]
         },
         "x": {
           "description": "X Coordinate (in Pts, 1/72 of an inch)",
@@ -1625,7 +2092,7 @@
           "type": "string",
           "format": "enum",
           "uniqueItems": false,
-          "enum": [ "Success", "ProcessingError", "SubscriptionNotFound", "SubscriptionExpired", "ActivationPending", "TrialExpired", "OperationSizeExceeded", "OperationsExceeded", "InputFileTypeNotSupported", "OutputFileTypeNotSupported", "OperationNotSupported", "Accepted", "AccessDenied" ]
+          "enum": [ "Success", "ProcessingError", "SubscriptionNotFound", "SubscriptionExpired", "ActivationPending", "TrialExpired", "OperationSizeExceeded", "OperationsExceeded", "InputFileTypeNotSupported", "OutputFileTypeNotSupported", "OperationNotSupported", "Accepted", "AccessDenied", "InvalidExtension" ]
         },
         "result_details": {
           "description": "Operation result details.",
@@ -1652,7 +2119,7 @@
           "type": "string",
           "format": "enum",
           "uniqueItems": false,
-          "enum": [ "Success", "ProcessingError", "SubscriptionNotFound", "SubscriptionExpired", "ActivationPending", "TrialExpired", "OperationSizeExceeded", "OperationsExceeded", "InputFileTypeNotSupported", "OutputFileTypeNotSupported", "OperationNotSupported", "Accepted", "AccessDenied" ]
+          "enum": [ "Success", "ProcessingError", "SubscriptionNotFound", "SubscriptionExpired", "ActivationPending", "TrialExpired", "OperationSizeExceeded", "OperationsExceeded", "InputFileTypeNotSupported", "OutputFileTypeNotSupported", "OperationNotSupported", "Accepted", "AccessDenied", "InvalidExtension" ]
         },
         "result_details": {
           "description": "Operation result details.",
@@ -1666,11 +2133,10 @@
     },
     "pdf_watermark_data": {
       "description": "Parameters for PDFWatermark operation",
-      "required": [ "pdf_file", "position", "width", "height", "source_file_content" ],
+      "required": [ "pdf_file", "position", "width", "height", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -1787,6 +2253,39 @@
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape", "Both" ]
         },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
+        },
         "fail_on_error": {
           "description": "Fail on error",
           "x-ms-visibility": "advanced",
@@ -1821,11 +2320,10 @@
     },
     "qr_code_watermark_data": {
       "description": "Parameters for QRCodeWatermark operation",
-      "required": [ "content", "version", "input_mode", "error_correction_level", "position", "width", "height", "source_file_content" ],
+      "required": [ "content", "version", "input_mode", "error_correction_level", "position", "width", "height", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -1982,6 +2480,39 @@
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape", "Both" ]
         },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
+        },
         "fail_on_error": {
           "description": "Fail on error",
           "x-ms-visibility": "advanced",
@@ -1996,11 +2527,10 @@
     },
     "rectangle_watermark_data": {
       "description": "Parameters for RectangleWatermark operation",
-      "required": [ "position", "width", "height", "source_file_content" ],
+      "required": [ "position", "width", "height", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -2128,6 +2658,39 @@
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape", "Both" ]
         },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
+        },
         "fail_on_error": {
           "description": "Fail on error",
           "x-ms-visibility": "advanced",
@@ -2142,11 +2705,10 @@
     },
     "rtf_watermark_data": {
       "description": "Parameters for RTFWatermark operation",
-      "required": [ "rtf_data", "position", "width", "height", "source_file_content" ],
+      "required": [ "rtf_data", "position", "width", "height", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -2283,6 +2845,39 @@
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape", "Both" ]
         },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
+        },
         "fail_on_error": {
           "description": "Fail on error",
           "x-ms-visibility": "advanced",
@@ -2295,9 +2890,9 @@
       "type": "object",
       "format": "rtf_watermark_data"
     },
-    "secure_pdf_data": {
-      "description": "Parameters for SecurePdf operation",
-      "required": [ "source_file_content" ],
+    "secure_document_data": {
+      "description": "Parameters for SecureDocument operation",
+      "required": [ "source_file_name", "source_file_content", "use_async_pattern" ],
       "properties": {
         "use_async_pattern": {
           "description": "Use async behaviour for API request",
@@ -2308,8 +2903,65 @@
           "uniqueItems": false
         },
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
+          "description": "Name of the source file including extension",
+          "x-ms-summary": "Source file name",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "source_file_content": {
+          "description": "Content of the file to secure",
+          "x-ms-summary": "Source file content",
+          "type": "string",
+          "format": "byte",
+          "uniqueItems": false
+        },
+        "sharepoint_file": { "$ref": "#/definitions/sharepoint_file" },
+        "open_password": {
+          "description": "Password required to open the document",
+          "x-ms-summary": "Open password",
+          "type": "string",
+          "format": "password",
+          "uniqueItems": false
+        },
+        "owner_password": {
+          "description": "Password for making non-PDF document readonly or PDF document restrictions defined below",
+          "x-ms-summary": "Owner password",
+          "type": "string",
+          "format": "password",
+          "uniqueItems": false
+        },
+        "security_options": {
+          "description": "Print|HighResolutionPrint|ContentCopy|Annotations|FormFields|ContentAccessibility|DocumentAssembly",
+          "x-ms-summary": "PDF restrictions",
+          "type": "string",
+          "uniqueItems": false
+        },
+        "fail_on_error": {
+          "description": "Fail on error",
           "x-ms-visibility": "advanced",
+          "x-ms-summary": "Fail on error",
+          "type": "boolean",
+          "default": true,
+          "uniqueItems": false
+        }
+      },
+      "type": "object",
+      "format": "secure_document_data"
+    },
+    "secure_pdf_data": {
+      "description": "Parameters for SecurePdf operation",
+      "required": [ "source_file_content", "use_async_pattern" ],
+      "properties": {
+        "use_async_pattern": {
+          "description": "Use async behaviour for API request",
+          "x-ms-visibility": "internal",
+          "x-ms-summary": "Use async pattern",
+          "type": "boolean",
+          "default": false,
+          "uniqueItems": false
+        },
+        "source_file_name": {
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -2386,7 +3038,7 @@
           "uniqueItems": false
         },
         "password": {
-          "description": "Password to log in to the SharePoint siteâ€™",
+          "description": "Password to log in to the SharePoint site’",
           "x-ms-visibility": "internal",
           "x-ms-summary": "Password",
           "type": "string",
@@ -2413,7 +3065,7 @@
           "type": "string",
           "format": "enum",
           "uniqueItems": false,
-          "enum": [ "Success", "ProcessingError", "SubscriptionNotFound", "SubscriptionExpired", "ActivationPending", "TrialExpired", "OperationSizeExceeded", "OperationsExceeded", "InputFileTypeNotSupported", "OutputFileTypeNotSupported", "OperationNotSupported", "Accepted", "AccessDenied" ]
+          "enum": [ "Success", "ProcessingError", "SubscriptionNotFound", "SubscriptionExpired", "ActivationPending", "TrialExpired", "OperationSizeExceeded", "OperationsExceeded", "InputFileTypeNotSupported", "OutputFileTypeNotSupported", "OperationNotSupported", "Accepted", "AccessDenied", "InvalidExtension" ]
         },
         "result_details": {
           "description": "Operation result details.",
@@ -2427,7 +3079,7 @@
     },
     "split_pdf_data": {
       "description": "Parameters for SplitPdf operation",
-      "required": [ "source_file_name", "source_file_content", "file_split_by", "split_parameter" ],
+      "required": [ "source_file_name", "source_file_content", "file_split_by", "split_parameter", "use_async_pattern" ],
       "properties": {
         "use_async_pattern": {
           "description": "Use async behaviour for API request",
@@ -2488,11 +3140,10 @@
     },
     "text_watermark_data": {
       "description": "Parameters for TextWatermark operation",
-      "required": [ "content", "font_family_name", "font_size", "fill_color", "alignment", "word_wrap", "position", "width", "height", "source_file_content" ],
+      "required": [ "content", "font_family_name", "font_size", "fill_color", "alignment", "word_wrap", "position", "width", "height", "source_file_content", "use_async_pattern" ],
       "properties": {
         "source_file_name": {
-          "description": "Optional file name (for logging purposes)",
-          "x-ms-visibility": "advanced",
+          "description": "Name of the source file including extension",
           "x-ms-summary": "Source file name",
           "type": "string",
           "uniqueItems": false
@@ -2666,6 +3317,39 @@
           "default": "Both",
           "uniqueItems": false,
           "enum": [ "Portrait", "Landscape", "Both" ]
+        },
+        "print_only": {
+          "description": "Tells if the watermark is only visible when the document is printed",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Print only",
+          "type": "string",
+          "format": "enum",
+          "default": "false",
+          "uniqueItems": false,
+          "enum": [ "false", "true" ]
+        },
+        "start_section": {
+          "description": "The first section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark start section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "end_section": {
+          "description": "The last section in a Word or Excel document the watermark is visible",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark end section",
+          "type": "integer",
+          "format": "int32",
+          "uniqueItems": false
+        },
+        "page_type": {
+          "description": "One or more page types for Word and Excel documents, eg. default|first|even",
+          "x-ms-visibility": "advanced",
+          "x-ms-summary": "Watermark page type",
+          "type": "string",
+          "uniqueItems": false
         },
         "fail_on_error": {
           "description": "Fail on error",

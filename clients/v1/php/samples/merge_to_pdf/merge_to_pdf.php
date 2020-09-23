@@ -34,7 +34,8 @@ if( ($_FILES["file1"]['size'] > 0) && ($_FILES["file2"]['size'] > 0))
     $input_data->setSourceFileName2($_FILES["file2"]["name"] . ';true;Another file');
     $input_data->setSourceFileContent2(base64_encode(file_get_contents($_FILES["file2"]["tmp_name"])));
     // ** And add the URL we want to convert and merge as well.
-    $input_data->setSourceFileName3("URL Content;;URL Content");
+    // ** When converting HTML content make sure a filename with '.html' extension is used
+    $input_data->setSourceFileName3("Test.html;;URL Content");
     $input_data->setSourceFileContent3($_POST["url"]);
 
     // ** We want each document to be merged DIRECTLY after the previous, no white pages for double sided printing.

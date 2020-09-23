@@ -1,6 +1,6 @@
-# Sample - Apply complex watermark to PDF using JavaScript
+# Sample - Apply complex watermark to a PDF or MS Office documents using JavaScript
 
-The sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a '*composite watermark*' to a PDF file. This is typically done when a single file requires multiple watermarks. Composite watermarks are defined using Muhimbi's [XML based watermarking syntax](http://blog.muhimbi.com/2010/10/watermarking-pdf-documents-using_25.html).
+The sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a '*composite watermark*' to a PDF or MS Office documents. This is typically done when a single file requires multiple watermarks. Composite watermarks are defined using Muhimbi's [XML based watermarking syntax](http://blog.muhimbi.com/2010/10/watermarking-pdf-documents-using_25.html).
 
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../../).
 

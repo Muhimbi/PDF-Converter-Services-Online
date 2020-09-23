@@ -187,6 +187,7 @@ Sample								| Description
 [ocr_pdf](samples/ocr_pdf/)					| Convert a scan, fax or other image into a searchable PDF.
 [ocr_text](samples/ocr_text/)				| Use OCR to extract text from a scan, fax or other image.
 [secure_pdf](samples/secure_pdf/)			| Apply security settings, passwords and restrictions to a PDF.
+[secure_document (MS Office)](samples/secure_document%20%28MS%20Office%29/)	| Apply security settings and passwords to an MS Office.
 [split_pdf](samples/split_pdf/)				| Split a large PDF into smaller PDFs.
 **[watermarking](samples/watermarking/)**	| 
 &nbsp;&nbsp;&nbsp;[text_watermark](samples/watermarking/text_watermark/)			| Add a simple text watermark to a PDF file.
@@ -198,6 +199,11 @@ Sample								| Description
 &nbsp;&nbsp;&nbsp;[line_watermark](samples/watermarking/line_watermark/)			| Add a line based watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[rectangle_watermark](samples/watermarking/rectangle_watermark/)	| Add a rectangle based watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[composite_watermark](samples/watermarking/composite_watermark/)	| Add a number of different watermarks to a PDF file in a single operation.
+&nbsp;&nbsp;&nbsp;[linear_barcode_watermark](samples/watermarking/linear_barcodecode_watermark/)	| Add a Linear Barcode to a PDF file.
+**[watermarking (MS Office)](samples/watermarking%20%28MS%20Office%29/)**	| 
+&nbsp;&nbsp;&nbsp;[composite_watermark](samples/watermarking%20%28MS%20Office%29/composite_watermark/)	| Add a number of different watermarks to a Word document in a single operation.
+&nbsp;&nbsp;&nbsp;[qr_code_watermark](samples/watermarking%20%28MS%20Office%29/qr_code_watermark/)		| Add a QR Code to an Excel document.
+&nbsp;&nbsp;&nbsp;[text_watermark](samples/watermarking%20%28MS%20Office%29/text_watermark/)			| Add a simple text watermark to a PowerPoint document.
 
 <br/>
 

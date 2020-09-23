@@ -1,48 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Muhimbi API - Merge to PDF (SharePoint)</title>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		
-		// ** Specify the API key associated with your subscription.
+    <title>Muhimbi API - Merge to PDF (SharePoint)</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        // ** Specify the API key associated with your subscription.
         var api_key = '';
-	
-		// ** Execute code when DOM is loaded in the browser.
-	    $(document).ready(function () 
-		{
-			//** Make sure an api key has been entered.
-			if(api_key=='')
-			{
-				alert('Please update the sample code and enter the API Key that came with your subscription.');
-			}
-		
-			// ** Attach a click event to the Convert button.
-			$('#btnConvert').click(function () 
-			{
-				// ** Proceed only when API Key is provided above
-				if(api_key=='')
-					return;
-					
-				try
-                {
+
+        // ** Execute code when DOM is loaded in the browser.
+        $(document).ready(function () {
+            //** Make sure an api key has been entered.
+            if (api_key == '') {
+                alert('Please update the sample code and enter the API Key that came with your subscription.');
+            }
+
+            // ** Attach a click event to the Convert button.
+            $('#btnConvert').click(function () {
+                // ** Proceed only when API Key is provided above
+                if (api_key == '')
+                    return;
+
+                try {
                     // ** Read the form fields
                     var site_collection_url = $("#site_collection_url").val();
                     var source_urls = $("#source_urls").val();
                     var destination_url = $("#destination_url").val();
 
-					//** Are all fields specified
-                    if (site_collection_url && source_urls && destination_url) 
-                    {
-                        var sharepoint_file = 
-                            {
-                                "site_url": site_collection_url,            // ** URL to the site collection, e.g. https://acme.sharepoint.com/sites/SomeSite
-                                "source_file_url": source_urls.trim(),      // ** List of files to merge including optional ';' separated parameters.
-                                                                            //    filepath;generate bookmarks (optional);name of bookmark (Optional)
-                                "destination_file_url": destination_url,    // ** Path and filename to write the results to. See http://goo.gl/YqKXM
-                                "username": null,                           // ** If the Muhimbi App is installed on the site collection then there is no
-                                "password": null                            // ** need to specify credentials. If App is not present, specify login details.
-                            };
+                    //** Are all fields specified
+                    if (site_collection_url && source_urls && destination_url) {
+                        var sharepoint_file =
+                        {
+                            "site_url": site_collection_url,            // ** URL to the site collection, e.g. https://acme.sharepoint.com/sites/SomeSite
+                            "source_file_url": source_urls.trim(),      // ** List of files to merge including optional ';' separated parameters.
+                            //    filepath;generate bookmarks (optional);name of bookmark (Optional)
+                            "destination_file_url": destination_url,    // ** Path and filename to write the results to. See http://goo.gl/YqKXM
+                            "username": null,                           // ** If the Muhimbi App is installed on the site collection then there is no
+                            "password": null                            // ** need to specify credentials. If App is not present, specify login details.
+                        };
 
                         // ** We need to fill out the data for the conversion operation
                         var input_data = JSON.stringify(
@@ -55,7 +50,7 @@
                                 "source_file_name_2": "",                           // ** Mandatory field, so specify empty data
                                 "source_file_content_2": null,                      // ** Mandatory field, so specify empty data
                                 "document_start_page": "Starts on the next page"    // ** On what page should each merged document start (important for double sided docs and printing).
-                                                                                    //    Use 'Starts on the default page', 'Starts on the next page', 'Starts on the next odd page', 'Starts on the next even page'
+                                //    Use 'Starts on the default page', 'Starts on the next page', 'Starts on the next odd page', 'Starts on the next even page'
                             });
 
                         $("#spnResultDetails").text('Please wait, processing...')
@@ -99,36 +94,34 @@
                                     $("#spnResultDetails").text('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
                                 }
                             });
-				    }
-					else
-					{
-						alert('Please specify all fields.');
-					}
-		        }
-		        catch(err) 
-		        {
-				    console.log(err.message);
-					
-					// ** Show exception
-					$("#spnResultCode").text("Exception occurred.");
-					$("#spnResultDetails").text(err.message);
-				}
-	       });
+                    }
+                    else {
+                        alert('Please specify all fields.');
+                    }
+                }
+                catch (err) {
+                    console.log(err.message);
+
+                    // ** Show exception
+                    $("#spnResultCode").text("Exception occurred.");
+                    $("#spnResultDetails").text(err.message);
+                }
+            });
         });
-	</script>
+    </script>
 
 </head>
 
 <body>
-	<div>
+    <div>
         <form id="convert_form">
 
             Site Collection URL using http<b><u>S</u></b> (<i>e.g. https://acme.sharepoint.com/sites/SomeSite</i>):<br />
-            <input type="text" id="site_collection_url" style="width:500px;"/>
+            <input type="text" id="site_collection_url" style="width:500px;" />
             <br /><br />
 
             List of relative input URLs: <br />
-                                         <textarea id="source_urls" style="width:500px;height:300px">
+            <textarea id="source_urls" style="width:500px;height:300px">
 Shared Documents\SomeFolder\SomeFile.docx;true;My Bookmark
 Shared Documents\SomeFolder\SomeFile.xlsx;false
 http://www.google.com/
@@ -136,7 +129,7 @@ http://www.google.com/
             <br /><br />
 
             Destination file (<i>e.g. Shared Documents\MergedFile.pdf</i>):<br />
-            <input type="text" id="destination_url" style="width:500px;" value="Shared Documents\MergedFile.pdf"/>
+            <input type="text" id="destination_url" style="width:500px;" value="Shared Documents\MergedFile.pdf" />
 
             <br /><br />
 
@@ -153,7 +146,7 @@ http://www.google.com/
             Result_Details: <span id="spnResultDetails"></span>
 
         </form>
-	</div>
+    </div>
 </body>
 
 </html>

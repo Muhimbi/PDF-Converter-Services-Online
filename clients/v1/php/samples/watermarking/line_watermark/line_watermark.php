@@ -62,7 +62,7 @@ if($_FILES["file"]['size'] > 0)
         // ** Send the watermarked file back to the user
         header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
         header("Content-type: application/octet-stream");
-        header("Content-Disposition: attachment; filename=\"watermarked.pdf\"");
+        header("Content-Disposition: attachment; filename=\"watermarked_" . $input_data->getSourceFileName() . "\"");
         echo base64_decode($result->getProcessedFileContent());
         exit;
     } catch (Exception $e) {
@@ -75,7 +75,7 @@ if($_FILES["file"]['size'] > 0)
   <body>
     <form action="line_watermark.php" method="post" enctype="multipart/form-data">
 
-      <p>Please specify the PDF file to add a watermark to.</p>
+      <p>Please specify the document (.pdf, .docx, .xlsx or .pptx) to add a watermark to.</p>
       <input type="file" name="file" />
 
       <br/><br/>

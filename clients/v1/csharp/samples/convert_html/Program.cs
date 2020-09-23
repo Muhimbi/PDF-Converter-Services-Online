@@ -43,7 +43,7 @@ namespace sample
                     PageOrientation: ConvertHtmlData.PageOrientationEnum.Portrait,                              // ** The page orientation of the generated page
                     Username: null,                                                                             // ** Optional user name to authenticate using the specified AuthenticationType
                     Password: null,                                                                             // ** Optional password to authenticate using the specified AuthenticationType
-                    AuthenticationType: ConvertHtmlData.AuthenticationTypeEnum.Basic                            // ** The type of authentication to use
+                    AuthenticationType: ConvertHtmlData.AuthenticationTypeEnum.Anonymous                        // ** The type of authentication to use
                     );
 
                 // ** Carry out the conversion

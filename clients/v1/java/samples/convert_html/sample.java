@@ -48,7 +48,7 @@ public class sample {
             inputData.setPageOrientation(ConvertHtmlData.PageOrientationEnum.PORTRAIT);                             // ** The page orientation of the generated page
             inputData.setUsername(null);                                                                            // ** Optional user name to authenticate using the specified AuthenticationType
             inputData.setPassword(null);                                                                            // ** Optional password to authenticate using the specified AuthenticationType
-            inputData.setAuthenticationType(ConvertHtmlData.AuthenticationTypeEnum.BASIC);                          // ** The type of authentication to use
+            inputData.setAuthenticationType(ConvertHtmlData.AuthenticationTypeEnum.ANONYMOUS);                      // ** The type of authentication to use
 
             // ** Carry out the operation
             System.out.println("[INFO] Processing...");

@@ -1,6 +1,6 @@
-# Sample - Apply a rectangle watermark to PDF using JavaScript
+# Sample - Apply a rectangle watermark to a PDF or MS Office documents using JavaScript
 
-The sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a rectangle watermark to a PDF file. 
+The sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to apply a rectangle watermark to a PDF or MS Office documents. 
 
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../../).
 

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Muhimbi API - Convert HTML</title>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript">
-	
-		// ** Specify the API key associated with your subscription.
+    <title>Muhimbi API - Convert HTML</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        // ** Specify the API key associated with your subscription.
         var api_key = '';
 
         // ** Proceed only when API Key is provided.
@@ -13,11 +13,9 @@
             alert('Please update the sample code and enter the API Key that came with your subscription.');
         }
 
-		//** Convert the file
-		function btnConvert_Click()
-		{
-			try
-            {
+        //** Convert the file
+        function btnConvert_Click() {
+            try {
                 // ** Get the URL, or HTML content to convert
                 var source_HTML = $("#url").val();
                 if (!source_HTML)
@@ -27,9 +25,9 @@
                     return;
                 }
 
-				// ** We need to fill out the data for the conversion operation
+                // ** We need to fill out the data for the conversion operation
                 var input_data = JSON.stringify(
-                    {																
+                    {
                         "fail_on_error": false,
                         "source_url_or_html": source_HTML,  // ** The URL or HTML string to convert
                         "page_orientation": "Portrait",     // ** 'Portrait' or 'Landscape''
@@ -43,78 +41,73 @@
 
                 $("#spnResultDetails").text('Please wait, processing...');
 
-				// ** Allow cross domain request
-		        jQuery.support.cors = true;
-		
-				// ** Make API Call.
-		        $.ajax(
-		        {
-				  	type: 'POST',
-							
-					// ** Set the request header with API key and content type
-					beforeSend: function(request) 
-					{
-						request.setRequestHeader("Content-Type", 'application/json');
-				    	request.setRequestHeader("api_key", api_key);
-				  	},
-							
-		            url: 'https://api.muhimbi.com/api/v1/operations/convert_html',
-							
-					data: input_data,
-		                    
-					dataType: 'json',
-		                    
-					// ** Carry out the operation
-					success: function (data) 
-		            {
-						// ** Show result code and details.
-						$("#spnResultCode").text(data['result_code']);
-                        $("#spnResultDetails").text(data['result_details']);
-																	
-                        if (data['result_code']=="Success")
-						{
-							// ** Convert to Blob.
-                            var file_blob = CreateBlob(data['processed_file_content'])
-											
-							// ** Prompt user to save or open the converted file																											
-							if (window.navigator.msSaveBlob) { 
-								// ** For IE.
-                                window.navigator.msSaveOrOpenBlob(file_blob, data['base_file_name'] + ".pdf");
-							}
-							else { 
-								// ** For other browsers.
-								// ** Create temporary hyperlink to download content.
-								var download_link = window.document.createElement("a");
-								download_link.href = window.URL.createObjectURL(file_blob, { type: "application/octet-stream" });
-								download_link.download = "output.pdf";
-								document.body.appendChild(download_link);
-								download_link.click();
-								document.body.removeChild(download_link);
-							}
-						}
-		            },
-							
-		            error: function (msg, url, line) 
-		            {
-		                console.log('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
-								
-						// ** Show the error
-						$("#spnResultCode").text("API call error.");
-						$("#spnResultDetails").text('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
-		            }
-		        });
-	        }
-	        catch(err) 
-	        {
-			    console.log(err.message);
-				
-				// ** Show exception
-				$("#spnResultCode").text("Exception occurred.");
-				$("#spnResultDetails").text(err.message);
-			}
+                // ** Allow cross domain request
+                jQuery.support.cors = true;
+
+                // ** Make API Call.
+                $.ajax(
+                    {
+                        type: 'POST',
+
+                        // ** Set the request header with API key and content type
+                        beforeSend: function (request) {
+                            request.setRequestHeader("Content-Type", 'application/json');
+                            request.setRequestHeader("api_key", api_key);
+                        },
+
+                        url: 'https://api.muhimbi.com/api/v1/operations/convert_html',
+
+                        data: input_data,
+
+                        dataType: 'json',
+
+                        // ** Carry out the operation
+                        success: function (data) {
+                            // ** Show result code and details.
+                            $("#spnResultCode").text(data['result_code']);
+                            $("#spnResultDetails").text(data['result_details']);
+
+                            if (data['result_code'] == "Success") {
+                                // ** Convert to Blob.
+                                var file_blob = CreateBlob(data['processed_file_content'])
+
+                                // ** Prompt user to save or open the converted file
+                                if (window.navigator.msSaveBlob) {
+                                    // ** For IE.
+                                    window.navigator.msSaveOrOpenBlob(file_blob, data['base_file_name'] + ".pdf");
+                                }
+                                else {
+                                    // ** For other browsers.
+                                    // ** Create temporary hyperlink to download content.
+                                    var download_link = window.document.createElement("a");
+                                    download_link.href = window.URL.createObjectURL(file_blob, { type: "application/octet-stream" });
+                                    download_link.download = "output.pdf";
+                                    document.body.appendChild(download_link);
+                                    download_link.click();
+                                    document.body.removeChild(download_link);
+                                }
+                            }
+                        },
+
+                        error: function (msg, url, line) {
+                            console.log('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
+
+                            // ** Show the error
+                            $("#spnResultCode").text("API call error.");
+                            $("#spnResultDetails").text('error msg = ' + msg + ', url = ' + url + ', line = ' + line);
+                        }
+                    });
+            }
+            catch (err) {
+                console.log(err.message);
+
+                // ** Show exception
+                $("#spnResultCode").text("Exception occurred.");
+                $("#spnResultDetails").text(err.message);
+            }
         }
 
-        // ** Create a Blob object from the base64 encoded string. 
+        // ** Create a Blob object from the base64 encoded string.
         function CreateBlob(base64string) {
             var file_bytes = atob(base64string);
 
@@ -129,7 +122,7 @@
 
             return file_blob;
         }
-	</script>
+    </script>
 </head>
 
 <body>
@@ -138,7 +131,7 @@
         Specify a URL to convert OR HTML content:
         <br /><br />
         URL:<br />
-        <input type="text" id="url" style="width:500px;"/>
+        <input type="text" id="url" style="width:500px;" />
 
         <br /><br />
 

@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Muhimbi Ltd.")]
 [assembly: AssemblyProduct("Muhimbi PDF Converter Services Online")]
-[assembly: AssemblyCopyright("2017 Muhimbi Ltd.")]
+[assembly: AssemblyCopyright("2020 Muhimbi Ltd.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -28,5 +28,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("9.9.0.0")]
-[assembly: AssemblyFileVersion("9.9.0.0")]
+[assembly: AssemblyVersion("9.14.0.0")]
+[assembly: AssemblyFileVersion("9.14.0.0")]

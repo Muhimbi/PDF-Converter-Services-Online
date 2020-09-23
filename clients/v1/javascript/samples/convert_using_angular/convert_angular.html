@@ -91,9 +91,9 @@
                             // ** We need to fill out the data for the conversion operation
                             var input_data = JSON.stringify({
                                 "fail_on_error": false,
-                                "output_format": output_format, 		    // ** Specify the format of the file type we wish to convert to.
-                                "source_file_name": source_file_name, 		// ** Always pass the name of the input file with the correct file extension.
-                                "source_file_content": source_file_content,	// ** Pass the content of the uploaded file, making sure it is base64 encoded.
+                                "output_format": output_format,             // ** Specify the format of the file type we wish to convert to.
+                                "source_file_name": source_file_name,       // ** Always pass the name of the input file with the correct file extension.
+                                "source_file_content": source_file_content, // ** Pass the content of the uploaded file, making sure it is base64 encoded.
                                 "override_settings": xmlOverride            // ** Optional XML Override data
                             });
 
@@ -220,7 +220,7 @@
         Select file: <input type="file" data-file="source_file_param.file" />
 
         <br /><br />
-        <button id="btnConvert" ng-click="makeCall();">Convert to PDF</button>
+        <button id="btnConvert" ng-click="makeCall();">Convert</button>
         <br /><br />
 
         Note that some combinations (e.g. MS-Word to AutoCAD) are not possible. See <a href="https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-">this matrix</a>.

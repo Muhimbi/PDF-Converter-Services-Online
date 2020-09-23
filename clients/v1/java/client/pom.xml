@@ -5,7 +5,7 @@
   <artifactId>muhimbi-online-pdf-client</artifactId>
   <packaging>jar</packaging>
   <name>muhimbi-online-pdf-client</name>
-  <version>9.9.0</version>
+  <version>9.14.0</version>
   <url>https://github.com/Muhimbi/PDF-Converter-Services-Online/tree/master/clients/v1/java</url>
   <description>The Muhimbi PDF Converter Service Online is a REST based service that makes it easy to add document conversion, merging, watermarking, securing and optical character recognition (OCR) to most programming languages, operating systems and development platforms.</description>
   <scm>
