@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "9.14",
+    "version": "9.14.1",
     "title": "Muhimbi PDF",
     "description": "Convert, Merge, Watermark, Secure and OCR files."
   },
@@ -931,14 +931,14 @@
           "uniqueItems": false
         },
         "x": {
-          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate",
           "type": "string",
           "uniqueItems": false
         },
         "y": {
-          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate",
           "type": "string",
           "uniqueItems": false
         },
@@ -1116,14 +1116,14 @@
           "uniqueItems": false
         },
         "x": {
-          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate",
           "type": "string",
           "uniqueItems": false
         },
         "y": {
-          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate",
           "type": "string",
           "uniqueItems": false
         },
@@ -1549,14 +1549,14 @@
           "uniqueItems": false
         },
         "x": {
-          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate",
           "type": "string",
           "uniqueItems": false
         },
         "y": {
-          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate",
           "type": "string",
           "uniqueItems": false
         },
@@ -2186,14 +2186,14 @@
           "uniqueItems": false
         },
         "x": {
-          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate",
           "type": "string",
           "uniqueItems": false
         },
         "y": {
-          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate",
           "type": "string",
           "uniqueItems": false
         },
@@ -2399,14 +2399,14 @@
           "uniqueItems": false
         },
         "x": {
-          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate",
           "type": "string",
           "uniqueItems": false
         },
         "y": {
-          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate",
           "type": "string",
           "uniqueItems": false
         },
@@ -2573,14 +2573,14 @@
           "uniqueItems": false
         },
         "x": {
-          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate",
           "type": "string",
           "uniqueItems": false
         },
         "y": {
-          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate",
           "type": "string",
           "uniqueItems": false
         },
@@ -2757,14 +2757,14 @@
           "uniqueItems": false
         },
         "x": {
-          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate",
           "type": "string",
           "uniqueItems": false
         },
         "y": {
-          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate",
           "type": "string",
           "uniqueItems": false
         },
@@ -2924,7 +2924,7 @@
           "uniqueItems": false
         },
         "owner_password": {
-          "description": "Password for making non-PDF document readonly or PDF document restrictions defined below",
+          "description": "Password required to edit the document (and for PDF apply restrictions defined below)",
           "x-ms-summary": "Owner password",
           "type": "string",
           "format": "password",
@@ -2975,14 +2975,14 @@
         },
         "sharepoint_file": { "$ref": "#/definitions/sharepoint_file" },
         "open_password": {
-          "description": "Password required to open the PDF",
+          "description": "Password required to open the document",
           "x-ms-summary": "Open password",
           "type": "string",
           "format": "password",
           "uniqueItems": false
         },
         "owner_password": {
-          "description": "Password for PDF restrictions defined below",
+          "description": "Password required to edit the document (and for PDF apply restrictions defined below)",
           "x-ms-summary": "Owner password",
           "type": "string",
           "format": "password",
@@ -3230,14 +3230,14 @@
           "uniqueItems": false
         },
         "x": {
-          "description": "X Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "X Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "X Coordinate",
           "type": "string",
           "uniqueItems": false
         },
         "y": {
-          "description": "Y Coordinate of the watermark (in Pts, 1/72 of an inch)",
-          "x-ms-summary": "Y Coordinate (When 'Position' is set to 'Absolute')",
+          "description": "Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch)",
+          "x-ms-summary": "Y Coordinate",
           "type": "string",
           "uniqueItems": false
         },

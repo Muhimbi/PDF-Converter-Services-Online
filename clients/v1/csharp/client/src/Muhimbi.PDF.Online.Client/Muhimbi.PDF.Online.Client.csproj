@@ -4,14 +4,14 @@ Muhimbi PDF
 
 Convert, Merge, Watermark, Secure and OCR files.
 
-OpenAPI spec version: 9.14
+OpenAPI spec version: 9.14.1
 
 -->
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6B9BF8EB-75C1-497C-ABBA-52F9651CEB9C}</ProjectGuid>
+    <ProjectGuid>{9BE2D38E-5791-4E16-BF2D-EDB60598EC89}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Muhimbi.PDF.Online.Client</RootNamespace>

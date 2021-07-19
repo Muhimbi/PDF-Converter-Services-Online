@@ -14,6 +14,8 @@ java -Dmodels -Dapis -DmodelTests=false -DmodelDocs=false -DapiDocs=false -DapiT
     --type-mappings ByteArray=String
 
 rm -rf client/gradle
+rm -f client/pom.xml
+cp pom.xml client
 
 cd client
 source build.sh

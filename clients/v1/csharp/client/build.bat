@@ -8,7 +8,7 @@ rmdir /S /Q bin
 SET CSCPATH=%SYSTEMROOT%\Microsoft.NET\Framework\v4.0.30319
 
 @echo ** Downloading nuget
-if not exist ".\nuget.exe" powershell -Command "(new-object System.Net.WebClient).DownloadFile('https://dist.nuget.org/win-x86-commandline/latest/nuget.exe', '.\nuget.exe')"
+if not exist ".\nuget.exe" powershell -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;(new-object System.Net.WebClient).DownloadFile('https://nuget.org/nuget.exe', '.\nuget.exe')"
 
 @echo ** Downloading zip
 if not exist ".\zip.exe" powershell -Command "(new-object System.Net.WebClient).DownloadFile('http://stahlworks.com/dev/zip.exe', '.\zip.exe')"

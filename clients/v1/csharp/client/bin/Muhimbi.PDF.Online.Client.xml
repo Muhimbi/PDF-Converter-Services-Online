@@ -3218,8 +3218,8 @@
             <param name="SharepointFile">SharepointFile.</param>
             <param name="Width">Width of the watermark (in Pts, 1/72 of an inch) (required).</param>
             <param name="Height">Height of the watermark (in Pts, 1/72 of an inch) (required).</param>
-            <param name="X">X Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
-            <param name="Y">Y Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
+            <param name="X">X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
+            <param name="Y">Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
             <param name="Layer">Watermark layer (default to LayerEnum.Foreground).</param>
             <param name="Rotation">Angle of rotation.</param>
             <param name="Opacity">Opacity in % (100 is fully visible and 1 is barely visible) (default to "100").</param>
@@ -3329,15 +3329,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.EllipseWatermarkData.X">
             <summary>
-            X Coordinate of the watermark (in Pts, 1/72 of an inch)
+            X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>X Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.EllipseWatermarkData.Y">
             <summary>
-            Y Coordinate of the watermark (in Pts, 1/72 of an inch)
+            Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>Y Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.EllipseWatermarkData.Rotation">
             <summary>
@@ -3547,8 +3547,8 @@
             <param name="Position">Watermark position on the page (required) (default to PositionEnum.MiddleCenter).</param>
             <param name="Width">Width of the watermark (in Pts, 1/72 of an inch) (required).</param>
             <param name="Height">Height of the watermark (in Pts, 1/72 of an inch) (required).</param>
-            <param name="X">X Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
-            <param name="Y">Y Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
+            <param name="X">X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
+            <param name="Y">Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
             <param name="Layer">Watermark layer (default to LayerEnum.Foreground).</param>
             <param name="Rotation">Angle of rotation.</param>
             <param name="Opacity">Opacity in % (100 is fully visible and 1 is barely visible) (default to "100").</param>
@@ -3664,15 +3664,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.ImageWatermarkData.X">
             <summary>
-            X Coordinate of the watermark (in Pts, 1/72 of an inch)
+            X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>X Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.ImageWatermarkData.Y">
             <summary>
-            Y Coordinate of the watermark (in Pts, 1/72 of an inch)
+            Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>Y Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.ImageWatermarkData.Rotation">
             <summary>
@@ -3891,8 +3891,8 @@
             <param name="Position">Watermark position on the page (required) (default to PositionEnum.MiddleCenter).</param>
             <param name="Width">Width of the watermark (in Pts, 1/72 of an inch) (required).</param>
             <param name="Height">Height of the watermark (in Pts, 1/72 of an inch) (required).</param>
-            <param name="X">X Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
-            <param name="Y">Y Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
+            <param name="X">X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
+            <param name="Y">Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
             <param name="Layer">Watermark layer (default to LayerEnum.Foreground).</param>
             <param name="Rotation">Angle of rotation.</param>
             <param name="Opacity">Opacity in % (100 is fully visible and 1 is barely visible) (default to "100").</param>
@@ -4061,15 +4061,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.LinearBarcodeWatermarkData.X">
             <summary>
-            X Coordinate of the watermark (in Pts, 1/72 of an inch)
+            X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>X Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.LinearBarcodeWatermarkData.Y">
             <summary>
-            Y Coordinate of the watermark (in Pts, 1/72 of an inch)
+            Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>Y Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.LinearBarcodeWatermarkData.Rotation">
             <summary>
@@ -5964,8 +5964,8 @@
             <param name="Position">Watermark position on the page (required) (default to PositionEnum.MiddleCenter).</param>
             <param name="Width">Width of the watermark (in Pts, 1/72 of an inch) (required).</param>
             <param name="Height">Height of the watermark (in Pts, 1/72 of an inch) (required).</param>
-            <param name="X">X Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
-            <param name="Y">Y Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
+            <param name="X">X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
+            <param name="Y">Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
             <param name="Layer">Watermark layer (default to LayerEnum.Foreground).</param>
             <param name="Rotation">Angle of rotation.</param>
             <param name="Opacity">Opacity in % (100 is fully visible and 1 is barely visible) (default to "100").</param>
@@ -6078,15 +6078,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.PdfWatermarkData.X">
             <summary>
-            X Coordinate of the watermark (in Pts, 1/72 of an inch)
+            X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>X Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.PdfWatermarkData.Y">
             <summary>
-            Y Coordinate of the watermark (in Pts, 1/72 of an inch)
+            Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>Y Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.PdfWatermarkData.Rotation">
             <summary>
@@ -6337,8 +6337,8 @@
             <param name="Position">Watermark position on the page (required) (default to PositionEnum.MiddleCenter).</param>
             <param name="Width">Width of the watermark (in Pts, 1/72 of an inch) (required).</param>
             <param name="Height">Height of the watermark (in Pts, 1/72 of an inch) (required).</param>
-            <param name="X">X Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
-            <param name="Y">Y Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
+            <param name="X">X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
+            <param name="Y">Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
             <param name="Layer">Watermark layer (default to LayerEnum.Foreground).</param>
             <param name="Rotation">Angle of rotation.</param>
             <param name="Opacity">Opacity in % (100 is fully visible and 1 is barely visible) (default to "100").</param>
@@ -6471,15 +6471,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.QrCodeWatermarkData.X">
             <summary>
-            X Coordinate of the watermark (in Pts, 1/72 of an inch)
+            X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>X Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.QrCodeWatermarkData.Y">
             <summary>
-            Y Coordinate of the watermark (in Pts, 1/72 of an inch)
+            Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>Y Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.QrCodeWatermarkData.Rotation">
             <summary>
@@ -6940,8 +6940,8 @@
             <param name="SharepointFile">SharepointFile.</param>
             <param name="Width">Width of the watermark (in Pts, 1/72 of an inch) (required).</param>
             <param name="Height">Height of the watermark (in Pts, 1/72 of an inch) (required).</param>
-            <param name="X">X Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
-            <param name="Y">Y Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
+            <param name="X">X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
+            <param name="Y">Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
             <param name="Layer">Watermark layer (default to LayerEnum.Foreground).</param>
             <param name="Rotation">Angle of rotation.</param>
             <param name="Opacity">Opacity in % (100 is fully visible and 1 is barely visible) (default to "100").</param>
@@ -7051,15 +7051,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.RectangleWatermarkData.X">
             <summary>
-            X Coordinate of the watermark (in Pts, 1/72 of an inch)
+            X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>X Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.RectangleWatermarkData.Y">
             <summary>
-            Y Coordinate of the watermark (in Pts, 1/72 of an inch)
+            Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>Y Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.RectangleWatermarkData.Rotation">
             <summary>
@@ -7269,8 +7269,8 @@
             <param name="Position">Watermark position on the page (required) (default to PositionEnum.MiddleCenter).</param>
             <param name="Width">Width of the watermark (in Pts, 1/72 of an inch) (required).</param>
             <param name="Height">Height of the watermark (in Pts, 1/72 of an inch) (required).</param>
-            <param name="X">X Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
-            <param name="Y">Y Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
+            <param name="X">X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
+            <param name="Y">Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
             <param name="Layer">Watermark layer (default to LayerEnum.Foreground).</param>
             <param name="Rotation">Angle of rotation.</param>
             <param name="Opacity">Opacity in % (100 is fully visible and 1 is barely visible) (default to "100").</param>
@@ -7386,15 +7386,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.RtfWatermarkData.X">
             <summary>
-            X Coordinate of the watermark (in Pts, 1/72 of an inch)
+            X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>X Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.RtfWatermarkData.Y">
             <summary>
-            Y Coordinate of the watermark (in Pts, 1/72 of an inch)
+            Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>Y Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.RtfWatermarkData.Rotation">
             <summary>
@@ -7601,7 +7601,7 @@
             <param name="SourceFileContent">Content of the file to secure (required).</param>
             <param name="SharepointFile">SharepointFile.</param>
             <param name="OpenPassword">Password required to open the document.</param>
-            <param name="OwnerPassword">Password for making non-PDF document readonly or PDF document restrictions defined below.</param>
+            <param name="OwnerPassword">Password required to edit the document (and for PDF apply restrictions defined below).</param>
             <param name="SecurityOptions">Print|HighResolutionPrint|ContentCopy|Annotations|FormFields|ContentAccessibility|DocumentAssembly.</param>
             <param name="FailOnError">Fail on error (default to true).</param>
         </member>
@@ -7668,9 +7668,9 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.SecureDocumentData.OwnerPassword">
             <summary>
-            Password for making non-PDF document readonly or PDF document restrictions defined below
+            Password required to edit the document (and for PDF apply restrictions defined below)
             </summary>
-            <value>Password for making non-PDF document readonly or PDF document restrictions defined below</value>
+            <value>Password required to edit the document (and for PDF apply restrictions defined below)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.SecureDocumentData.SecurityOptions">
             <summary>
@@ -7702,8 +7702,8 @@
             <param name="SourceFileName">Name of the source file including extension.</param>
             <param name="SourceFileContent">Content of the file to secure (required).</param>
             <param name="SharepointFile">SharepointFile.</param>
-            <param name="OpenPassword">Password required to open the PDF.</param>
-            <param name="OwnerPassword">Password for PDF restrictions defined below.</param>
+            <param name="OpenPassword">Password required to open the document.</param>
+            <param name="OwnerPassword">Password required to edit the document (and for PDF apply restrictions defined below).</param>
             <param name="SecurityOptions">Print|HighResolutionPrint|ContentCopy|Annotations|FormFields|ContentAccessibility|DocumentAssembly.</param>
             <param name="FailOnError">Fail on error (default to true).</param>
         </member>
@@ -7764,15 +7764,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.SecurePdfData.OpenPassword">
             <summary>
-            Password required to open the PDF
+            Password required to open the document
             </summary>
-            <value>Password required to open the PDF</value>
+            <value>Password required to open the document</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.SecurePdfData.OwnerPassword">
             <summary>
-            Password for PDF restrictions defined below
+            Password required to edit the document (and for PDF apply restrictions defined below)
             </summary>
-            <value>Password for PDF restrictions defined below</value>
+            <value>Password required to edit the document (and for PDF apply restrictions defined below)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.SecurePdfData.SecurityOptions">
             <summary>
@@ -8147,8 +8147,8 @@
             <param name="Position">Watermark position on the page (required) (default to PositionEnum.MiddleCenter).</param>
             <param name="Width">Width of the watermark (in Pts, 1/72 of an inch) (required).</param>
             <param name="Height">Height of the watermark (in Pts, 1/72 of an inch) (required).</param>
-            <param name="X">X Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
-            <param name="Y">Y Coordinate of the watermark (in Pts, 1/72 of an inch).</param>
+            <param name="X">X Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
+            <param name="Y">Y Coordinate when 'Position' is set to 'Absolute' (in Pts, 1/72 of an inch).</param>
             <param name="Layer">Watermark layer (default to LayerEnum.Foreground).</param>
             <param name="Rotation">Angle of rotation.</param>
             <param name="Opacity">Opacity in % (100 is fully visible and 1 is barely visible) (default to "100").</param>
@@ -8294,15 +8294,15 @@
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.TextWatermarkData.X">
             <summary>
-            X Coordinate of the watermark (in Pts, 1/72 of an inch)
+            X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>X Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>X Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.TextWatermarkData.Y">
             <summary>
-            Y Coordinate of the watermark (in Pts, 1/72 of an inch)
+            Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)
             </summary>
-            <value>Y Coordinate of the watermark (in Pts, 1/72 of an inch)</value>
+            <value>Y Coordinate when &#39;Position&#39; is set to &#39;Absolute&#39; (in Pts, 1/72 of an inch)</value>
         </member>
         <member name="P:Muhimbi.PDF.Online.Client.Model.TextWatermarkData.Rotation">
             <summary>
