@@ -176,7 +176,10 @@ An example is provided for each individual REST endpoint. A full overview can be
 Sample								| Description
 ------------------------------------|---------------------------------------------------------
 [convert](samples/convert/)					| Convert a single file to PDF or other [supported output format](https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-).
+[convert_to_pdfa](samples/convert_to_pdfa/)	| Convert a single file to a PDF/A document (or to other PDF profiles).
+[convert_LRO](samples/convert_LRO/)			| Convert a single file to PDF or other formats using asynchronous pattern for long running uperations.
 [convert_html](samples/convert_html/)		| Convert an HTML fragment, or URL, to PDF.
+[extract_pdf_forms_data](samples/extract_pdf_forms_data/)		| Extract PDF Forms Data from PDF documents.
 [merge_to_pdf](samples/merge_to_pdf/)		| Combine multiple files, and URLs, into a single PDF.
 [ocr_pdf](samples/ocr_pdf/)					| Convert a scan, fax or other image into a searchable PDF.
 [ocr_text](samples/ocr_text/)				| Use OCR to extract text from a scan, fax or other image.

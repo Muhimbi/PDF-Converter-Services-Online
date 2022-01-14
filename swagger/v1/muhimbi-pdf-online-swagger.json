@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "9.14.1",
+    "version": "9.15",
     "title": "Muhimbi PDF",
     "description": "Convert, Merge, Watermark, Secure and OCR files."
   },
@@ -696,7 +696,7 @@
           "format": "enum",
           "default": "PDF",
           "uniqueItems": false,
-          "enum": [ "PDF", "XPS", "DOCX", "DOC", "ODT", "RTF", "TXT", "MHT", "HTML", "XML", "XLS", "XLSX", "CSV", "ODS", "PPT", "PPTX", "ODP", "PPS", "PPSX", "TIFF", "PNG", "GIF", "JPG", "BMP", "PS", "PCL", "EPS" ]
+          "enum": [ "PDF", "XPS", "DOCX", "DOC", "ODT", "RTF", "TXT", "MHT", "HTML", "XML", "XLS", "XLSX", "CSV", "ODS", "PPT", "PPTX", "ODP", "PPS", "PPSX", "TIFF", "PNG", "GIF", "JPG", "BMP", "PS", "PCL", "EPS", "FDF", "XFDF" ]
         },
         "copy_metadata": {
           "description": "Copy metadata (Only for SharePoint operations)",

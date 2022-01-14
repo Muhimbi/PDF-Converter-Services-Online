@@ -2924,6 +2924,16 @@
             Enum EPS for "EPS"
             </summary>
         </member>
+        <member name="F:Muhimbi.PDF.Online.Client.Model.ConvertData.OutputFormatEnum.FDF">
+            <summary>
+            Enum FDF for "FDF"
+            </summary>
+        </member>
+        <member name="F:Muhimbi.PDF.Online.Client.Model.ConvertData.OutputFormatEnum.XFDF">
+            <summary>
+            Enum XFDF for "XFDF"
+            </summary>
+        </member>
         <member name="T:Muhimbi.PDF.Online.Client.Model.ConvertHtmlData">
             <summary>
             Parameters for ConvertHtml operation

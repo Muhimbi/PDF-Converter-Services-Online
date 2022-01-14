@@ -81,6 +81,8 @@ if($_FILES["file"]['size'] > 0)
         <option value="ODP">ODP</option>
         <option value="PPS">PPS</option>
         <option value="PPSX">PPSX</option>
+        <option value="FDF">FDF</option>
+        <option value="XFDF">XFDF</option>
       </select>
 
       &nbsp;&nbsp;&nbsp;

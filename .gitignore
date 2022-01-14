@@ -2,65 +2,26 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+# Visual Studio specific files, ignore
 /.vs/*
 *.suo
+*.user
+
+# These binaries are downloaded automatically when c# clinet is built
 /clients/v1/csharp/client/nuget.exe
 /clients/v1/csharp/client/zip.exe
-/clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/obj
-/clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/obj/Release/CoreCompileInputs.cache
-/clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/obj/Debug/CoreCompileInputs.cache
-/clients/v1/csharp/client/src/Muhimbi.PDF.Online.Client/Muhimbi.PDF.Online.Client.nuspec
-*/bin/*
-*/obj/*
-*.user
-/clients/v1/csharp/samples/convert/bin/Debug
-/clients/v1/csharp/samples/convert/obj
-/clients/v1/csharp/samples/convert/obj/Release
-/clients/v1/csharp/samples/convert_html/obj
-/clients/v1/csharp/samples/convert_html/bin/Debug
-/clients/v1/csharp/samples/merge_to_pdf/obj
-/clients/v1/csharp/samples/merge_to_pdf/bin/Debug
-/clients/v1/csharp/samples/merge_to_pdf (SharePoint)/bin/Debug
-/clients/v1/csharp/samples/merge_to_pdf (SharePoint)/obj/Debug
-/clients/v1/csharp/samples/ocr_pdf/bin/Debug
-/clients/v1/csharp/samples/ocr_pdf/obj/Debug
-/clients/v1/csharp/samples/ocr_text/obj
-/clients/v1/csharp/samples/ocr_text/bin/Debug
-/clients/v1/csharp/samples/ocr_pdf/obj/Release
-/clients/v1/csharp/samples/secure_pdf/obj/Debug
-/clients/v1/csharp/samples/secure_pdf/bin/Debug
-/clients/v1/csharp/samples/split_pdf/bin/Debug
-/clients/v1/csharp/samples/split_pdf/obj
-/clients/v1/csharp/samples/watermarking/composite_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/composite_watermark/obj/Debug
-/clients/v1/csharp/samples/watermarking/composite_watermark/obj/Release
-/clients/v1/csharp/samples/watermarking/ellipse_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/ellipse_watermark/obj/Debug
-/clients/v1/csharp/samples/watermarking/image_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/image_watermark/obj
-/clients/v1/csharp/samples/watermarking/line_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/line_watermark/obj
-/clients/v1/csharp/samples/watermarking/pdf_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/pdf_watermark/obj
-/clients/v1/csharp/samples/watermarking/qr_code_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/qr_code_watermark/obj/Debug
-/clients/v1/csharp/samples/watermarking/rectangle_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/rectangle_watermark/obj/Debug
-/clients/v1/csharp/samples/watermarking/rtf_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/rtf_watermark/obj/Debug
-/clients/v1/csharp/samples/watermarking/text_watermark/bin/Debug
-/clients/v1/csharp/samples/watermarking/text_watermark/obj/Debug
-/clients/v1/csharp/samples/watermarking/text_watermark/obj/Release
-/clients/v1/csharp/samples/watermarking/ellipse_watermark/obj/Release
-/clients/v1/csharp/samples/watermarking/qr_code_watermark/obj/Release
-/clients/v1/csharp/samples/watermarking/rectangle_watermark/obj/Release
-/clients/v1/csharp/samples/watermarking/rtf_watermark/obj/Release
+
+# We do not need 'bin' folder for the samples but we need for the csharp client
+/**/samples/**/bin/*
+
+# We do not need any of the 'obj' folders
+/**/obj/*
+
+# We do not need compiled java code, we have the client jar
 *.class
-/clients/v1/java/samples/convert/result.pdf
-/clients/v1/csharp/samples/secure_pdf/obj/Release
+
+# These can be downloaded from other soures
 /clients/v1/java/client/lib/swagger-annotations-1.5.12.jar
 /clients/v1/java/client/lib/logging-interceptor-2.7.5.jar
 /clients/v1/java/client/lib/junit-4.12.jar
 /clients/v1/java/client/lib/hamcrest-core-1.3.jar
-/clients/v1/java/samples/merge_to_pdf/result.pdf
-/clients/v1/csharp/samples/merge_to_pdf (SharePoint)/obj/Release
