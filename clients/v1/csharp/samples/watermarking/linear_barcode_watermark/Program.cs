@@ -58,6 +58,10 @@ namespace sample
                     SourceFileContent: sourceFile,                                  // ** The file content to watermark
                     Content: "123456789012",                                        // ** Data to embed in the barcode
                     BarcodeType: LinearBarcodeWatermarkData.BarcodeTypeEnum.UPCA,   // ** The barcode Version
+                    OmitStartStopSymbols: LinearBarcodeWatermarkData.OmitStartStopSymbolsEnum.False,    // ** In some cases, stop and start symbols are not needed
+                    DisableCheckdigit: LinearBarcodeWatermarkData.DisableCheckdigitEnum.False,          // ** Set whether you wish to omit check digits
+                    ShowCheckdigit: LinearBarcodeWatermarkData.ShowCheckdigitEnum.True,                 // ** Set whether you wish to show the check digit or not
+                    LabelPlacement: LinearBarcodeWatermarkData.LabelPlacementEnum.BottomCenter,         // ** The location of the label for the barcode
                     Position: LinearBarcodeWatermarkData.PositionEnum.MiddleCenter, // ** The location where the watermark will be positioned on the page.
                     X: "0",                                                         // ** The x-coordinate of the watermark. Only used when Position is set to Absolute.
                     Y: "0",                                                         // ** The y-coordinate of the watermark. Only used when Position is set to Absolute.
@@ -71,7 +75,8 @@ namespace sample
                     StartPage: 0,                                                   // ** The first page in the document the watermark applies to.
                     EndPage: 0,                                                     // ** The last page in the document the watermark applies to.
                     PageInterval: 1,                                                // ** Which pages to apply the watermark on (1 = every page, 2 = every other page etc).
-                    PageOrientation: LinearBarcodeWatermarkData.PageOrientationEnum.Both // ** The page orientation the watermark applies to. 
+                    PageOrientation: LinearBarcodeWatermarkData.PageOrientationEnum.Both, // ** The page orientation the watermark applies to. 
+                    PrintOnly: LinearBarcodeWatermarkData.PrintOnlyEnum.False       // ** If set to true then watermarks only appear during print
                     );
 
                 // ** Watermark the file

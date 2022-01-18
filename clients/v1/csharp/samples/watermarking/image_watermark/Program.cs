@@ -70,7 +70,8 @@ namespace sample
                     StartPage: 0,                                                   // ** The first page in the document the watermark applies to.
                     EndPage: 0,                                                     // ** The last page in the document the watermark applies to.
                     PageInterval: 1,                                                // ** Which pages to apply the watermark on (1 = every page, 2 = every other page etc).
-                    PageOrientation: ImageWatermarkData.PageOrientationEnum.Both    // ** The page orientation the watermark applies to. 
+                    PageOrientation: ImageWatermarkData.PageOrientationEnum.Both,   // ** The page orientation the watermark applies to. 
+                    PrintOnly: ImageWatermarkData.PrintOnlyEnum.False               // ** If set to true then watermarks only appear during print
                     );
 
                 // ** Watermark the file
