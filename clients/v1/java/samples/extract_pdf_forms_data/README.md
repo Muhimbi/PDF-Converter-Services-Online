@@ -1,4 +1,4 @@
-# Sample - Convert file to PDF using Java
+# Sample - Export PDF Forms Data using Java
 
 The Java sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to extract PDF Forms Data from PDF documents.
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).

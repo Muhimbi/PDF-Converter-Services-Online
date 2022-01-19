@@ -1,4 +1,4 @@
-# Sample - Convert file to PDF using JavaScript
+# Sample - Extract PDF Forms Data using JavaScript
 
 The sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to extract PDF Forms Data from PDF documents.
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).

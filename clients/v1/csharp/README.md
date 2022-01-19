@@ -181,28 +181,28 @@ An example is provided for each individual REST endpoint. A full overview can be
 Sample								| Description
 ------------------------------------|---------------------------------------------------------
 [convert](samples/convert/)					| Convert a single file to PDF or other [supported output format](https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-).
-[convert_to_pdfa](samples/convert_to_pdfa/)	| Convert a single file to a PDF/A document (or to other PDF profiles).
-[convert_LRO](samples/convert_LRO/)			| Convert a single file to PDF or other formats using asynchronous pattern for long running uperations.
 [convert_html](samples/convert_html/)		| Convert an HTML fragment, or URL, to PDF.
+[convert_LRO](samples/convert_LRO/)			| Convert a single file to PDF or other formats using asynchronous pattern for long running uperations.
+[convert_to_pdfa](samples/convert_to_pdfa/)	| Convert a single file to a PDF/A document (or to other PDF profiles).
 [extract_pdf_forms_data](samples/extract_pdf_forms_data/)		| Export PDF Forms Data from PDF document.
 [merge_to_pdf](samples/merge_to_pdf/)		| Combine multiple files, and URLs, into a single PDF.
 [merge_to_pdf (SharePoint)](samples/merge_to_pdf%20%28SharePoint%29/)		| Combine multiple SharePoint files (by path), and URLs, into a single PDF.
 [ocr_pdf](samples/ocr_pdf/)					| Convert a scan, fax or other image into a searchable PDF.
 [ocr_text](samples/ocr_text/)				| Use OCR to extract text from a scan, fax or other image.
-[secure_pdf](samples/secure_pdf/)			| Apply security settings, passwords and restrictions to a PDF.
 [secure_document (MS Office)](samples/secure_document%20%28MS%20Office%29/)	| Apply security settings and passwords to an MS Office.
+[secure_pdf](samples/secure_pdf/)			| Apply security settings, passwords and restrictions to a PDF.
 [split_pdf](samples/split_pdf/)				| Split a large PDF into smaller PDFs.
 **[watermarking](samples/watermarking/)**	| 
-&nbsp;&nbsp;&nbsp;[text_watermark](samples/watermarking/text_watermark/)			| Add a simple text watermark to a PDF file.
-&nbsp;&nbsp;&nbsp;[rtf_watermark](samples/watermarking/rtf_watermark/)				| Add a rich text (RTF) based watermark to a PDF file.
-&nbsp;&nbsp;&nbsp;[image_watermark](samples/watermarking/image_watermark/)			| Add an image based watermark to a PDF file.
-&nbsp;&nbsp;&nbsp;[qr_code_watermark](samples/watermarking/qr_code_watermark/)		| Add a QR Code to a PDF file.
-&nbsp;&nbsp;&nbsp;[pdf_watermark](samples/watermarking/pdf_watermark/)				| Add a PDF based watermark to a PDF file.
-&nbsp;&nbsp;&nbsp;[ellipse_watermark](samples/watermarking/ellipse_watermark/)		| Add an ellipse based watermark to a PDF file.
-&nbsp;&nbsp;&nbsp;[line_watermark](samples/watermarking/line_watermark/)			| Add a line based watermark to a PDF file.
-&nbsp;&nbsp;&nbsp;[rectangle_watermark](samples/watermarking/rectangle_watermark/)	| Add a rectangle based watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[composite_watermark](samples/watermarking/composite_watermark/)	| Add a number of different watermarks to a PDF file in a single operation.
-&nbsp;&nbsp;&nbsp;[linear_barcode_watermark](samples/watermarking/linear_barcodecode_watermark/)	| Add a Linear Barcode to a PDF file.
+&nbsp;&nbsp;&nbsp;[ellipse_watermark](samples/watermarking/ellipse_watermark/)		| Add an ellipse based watermark to a PDF file.
+&nbsp;&nbsp;&nbsp;[image_watermark](samples/watermarking/image_watermark/)			| Add an image based watermark to a PDF file.
+&nbsp;&nbsp;&nbsp;[linear_barcode_watermark](samples/watermarking/linear_barcode_watermark/)	| Add a Linear Barcode to a PDF file.
+&nbsp;&nbsp;&nbsp;[line_watermark](samples/watermarking/line_watermark/)			| Add a line based watermark to a PDF file.
+&nbsp;&nbsp;&nbsp;[pdf_watermark](samples/watermarking/pdf_watermark/)				| Add a PDF based watermark to a PDF file.
+&nbsp;&nbsp;&nbsp;[qr_code_watermark](samples/watermarking/qr_code_watermark/)		| Add a QR Code to a PDF file.
+&nbsp;&nbsp;&nbsp;[rectangle_watermark](samples/watermarking/rectangle_watermark/)	| Add a rectangle based watermark to a PDF file.
+&nbsp;&nbsp;&nbsp;[rtf_watermark](samples/watermarking/rtf_watermark/)				| Add a rich text (RTF) based watermark to a PDF file.
+&nbsp;&nbsp;&nbsp;[text_watermark](samples/watermarking/text_watermark/)			| Add a simple text watermark to a PDF file.
 **[watermarking (MS Office)](samples/watermarking%20%28MS%20Office%29/)**	| 
 &nbsp;&nbsp;&nbsp;[composite_watermark](samples/watermarking%20%28MS%20Office%29/composite_watermark/)	| Add a number of different watermarks to a Word document in a single operation.
 &nbsp;&nbsp;&nbsp;[qr_code_watermark](samples/watermarking%20%28MS%20Office%29/qr_code_watermark/)		| Add a QR Code to an Excel document.

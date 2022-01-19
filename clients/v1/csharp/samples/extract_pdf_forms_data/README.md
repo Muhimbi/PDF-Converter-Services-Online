@@ -1,6 +1,6 @@
-# Sample - Convert file to PDF using C#
+# Sample - Export PDF Forms Data using C#
 
-The C# sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to export PDF Forms Date from a PDF document.
+The C# sample provided in this section uses the [*Muhimbi PDF Converter Services Online*](https://github.com/Muhimbi/PDF-Converter-Services-Online) to export PDF Forms Data from a PDF document.
 Additional sample code to *convert, merge, watermark, secure* and *OCR* files [can be found here](../).
 
 Full details about the `convert` method, fields and properties can be found [in the Wiki](https://github.com/Muhimbi/PDF-Converter-Services-Online/wiki/API:-convert).
