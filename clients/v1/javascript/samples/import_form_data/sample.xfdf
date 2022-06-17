@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">
+  <f href="sample.pdf" />
+  <fields>
+    <field name="Title">
+      <value>Flight Receipt</value>
+    </field>
+    <field name="Title 1">
+      <value>Train ticket</value>
+    </field>
+    <field name="Title 2">
+      <value />
+    </field>
+    <field name="Amount">
+      <value>150</value>
+    </field>
+    <field name="Amount 1">
+      <value>39</value>
+    </field>
+    <field name="Amount 2">
+      <value />
+    </field>
+    <field name="Description">
+      <value>Receipt for a light</value>
+    </field>
+    <field name="Description 1">
+      <value>Receipt for a train ticket</value>
+    </field>
+    <field name="Description 2">
+      <value />
+    </field>
+  </fields>
+  <ids original="804A3EEC868D44638B592AD4356B7258" modified="E924D3333C0F6C42B4E9555F6D48B2DA" />
+</xfdf>

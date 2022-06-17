@@ -33,6 +33,7 @@ It couldn't be easier to get going. Please [follow these instructions](https://s
 Once activated, follow the instructions below for the language of your choice. For each listed language, detailed instructions are included for generating libraries from scratch. For languages that are not explicitly listed below, use [editor.swagger.io](http://editor.swagger.io).
 
 - [C# Libraries and sample code](clients/v1/csharp/)
+- [C# .Net Core Libraries and sample code](clients/v1/dotnetcore/)
 - [Java Libraries and sample code](clients/v1/java/)
 - [JavaScript Libraries and sample code](clients/v1/javascript/)
 - [PHP Libraries and sample code](clients/v1/php/)

@@ -173,20 +173,30 @@ Sample code, and related files, for the various facilities provided by this serv
 
 An example is provided for each individual REST endpoint. A full overview can be found below.
 
-Sample								| Description
-------------------------------------|---------------------------------------------------------
-[convert](samples/convert/)					| Convert a single file to PDF or other [supported output format](https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-).
-[convert_html](samples/convert_html/)		| Convert an HTML fragment, or URL, to PDF.
-[convert_LRO](samples/convert_LRO/)			| Convert a single file to PDF or other formats using asynchronous pattern for long running uperations.
-[convert_to_pdfa](samples/convert_to_pdfa/)	| Convert a single file to a PDF/A document (or to other PDF profiles).
-[extract_pdf_forms_data](samples/extract_pdf_forms_data/)		| Extract PDF Forms Data from PDF documents.
-[merge_to_pdf](samples/merge_to_pdf/)		| Combine multiple files, and URLs, into a single PDF.
-[ocr_pdf](samples/ocr_pdf/)					| Convert a scan, fax or other image into a searchable PDF.
-[ocr_text](samples/ocr_text/)				| Use OCR to extract text from a scan, fax or other image.
-[secure_document](samples/secure_document/)	| Apply security settings, passwords and restrictions to a PDF or MS Office documents.
-[secure_pdf](samples/secure_pdf/)			| Apply security settings, passwords and restrictions to a PDF.
-[split_pdf](samples/split_pdf/)				| Split a large PDF into smaller PDFs.
-**[watermarking](samples/watermarking/)**	| 
+Sample											| Description
+------------------------------------------------|---------------------------------------------------------
+[convert](samples/convert/)						| Convert a single file to PDF or other [supported output format](https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-).
+[convert_LRO](samples/convert_LRO/)				| Convert a single file to PDF or other formats using asynchronous pattern for long running uperations.
+[convert_to_pdfa](samples/convert_to_pdfa/)		| Convert a single file to a PDF/A document (or to other PDF profiles).
+[export_form_data](samples/export_form_data/)	| Export PDF Forms Data into various formats (.fdf, .xfdf and .xml).
+[import_form_data](samples/import_form_data/)	| Import data (.fdf, .xfdf or .xml) into PDF forms.
+[merge_to_pdf](samples/merge_to_pdf/)			| Combine multiple files, and URLs, into a single PDF.
+[ocr_pdf](samples/ocr_pdf/)						| Convert a scan, fax or other image into a searchable PDF.
+[ocr_text](samples/ocr_text/)					| Use OCR to extract text from a scan, fax or other image.
+[secure_document](samples/secure_document/)		| Apply security settings, passwords and restrictions to a PDF or MS Office documents.
+[secure_pdf](samples/secure_pdf/)				| Apply security settings, passwords and restrictions to a PDF.
+[split_pdf](samples/split_pdf/)					| Split a large PDF into smaller PDFs.
+**Specialized Conversions**										| 
+&nbsp;&nbsp;&nbsp;[convert_cad](samples/convert_cad/)			| Convert a CAD drawing to PDF.
+&nbsp;&nbsp;&nbsp;[convert_email](samples/convert_email/)		| Convert an email (.msg or .eml) into PDF.
+&nbsp;&nbsp;&nbsp;[convert_excel](samples/convert_excel/)		| Convert a Microsoft Excel document into PDF (or other formats).
+&nbsp;&nbsp;&nbsp;[convert_html](samples/convert_html/)			| Convert an HTML fragment, or URL, to PDF.
+&nbsp;&nbsp;&nbsp;[convert_infopath](samples/convert_infopath/)	| Convert an InfoPath document into PDF (or other formats).
+&nbsp;&nbsp;&nbsp;[convert_pdfa](samples/convert_pdfa/)			| Convert a PDF into a PDF/A document (or other PDF profiles).
+&nbsp;&nbsp;&nbsp;[convert_powerpoint](samples/convert_powerpoint/)	| Convert a Microsoft PowerPoint document into PDF (or other formats).
+&nbsp;&nbsp;&nbsp;[convert_visio](samples/convert_visio/)		| Convert a Visio document into PDF (or other formats).
+&nbsp;&nbsp;&nbsp;[convert_word](samples/convert_word/)			| Convert a Microsoft Word document into PDF (or other formats).
+**[watermarking](samples/watermarking/)**											| 
 &nbsp;&nbsp;&nbsp;[composite_watermark](samples/watermarking/composite_watermark/)	| Add a number of different watermarks to a PDF file in a single operation.
 &nbsp;&nbsp;&nbsp;[ellipse_watermark](samples/watermarking/ellipse_watermark/)		| Add an ellipse based watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[image_watermark](samples/watermarking/image_watermark/)			| Add an image based watermark to a PDF file.
@@ -197,7 +207,7 @@ Sample								| Description
 &nbsp;&nbsp;&nbsp;[rectangle_watermark](samples/watermarking/rectangle_watermark/)	| Add a rectangle based watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[rtf_watermark](samples/watermarking/rtf_watermark/)				| Add a rich text (RTF) based watermark to a PDF file.
 &nbsp;&nbsp;&nbsp;[text_watermark](samples/watermarking/text_watermark/)			| Add a simple text watermark to a PDF file.
-**[watermarking_ms_office](samples/watermarking_ms_office/)**	| 
+**[watermarking_ms_office](samples/watermarking_ms_office/)**									| 
 &nbsp;&nbsp;&nbsp;[composite_watermark](samples/watermarking_ms_office/composite_watermark/)	| Add a number of different watermarks to a PDF or MS Office document in a single operation.
 &nbsp;&nbsp;&nbsp;[qr_code_watermark](samples/watermarking_ms_office/qr_code_watermark/)		| Add a QR Code to a PDF or MS Office document.
 &nbsp;&nbsp;&nbsp;[text_watermark](samples/watermarking_ms_office/text_watermark/)				| Add a simple text watermark to a PDF or MS Office document.
