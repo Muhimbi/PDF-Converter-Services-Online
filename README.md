@@ -1,15 +1,15 @@
-# Muhimbi PDF Converter Services Online
+# Nutrient Document Converter Online (formerly Muhimbi PDF Converter Services Online)
 <br>
 
 ## About
 
-The [*Muhimbi PDF Converter Service Online*](https://support.muhimbi.com/hc/en-us/articles/115002813708-About-the-PDF-Converter-Services-Online) is a REST based service that makes it easy to add *document conversion, merging, watermarking, securing* and *optical character recognition (OCR)* to most programming languages, operating systems and development platforms.
+The [*Nutrient Document Converter Online (formerly Muhimbi PDF Converter Service Online)*](https://www.nutrient.io/guides/document-converter/document-converter-services/) is a REST based service that makes it easy to add *document conversion, merging, watermarking, securing* and *optical character recognition (OCR)* to most programming languages, operating systems and development platforms.
 
-This service is also available as a traditional 'on-premise' solution, for more details see [this separate GitHub repository](https://github.com/Muhimbi/PDF-Converter-Services). A separate [SharePoint Online version](http://www.muhimbi-online.com/) is available as well.
+This service is also available as a traditional 'on-premise' solution, for more details see [this separate GitHub repository](https://github.com/Muhimbi/PDF-Converter-Services). A separate [SharePoint Online version](https://www.nutrient.io/guides/document-converter/sharepoint/) is available as well.
 
 Key features:
 - Hosted platform, nothing to install.
-- Convert a wide variety of file types including *Word, Excel, PowerPoint, InfoPath, AutoCAD, Visio, EML, MSG, HTML, TIFF, PNG, JPG* to PDF [and other formats](https://support.muhimbi.com/hc/en-us/articles/228089047-What-file-formats-types-are-supported-for-conversion-).
+- Convert a wide variety of file types including *Word, Excel, PowerPoint, InfoPath, AutoCAD, Visio, EML, MSG, HTML, TIFF, PNG, JPG* to PDF [and other formats](https://www.nutrient.io/guides/document-converter/sharepoint/knowledge-base/what-file-formats-types-are-supported-for-conversion/).
 - Merge multiple files and URLs into a single PDF file.
 - Apply watermarks including *rich text, images, PDFs, QR Codes, page numbers, lines, circles* etc.
 - Secure PDF files, apply encryption and PDF restrictions to prevent such operations as printing and content copying.
@@ -19,16 +19,16 @@ Key features:
 - High fidelity output.
 - [Swagger](http://www.swagger.io) based API definition.
 - Sample files and pre-generated client code for *PHP, Ruby, Python, Java, C#, Curl, JavaScript* and *SharePoint*.
-- Support for [Microsoft Flow, Azure Logic Apps, and PowerApps](https://support.muhimbi.com/hc/en-us/articles/115005900168-Microsoft-Flow-Logic-Apps-PowerApps-Tutorials-and-Blog-posts).
+- Support for [Microsoft Flow, Azure Logic Apps, and PowerApps](https://www.nutrient.io/guides/document-converter/power-automate/knowledge-base/microsoft-flow-logic-apps-powerapps-tutorials-and-blog-posts/).
 - Authenticate using API Key or oAuth.
-- Backed by a professional and high quality [support desk](http://www.muhimbi-online.com/Contact). 
+- Backed by a professional and high quality [support desk](https://support.nutrient.io/hc/en-us/requests/new). 
 
 
 <br>
 
 ## Getting started
 
-It couldn't be easier to get going. Please [follow these instructions](https://support.muhimbi.com/hc/en-us/articles/115002816048) and activate the subscription by clicking the link in the confirmation email.
+It couldn't be easier to get going. Please [follow these instructions](https://www.nutrient.io/low-code/try?product=document-converter&platform=power-automate) and activate the subscription by clicking the link in the confirmation email.
 
 Once activated, follow the instructions below for the language of your choice. For each listed language, detailed instructions are included for generating libraries from scratch. For languages that are not explicitly listed below, use [editor.swagger.io](http://editor.swagger.io).
 
@@ -46,7 +46,7 @@ Once activated, follow the instructions below for the language of your choice. F
 - [SharePoint Libraries and sample code](clients/v1/sharepoint/)
 -->
 
-Any questions? [Drop us a line](http://www.muhimbi-online.com/Contact), we love to help.
+Any questions? [Drop us a line](https://support.nutrient.io/hc/en-us/requests/new), we love to help.
 
 
 <br>
@@ -120,7 +120,7 @@ The Result code will be set to one of the following values:
 
 ### Logging
 
-When it comes to troubleshooting, especially when you are dealing with our [friendly support desk](http://www.muhimbi-online.com/Contact), it is essential that we can differentiate between the various operations that you are executing. For this reason it is recommended to always specify the `source file name` field with the actual, or at least a unique, file name.
+When it comes to troubleshooting, especially when you are dealing with our [friendly support desk](https://support.nutrient.io/hc/en-us/requests/new), it is essential that we can differentiate between the various operations that you are executing. For this reason it is recommended to always specify the `source file name` field with the actual, or at least a unique, file name.
 
 This may appear obvious for actions such as *Convert Document*, which require this field to be filled out. However, for other actions - specifically the various watermarking related ones - this field is optional. 
 
@@ -170,6 +170,6 @@ Please note that the provided client (wrapper) libraries often contain `async` a
 
 <br>
 
-If you have any questions regarding this topic, or any other topic, then please contact our [support desk](http://www.muhimbi-online.com/Contact), we are here to help.
+If you have any questions regarding this topic, or any other topic, then please contact our [support desk](https://support.nutrient.io/hc/en-us/requests/new), we are here to help.
 
 <br>
